@@ -1,0 +1,37 @@
+[
+  {
+    "id": "loic-assaud",
+    "name": "Loïc Assaud",
+    "role": "Associate Professor",
+    "email": "loic.assaud@espci.fr",
+    "photo": "assets/loic.png"
+  },
+  {
+    "id": "alexandr-oshchepkov",
+    "name": "Alexandr Oshchepkov",
+    "role": "Junior Professor",
+    "email": "alexandr.oshchepkov@espci.fr",
+    "photo": "assets/alexandr.png"
+  },
+  {
+    "id": "corentin-tregouet",
+    "name": "Corentin Trégouët",
+    "role": "Associate Professor",
+    "email": "corentin.tregouet@espci.fr",
+    "photo": "assets/corentin.png"
+  },
+  {
+    "id": "mathieu-freville",
+    "name": "Mathieu Ben-Aouda Freville",
+    "role": "Platform Engineer",
+    "email": "mathieu.freville@espci.fr",
+    "photo": "assets/mathieu.png"
+  },
+  {
+    "name": "Oussama",
+    "role": "Flight director",
+    "email": "oussama.lol@outlook.fr",
+    "photo": "oussama.png",
+    "id": "oussama"
+  }
+]

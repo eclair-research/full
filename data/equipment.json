@@ -1,0 +1,250 @@
+[
+  {
+    "id": "potentiostat-1",
+    "name": "Potentiostat 1",
+    "desc": "Biologic SP 200",
+    "label": "Potentiostat",
+    "status": "available",
+    "tooltip": "High-performance potentiostat for EIS, CV and chronoamperometry. Frequency range up to 7 MHz.",
+    "overview": "The Biologic SP-200 is a high-performance research-grade potentiostat/galvanostat with built-in EIS capabilities. It is one of the most widely used instruments in electrochemical research worldwide.",
+    "specs": [
+      [
+        "Potential range",
+        "±10 V"
+      ],
+      [
+        "Current range",
+        "±200 mA (down to 1 nA)"
+      ],
+      [
+        "EIS frequency range",
+        "10 µHz – 7 MHz"
+      ],
+      [
+        "Techniques",
+        "CV, CA, CP, EIS, GEIS, PEIS, OCV"
+      ]
+    ],
+    "usage": "Suitable for corrosion studies, battery characterisation, electrocatalysis, and impedance spectroscopy. Training required before first use.",
+    "link": "https://www.biologic.net/products/sp-200/",
+    "linkText": "Biologic SP-200 product page",
+    "image": "assets/artwork_battery.png"
+  },
+  {
+    "id": "potentiostat-2",
+    "name": "Potentiostat 2",
+    "desc": "Metrohm Vionic",
+    "label": "Potentiostat",
+    "status": "available",
+    "tooltip": "Modular potentiostat with built-in impedance analyser. Ideal for battery and fuel cell characterisation.",
+    "overview": "The Metrohm Vionic is a modular potentiostat with an integrated impedance analyser. Its compact design and high accuracy make it well-suited for fuel cell and battery testing.",
+    "specs": [
+      [
+        "Potential range",
+        "±10 V"
+      ],
+      [
+        "Current range",
+        "±2 A"
+      ],
+      [
+        "EIS frequency range",
+        "10 µHz – 1 MHz"
+      ],
+      [
+        "Techniques",
+        "CV, EIS, LSV, GEIS"
+      ]
+    ],
+    "usage": "Ideal for electrocatalysis screening and rotating disk electrode experiments. Can be combined with RDE 1.",
+    "link": "https://www.metrohm.com",
+    "linkText": "Metrohm website",
+    "image": "assets/artwork_battery.png"
+  },
+  {
+    "id": "potentiostat-3",
+    "name": "Potentiostat 3",
+    "desc": "Origalys OrigaFlex",
+    "label": "Potentiostat",
+    "status": "available",
+    "tooltip": "Flexible multichannel system for simultaneous electrochemical measurements on several cells.",
+    "overview": "The Origalys OrigaFlex is a flexible multichannel electrochemical system allowing simultaneous measurements on several cells. Particularly useful for parallel screening experiments.",
+    "specs": [
+      [
+        "Channels",
+        "Up to 8 independent"
+      ],
+      [
+        "Potential range",
+        "±10 V"
+      ],
+      [
+        "Current range",
+        "±200 mA per channel"
+      ],
+      [
+        "Techniques",
+        "CV, CA, EIS, OCV"
+      ]
+    ],
+    "usage": "Best suited for parallel catalyst screening and multi-cell battery testing. Comes paired with RDE 2.",
+    "link": "https://www.origalys.com",
+    "linkText": "Origalys website",
+    "image": "assets/artwork_battery.png"
+  },
+  {
+    "id": "rde-1",
+    "name": "RDE 1",
+    "desc": "RDE Metrohm",
+    "label": "RDE",
+    "status": "available",
+    "tooltip": "Rotating disk electrode for hydrodynamic voltammetry. Speed range 100–10 000 rpm.",
+    "overview": "A rotating disk electrode (RDE) system used for hydrodynamic voltammetry. The controlled rotation speed allows mass transport to the electrode to be precisely tuned, enabling accurate kinetic measurements.",
+    "specs": [
+      [
+        "Rotation speed",
+        "100 – 10 000 rpm"
+      ],
+      [
+        "Electrode materials",
+        "Glassy carbon, Pt, Au"
+      ],
+      [
+        "Configuration",
+        "RDE (disk only)"
+      ],
+      [
+        "Compatible potentiostat",
+        "Potentiostat 2 (Metrohm Vionic)"
+      ]
+    ],
+    "usage": "Used for oxygen reduction reaction (ORR), hydrogen evolution, and electrocatalyst benchmarking. Koutecky-Levich analysis possible.",
+    "link": "https://www.metrohm.com",
+    "linkText": "Metrohm website",
+    "image": "assets/artwork_electrocatalyse.png"
+  },
+  {
+    "name": "RDE 2",
+    "desc": "RDE Metrohm",
+    "label": "RDE",
+    "status": "available",
+    "image": "assets/artwork_electrocatalyse.png",
+    "tooltip": "Rotating disk electrode coupled to the OrigaFlex potentiostat. Supports RRDE configuration.",
+    "overview": "The Origalys RDE system supports both RDE and RRDE (rotating ring-disk electrode) configurations. It is directly coupled to the OrigaFlex potentiostat for seamless multichannel operation.",
+    "usage": "Supports RRDE experiments for product detection (e.g. H₂O₂ during ORR). Training required for RRDE configuration.",
+    "link": "https://www.origalys.com",
+    "linkText": "Origalys website",
+    "specs": [
+      [
+        "Rotation speed",
+        "100 – 10 000 rpm"
+      ],
+      [
+        "Electrode materials",
+        "Glassy carbon, Pt, Au"
+      ],
+      [
+        "Configuration",
+        "RDE and RRDE"
+      ],
+      [
+        "Compatible potentiostat",
+        "Potentiostat 3 (OrigaFlex)"
+      ]
+    ],
+    "id": "rde-2"
+  },
+  {
+    "id": "afm",
+    "name": "AFM",
+    "desc": "Contact / tapping mode · sub-nm resolution",
+    "label": "Microscopy",
+    "status": "available",
+    "tooltip": "Atomic Force Microscope for surface topography at sub-nanometre resolution. Contact and tapping modes available.",
+    "overview": "The Atomic Force Microscope (AFM) provides topographic imaging of surfaces at sub-nanometre resolution without requiring a vacuum environment. It is essential for characterising electrode surfaces before and after electrochemical experiments.",
+    "specs": [
+      [
+        "Resolution",
+        "Sub-nm vertical, ~1 nm lateral"
+      ],
+      [
+        "Imaging modes",
+        "Contact, tapping (AC), non-contact"
+      ],
+      [
+        "Sample environment",
+        "Air and liquid cell available"
+      ],
+      [
+        "Max scan area",
+        "100 × 100 µm"
+      ]
+    ],
+    "usage": "Used for surface roughness analysis, thin film characterisation, and operando electrochemical AFM studies. Booking mandatory — training session required.",
+    "link": "#",
+    "linkText": "Instrument manual (internal)",
+    "image": "assets/artwork_osmosis.png"
+  },
+  {
+    "id": "dems",
+    "name": "DEMS",
+    "desc": "Online gas analysis · operando measurements",
+    "label": "Spectroscopy",
+    "status": "available",
+    "tooltip": "Differential Electrochemical Mass Spectrometer for real-time detection of gaseous products during electrochemical reactions.",
+    "overview": "The DEMS (Differential Electrochemical Mass Spectrometer) enables real-time, online detection of volatile and gaseous products formed during electrochemical reactions. It is a powerful tool for mechanistic studies.",
+    "specs": [
+      [
+        "Detection",
+        "Volatile & gaseous products"
+      ],
+      [
+        "Mass range",
+        "1 – 200 amu"
+      ],
+      [
+        "Response time",
+        "< 1 s"
+      ],
+      [
+        "Coupling",
+        "Direct to electrochemical cell"
+      ]
+    ],
+    "usage": "Key instrument for CO₂ reduction product analysis, hydrogen evolution monitoring, and oxygen evolution studies. Requires prior discussion with platform manager.",
+    "link": "#",
+    "linkText": "Instrument manual (internal)",
+    "image": "assets/artwork_hydrogen_bubble.png"
+  },
+  {
+    "id": "polishing",
+    "name": "Polishing Machine",
+    "desc": "Electrode surface preparation",
+    "label": "Preparation",
+    "status": "maintenance",
+    "tooltip": "Mechanical polishing station for electrode surface preparation. Currently under maintenance.",
+    "overview": "The polishing machine is used to prepare electrode surfaces before electrochemical experiments. A clean, well-polished electrode is critical for reproducible results.",
+    "specs": [
+      [
+        "Polishing media",
+        "Alumina suspensions (1 µm, 0.3 µm, 0.05 µm)"
+      ],
+      [
+        "Electrode diameter",
+        "3 mm, 5 mm glassy carbon"
+      ],
+      [
+        "Polishing cloth",
+        "Microcloth and felt"
+      ],
+      [
+        "Status",
+        "Currently under maintenance"
+      ]
+    ],
+    "usage": "Standard protocol: polish with 1 µm then 0.3 µm then 0.05 µm alumina, rinse with ultrapure water, sonicate 5 min.",
+    "link": "#",
+    "linkText": "Polishing protocol (internal)",
+    "image": "assets/artwork_battery.png"
+  }
+]

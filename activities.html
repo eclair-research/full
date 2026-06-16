@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research and teaching activities of the IECP — scientific domains and educational programmes at ESPCI Paris.">
+  <title>IECP — Activities</title>
+  <link rel="icon" href="assets/logo IECP.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/subpages.css">
+  <link rel="stylesheet" href="css/pages/activities.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-header">
+    <p class="section-label">What we do</p>
+    <h1>Our <em>Activities</em></h1>
+    <p>Research domains and teaching programmes carried out at the IECP platform.</p>
+  </div>
+
+  <!-- RESEARCH (tuiles générées depuis data/research.json) -->
+  <section class="activities-section" id="research">
+    <div class="activities-section-head">
+      <p class="section-label">Research activities</p>
+      <h2 class="section-title">Scientific <em>domains</em></h2>
+    </div>
+    <div class="domains-mosaic" id="research-mosaic"></div>
+  </section>
+
+  <!-- TEACHING (tuiles générées depuis data/teaching.json) -->
+  <section class="activities-section" id="teaching">
+    <div class="activities-section-head">
+      <p class="section-label">Teaching activities</p>
+      <h2 class="section-title">Educational <em>programmes</em></h2>
+    </div>
+    <div class="domains-mosaic" id="teaching-mosaic"></div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/components.js"></script>
+  <script src="js/domains.js"></script>
+</body>
+</html>

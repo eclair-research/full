@@ -1,0 +1,336 @@
+/* ============================================================
+   pages/home.css — Styles spécifiques à index.html
+   ============================================================ */
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding: 120px 56px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  right: -180px;
+  top: -120px;
+  background: radial-gradient(circle, rgba(0, 180, 160, 0.07) 0%, transparent 10%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s forwards;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--teal);
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  max-width: 825px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.2s forwards;
+}
+
+.hero h1 em    { font-style: italic; color: var(--teal); }
+.hero h1 .gold { color: var(--gold); }
+
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--fog);
+  line-height: 1.8;
+  max-width: 500px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.35s forwards;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.5s forwards;
+}
+
+.hero-stats {
+  position: absolute;
+  bottom: 52px;
+  left: 56px;
+  display: flex;
+  gap: 48px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.65s forwards;
+}
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-num span { color: var(--teal); }
+
+.stat-label {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--fog);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ── ACTIVITIES ENTRY (2 grandes tuiles) ── */
+.section-domains {
+  padding: 100px 56px;
+  background: white;
+}
+
+.activities-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.entry-tile {
+  position: relative;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+
+.entry-tile-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+
+.entry-tile:hover .entry-tile-bg {
+  transform: scale(1.05);
+}
+
+.entry-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 15, 25, 0.85) 0%,
+    rgba(10, 15, 25, 0.4) 45%,
+    rgba(10, 15, 25, 0.15) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.entry-tile:hover .entry-tile-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(10, 15, 25, 0.92) 0%,
+    rgba(10, 15, 25, 0.6) 45%,
+    rgba(10, 15, 25, 0.3) 100%
+  );
+}
+
+.entry-tile-content {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  padding: 24px 28px;
+  background: rgba(10, 15, 25, 0.45);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+}
+
+.entry-tile-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.entry-tile-title {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: white;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.entry-tile-title em {
+  font-style: italic;
+  color: var(--teal);
+}
+
+.entry-tile-desc {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.entry-tile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--teal);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.entry-tile:hover .entry-tile-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── EQUIPMENT (section home) ── */
+.section-equip {
+  padding: 100px 56px;
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.section-equip .section-label {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.equip-text p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--fog);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.equip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.equip-row-name {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ── EVENTS (section home) ── */
+.section-events {
+  padding: 100px 56px;
+  background: var(--white);
+}
+
+.section-events-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 56px;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 28px;
+  align-items: center;
+  padding: 24px 12px;
+  margin: 0 -12px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.event-row:hover { background: rgba(0, 180, 160, 0.03); }
+
+.event-day {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.event-month {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--fog);
+}
+
+.event-title {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.event-meta {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--fog);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 820px) {
+  .hero { padding: 100px 24px 120px; }
+  .hero-stats { left: 24px; gap: 28px; }
+  .section-domains { padding: 80px 24px; }
+  .activities-entry { grid-template-columns: 1fr; gap: 16px; }
+  .entry-tile { height: 300px; }
+  .section-equip   { padding: 80px 24px; grid-template-columns: 1fr; gap: 48px; }
+  .section-events  { padding: 80px 24px; }
+  .section-events-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+}

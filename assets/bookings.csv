@@ -1,0 +1,4 @@
+instrument,date_start,start_time,duration,user,comment
+Potentiostat 1,2026-06-17,14:00,2,John Doe,CV measurements for ORR study
+Potentiostat 3,2026-06-18,09:00,1.5,Jane Smith,EIS on new catalyst batch
+DEMS,2026-06-19,16:00,2,David Miller,CO2 reduction product analysis

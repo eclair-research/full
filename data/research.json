@@ -1,0 +1,176 @@
+[
+  {
+    "id": "domain1",
+    "num": "01",
+    "title": "Water Electrolysis for <em>Hydrogen Production</em>",
+    "shortTitle": "Water Electrolysis for Hydrogen Production",
+    "image": "assets/artwork_hydrogen_bubble.png",
+    "tileDesc": "Hydrolysis bench, redox cells, benchmarking of catalysts and operating conditions for clean hydrogen generation.",
+    "overview": "Driven by the ecological transition, alternatives to fossil fuels are being intensively explored. Among them, hydrogen has emerged as one of the most promising energy carriers for a sustainable future. Water electrolysis represents a central pathway for clean and controlled hydrogen generation.",
+    "objectives": "Hydrogen production is highly energy-intensive, and several key parameters must be carefully controlled. Ionic mass transport to the electrodes, temperature, flow control within the cells, and catalyst performance are all critical. At the IECP, our work focuses on establishing a robust benchmarking framework that enables reliable and reproducible comparisons across different operating conditions.",
+    "techniques": [
+      "Chronoamperometry",
+      "EIS",
+      "Cyclic Voltammetry",
+      "Flow control",
+      "Temperature mapping",
+      "Pressure monitoring"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 1",
+        "instruments/potentiostat-1.html"
+      ],
+      [
+        "Potentiostat 2",
+        "instruments/potentiostat-2.html"
+      ]
+    ],
+    "figures": [
+      [
+        "assets/domaine 1/testing bench.png",
+        "The testing bench"
+      ],
+      [
+        "assets/domaine 1/baltic fuel cells.jpg",
+        "Testing cells from Baltic Fuel Cells"
+      ]
+    ],
+    "results": "We developed a testing bench allowing reproducible experiments to be conducted, encompassing Biologic potentiostats, electric generators, testing cells from Baltic Fuel Cells, and various controllers for flow speed, temperature and pressure."
+  },
+  {
+    "id": "domain2",
+    "num": "02",
+    "title": "<em>Electrocatalysis</em>",
+    "shortTitle": "Electrocatalysis",
+    "image": "assets/artwork_electrocatalyse.png",
+    "tileDesc": "CO₂ reduction, nitrogen fixation, rotating disk electrode studies and catalyst characterisation.",
+    "overview": "Catalysts play a central role across many scientific and industrial processes. Electrocatalysis has emerged as a crucial field for applications such as fertilizer synthesis and carbon dioxide reduction, both essential for a sustainable future.",
+    "objectives": "At the IECP platform, research in catalyst science focuses on standardizing characterization methods to enable reliable and meaningful comparisons. We explore a wide range of chemistries and synthesis strategies, before evaluating catalyst performance under various multiscale conditions.",
+    "techniques": [
+      "Rotating Disk Electrode (RDE)",
+      "RRDE",
+      "EIS",
+      "Cyclic Voltammetry (CV)",
+      "Koutecky-Levich analysis",
+      "CO₂ reduction",
+      "Nitrogen fixation"
+    ],
+    "equipment": [
+      [
+        "RDE 1",
+        "instruments/rde-1.html"
+      ],
+      [
+        "RDE 2",
+        "instruments/rde-2.html"
+      ],
+      [
+        "Potentiostat 2",
+        "instruments/potentiostat-2.html"
+      ],
+      [
+        "Potentiostat 3",
+        "instruments/potentiostat-3.html"
+      ]
+    ],
+    "figures": [
+      [
+        "assets/domaine 2/rde metrohm.png",
+        "Rotating Disk Electrode (RDE) setup from Metrohm"
+      ]
+    ],
+    "results": "Experimental studies are ongoing, with a focus on catalyst benchmarking and performance reproducibility. Results and associated publications will be made available soon."
+  },
+  {
+    "id": "domain3",
+    "num": "03",
+    "title": "Water Desalination <em>&amp; Osmosis</em>",
+    "shortTitle": "Water Desalination & Osmosis",
+    "image": "assets/artwork_osmosis.png",
+    "tileDesc": "Transport through membranes, blue energy harvesting and osmotic pressure studies.",
+    "overview": "Membrane-based separation processes are central to water treatment, desalination, and energy harvesting. Understanding ion and molecule transport through nanoporous and polymeric membranes is key to improving efficiency and selectivity.",
+    "objectives": "Content in progress — this section will describe the scientific objectives of this domain.",
+    "techniques": [
+      "Osmotic pressure measurements",
+      "Ion transport",
+      "Membrane characterisation",
+      "Blue energy harvesting",
+      "Electroosmosis"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 1",
+        "instruments/potentiostat-1.html"
+      ],
+      [
+        "AFM",
+        "instruments/afm.html"
+      ]
+    ],
+    "figures": [],
+    "results": "Content in progress — results and publications will be added as the work develops."
+  },
+  {
+    "id": "domain4",
+    "num": "04",
+    "title": "Batteries for <em>Energy Storage</em>",
+    "shortTitle": "Batteries for Energy Storage",
+    "image": "assets/artwork_battery.png",
+    "tileDesc": "Cycling protocols, button cells, redox flow cells and electrochemical characterisation of storage systems.",
+    "overview": "Electrochemical energy storage is a cornerstone of the energy transition. Understanding the fundamental processes governing charge and discharge cycles is essential for designing next-generation batteries with improved capacity, lifetime, and safety.",
+    "objectives": "Content in progress — this section will describe the scientific objectives of this domain.",
+    "techniques": [
+      "Galvanostatic cycling",
+      "EIS",
+      "CV",
+      "Rate capability tests",
+      "Redox flow cell testing",
+      "Button cell assembly"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 1",
+        "instruments/potentiostat-1.html"
+      ],
+      [
+        "Potentiostat 3",
+        "instruments/potentiostat-3.html"
+      ]
+    ],
+    "figures": [],
+    "results": "Content in progress — results and publications will be added as the work develops."
+  },
+  {
+    "num": "05",
+    "shortTitle": "PhotoElectroChemistry",
+    "title": "Photo-Electro-Chemistry",
+    "image": "photoelectro.png",
+    "tileDesc": "on s'en fout c'est un test",
+    "overview": "le but c'est de montrer que c'est simple",
+    "objectives": "carrééééé",
+    "techniques": [
+      "lsv",
+      "ocv",
+      "photon"
+    ],
+    "equipment": [],
+    "figures": [],
+    "results": "",
+    "id": "photoelectrochemistry"
+  },
+  {
+    "num": "07",
+    "shortTitle": "test",
+    "title": "test",
+    "image": "",
+    "tileDesc": "",
+    "overview": "",
+    "objectives": "",
+    "techniques": [],
+    "equipment": [],
+    "figures": [],
+    "results": "",
+    "id": "test"
+  }
+]

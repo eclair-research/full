@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IECP — Innovative Electro-Chemistry Platform. A shared research platform at ESPCI Paris dedicated to electrochemical science, open to research groups and partners.">
+  <title>IECP — Innovative Electro-Chemistry Platform</title>
+  <link rel="icon" href="assets/logo IECP.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-eyebrow">IECP — Innovative Electrochemistry Platform</span>
+    <h1>Frontier <em>electrochemistry</em> without the <span class="gold">barriers</span></h1>
+    <p class="hero-sub">A shared research platform open to everyone and dedicated to electrochemical science.</p>
+    <div class="hero-cta">
+      <a href="equipment.html" class="btn-primary">Discover the platform →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Instruments</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Research domains</div>
+      </div>
+      <div>
+        <div class="stat-num">1</div>
+        <div class="stat-label">Platform</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES ENTRY -->
+  <section class="section-domains">
+    <div class="section-header">
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">Our <em>activities</em></h2>
+    </div>
+
+    <div class="activities-entry">
+
+      <a href="activities.html#research" class="entry-tile">
+        <div class="entry-tile-bg" style="background-image: url('assets/artwork_hydrogen_bubble.png');"></div>
+        <div class="entry-tile-overlay"></div>
+        <div class="entry-tile-content">
+          <span class="entry-tile-label">Research</span>
+          <div class="entry-tile-title">Scientific <em>domains</em></div>
+          <div class="entry-tile-desc">Hydrogen, electrocatalysis, desalination and energy storage.</div>
+          <span class="entry-tile-cta">Explore research →</span>
+        </div>
+      </a>
+
+      <a href="activities.html#teaching" class="entry-tile">
+        <div class="entry-tile-bg" style="background-image: url('assets/artwork_electrocatalyse.png');"></div>
+        <div class="entry-tile-overlay"></div>
+        <div class="entry-tile-content">
+          <span class="entry-tile-label">Teaching</span>
+          <div class="entry-tile-title">Educational <em>programmes</em></div>
+          <div class="entry-tile-desc">Courses and training built around the platform's instruments.</div>
+          <span class="entry-tile-cta">Explore teaching →</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- EQUIPMENT -->
+  <section class="section-equip">
+    <div class="equip-text">
+      <div class="section-header">
+        <p class="section-label">Shared infrastructure</p>
+        <h2 class="section-title">How to book <em>equipment</em></h2>
+      </div>
+      <p>Check availability and book your session directly from the platform.</p>
+      <a href="equipment.html" class="btn-primary">View all equipment →</a>
+    </div>
+    <div>
+      <div class="equip-row">
+        <span class="equip-row-name">Potentiostat</span>
+        <span class="equip-row-status status-ok">Available</span>
+      </div>
+      <div class="equip-row">
+        <span class="equip-row-name">Rotating Disk Electrode</span>
+        <span class="equip-row-status status-busy">In use</span>
+      </div>
+      <div class="equip-row">
+        <span class="equip-row-name">Atomic Force Microscope</span>
+        <span class="equip-row-status status-ok">Available</span>
+      </div>
+      <div class="equip-row">
+        <span class="equip-row-name">Direct Electrochemical Mass Spectrometer</span>
+        <span class="equip-row-status status-ok">Available</span>
+      </div>
+      <div class="equip-row">
+        <span class="equip-row-name">Polishing Machine</span>
+        <span class="equip-row-status status-off">Maintenance</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS (rempli par js/events.js) -->
+  <section class="section-events">
+    <div class="section-events-head">
+      <div class="section-header">
+        <p class="section-label">Latest updates</p>
+        <h2 class="section-title">News &<br><em>upcoming events</em></h2>
+      </div>
+      <a href="events.html" class="see-all">See all →</a>
+    </div>
+    <div id="home-events"></div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+  <script src="js/events.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About the IECP — the team, the mission, and how to reach the Innovative Electro-Chemistry Platform at ESPCI Paris.">
+  <title>IECP — About Us</title>
+  <link rel="icon" href="assets/logo IECP.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/subpages.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-header">
+    <p class="section-label">Who we are</p>
+    <h1>About <em>IECP</em></h1>
+    <p>The team, the environment, and how to reach us.</p>
+  </div>
+
+  <!-- MISSION -->
+  <section class="page-section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">The platform</p>
+        <h2 class="section-title">Our <em>mission</em></h2>
+      </div>
+      <p class="section-text">
+        The IECP is a shared research platform hosted at IPGG, located at 6 Jean Calvin, Paris 5ᵉ.
+        It was created to pool state-of-the-art electrochemical instrumentation and make it accessible
+        to research groups and partners.
+      </p>
+      <p class="section-text" style="margin-top: 16px;">
+        We are open to academic collaborations. External access can be arranged on a case-by-case basis.
+      </p>
+    </div>
+  </section>
+
+  <!-- TEAM (généré depuis data/team.json) -->
+  <section class="page-section bg-cream">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">People</p>
+        <h2 class="section-title">The <em>team</em></h2>
+      </div>
+      <div class="team-grid" id="team-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="page-section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title">Contact <em>us</em></h2>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-label">Address</div>
+            <div class="contact-value">ESPCI Paris — PSL<br>10 rue Vauquelin, 75005 Paris</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:iecp.research@gmail.com">iecp.research@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Building X, floor Y, room Z</div>
+          </div>
+        </div>
+
+        <div class="contact-form-box">
+          <p class="section-text" style="margin-bottom: 20px;">
+            For any question about the platform, training, or access, reach out to us directly by email
+            and we will get back to you as soon as possible.
+          </p>
+          <a href="mailto:iecp.research@gmail.com" class="btn-primary">Send us an email →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+  <script src="js/team.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+[
+  {
+    "num": "01",
+    "shortTitle": "Formation Electrolyseur - novice",
+    "title": "Everything you need to know about the <em>water electrolyse</em> - novice",
+    "image": "assets/formation_electrolyse-novice.png",
+    "tileDesc": "Everything you need to know about basics for hydrogen production through water electrolysis.",
+    "overview": "Water electrolysis for hydrogen  production is widely used in ecological transition. It represents a potential clean vector to progressively replace fossile fuels.\nIn this beginner-oriented training course, you will learn the electrochemical fundamentals required to understand hydrogen production. You will then have the opportunity to observe a simplified hydrogen production system in operation, allowing you to identify the constraints associated with this production method, potential areas for improvement, and its current limitations. You will leave with a training booklet summarizing the key concepts covered during the course, along with a few exercises to reinforce your understanding.",
+    "objectives": "- electrochemistry basics required for water hydrolysis understanding\n- identifying constraints, improvement axis and limits intrinsic to this method",
+    "techniques": [
+      "cell assembly",
+      "chrono-amperometry",
+      "efficiency measurements"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 1",
+        "\\instruments\\potentiostat-1.html"
+      ],
+      [
+        "RDE 1",
+        "\\instruments\\rde-1.html"
+      ],
+      [
+        "Electrolysers",
+        "\\instruments\\polishing.html"
+      ]
+    ],
+    "figures": [
+      [
+        "assets\\oussama.png",
+        ""
+      ]
+    ],
+    "results": "none for the moment",
+    "id": "tout-savoir-sur-les-batteries-novice"
+  },
+  {
+    "num": "02",
+    "shortTitle": "Formation Electrolyseur - intermédiaire",
+    "title": "Everything you need to know about the <em>water electrolyse</em> - intermediate",
+    "image": "assets/formation_electrolyse-intermédiaire.png",
+    "tileDesc": "blabla",
+    "overview": "blabla",
+    "objectives": "bla",
+    "techniques": [
+      "bla"
+    ],
+    "equipment": [],
+    "figures": [],
+    "results": "",
+    "id": "formation-electrolyseur-intermédiaire"
+  },
+  {
+    "num": "03",
+    "shortTitle": "Formation Electrolyseur - expert",
+    "title": "Everything you need to know about the <em>water electrolyse</em> - expert",
+    "image": "assets/formation_electrolyse-expert.png",
+    "tileDesc": "blablabla",
+    "overview": "damned",
+    "objectives": "blablabla",
+    "techniques": [
+      "blablabla"
+    ],
+    "equipment": [],
+    "figures": [],
+    "results": "",
+    "id": "formation-electrolyseur-expert"
+  }
+]

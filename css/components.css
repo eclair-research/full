@@ -1,0 +1,195 @@
+/* ============================================================
+   components.css — Boutons, badges, cards, éléments partagés
+   ============================================================ */
+
+/* ── BOUTONS ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: black;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0, 180, 160, 0.25);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--teal-dim);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(0, 180, 160, 0.35);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--ink);
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  border: 1px solid rgba(14, 17, 23, 0.15);
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.btn-ghost[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-ghost[disabled]:hover {
+  transform: none;
+  border-color: rgba(14, 17, 23, 0.15);
+  color: var(--ink);
+}
+
+/* ── BADGES ── */
+.event-badge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-seminar     { background: rgba(0, 180, 160, 0.1);   color: var(--teal-dim); }
+.badge-publication { background: rgba(201, 168, 76, 0.15); color: var(--gold-dim); }
+.badge-news        { background: rgba(100, 120, 200, 0.1); color: #3050a0; }
+.badge-equipment   { background: rgba(150, 80, 200, 0.1);  color: #6b28c8; }
+
+/* ── STATUS ÉQUIPEMENTS ── */
+.equip-row-status {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.status-ok   { background: rgba(0, 180, 160, 0.12); color: var(--teal-dim); }
+.status-busy { background: rgba(201, 168, 76, 0.18); color: var(--gold-dim); }
+.status-off  { background: rgba(200, 60, 60, 0.1);   color: #a03030; }
+
+/* ── TITRES DE SECTION (partagés) ── */
+.section-header { margin-bottom: 40px; }
+
+.section-label {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ── PAGE HEADER (sous-pages) ── */
+.page-header {
+  padding: 120px 56px 56px;
+  background: var(--cream);
+  animation: fadeUp 0.6s 0.1s both;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.page-header h1 em { font-style: italic; color: var(--teal); }
+
+.page-header p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--fog);
+}
+
+/* ── LAYOUT UTILITAIRES ── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.page-section { padding: 80px 0; }
+.bg-white      { background: var(--white); }
+.bg-cream      { background: var(--cream); }
+
+.section-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--fog);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.see-all {
+  font-size: 0.8rem;
+  color: var(--teal);
+  border-bottom: 1px solid rgba(0, 180, 160, 0.3);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+
+.see-all:hover { border-color: var(--teal); }
+
+/* ── FIGURES ── */
+.figure {
+  max-width: 680px;
+  text-align: center;
+}
+
+.figure img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.figure-caption {
+  font-size: 0.75rem;
+  color: var(--fog);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.text-link {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.text-link:hover { color: var(--teal-dim); }
+
+/* ── ANIMATIONS SOUS-PAGES ── */
+.page-section:nth-child(2) { animation: fadeUp 0.6s 0.2s both; }
+.page-section:nth-child(3) { animation: fadeUp 0.6s 0.3s both; }
+.page-section:nth-child(4) { animation: fadeUp 0.6s 0.4s both; }
+.page-section:nth-child(5) { animation: fadeUp 0.6s 0.5s both; }

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book an instrument on the IECP platform — choose equipment, time slot, and confirm.">
+  <title>IECP — Book Equipment</title>
+  <link rel="icon" href="assets/logo IECP.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/subpages.css">
+  <link rel="stylesheet" href="css/pages/book-equipment.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-header">
+    <p class="section-label">Reservation</p>
+    <h1>Book an <em>instrument</em></h1>
+    <p>Choose your equipment, pick an available slot, and confirm your booking.</p>
+  </div>
+
+  <section class="page-section bg-cream">
+    <div class="container">
+
+      <!-- BARRE D'ÉTAPES -->
+      <div class="booking-steps">
+        <div class="booking-step active">
+          <div class="booking-step-num">1</div>
+          <span class="booking-step-label">Equipment</span>
+        </div>
+        <div class="booking-step-line"></div>
+        <div class="booking-step">
+          <div class="booking-step-num">2</div>
+          <span class="booking-step-label">Time slot</span>
+        </div>
+        <div class="booking-step-line"></div>
+        <div class="booking-step">
+          <div class="booking-step-num">3</div>
+          <span class="booking-step-label">Confirm</span>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 1 -->
+      <div class="booking-panel active" id="panel-1">
+        <div class="booking-card">
+          <div class="booking-field">
+            <label class="booking-label">Select an instrument</label>
+            <div class="equipment-choices" id="equipment-choices"></div>
+          </div>
+        </div>
+        <div class="booking-nav">
+          <div class="spacer"></div>
+          <button class="btn-primary" id="to-step-2" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 -->
+      <div class="booking-panel" id="panel-2">
+        <div class="booking-card">
+          <p style="font-size:0.85rem; color:var(--fog); margin-bottom:20px;">
+            Booking: <strong id="step2-equip-name" style="color:var(--ink);"></strong>
+          </p>
+
+          <div class="booking-field">
+            <label class="booking-label" for="booking-user">Your name</label>
+            <input type="text" class="booking-input" id="booking-user" placeholder="First and last name">
+          </div>
+
+          <!-- OPTIONS -->
+          <div class="booking-options">
+            <label class="booking-checkbox">
+              <input type="checkbox" id="opt-multiday">
+              <span>Multi-day / overnight booking</span>
+            </label>
+            <label class="booking-checkbox">
+              <input type="checkbox" id="opt-recurring">
+              <span>Recurring booking (e.g. every Monday)</span>
+            </label>
+          </div>
+
+          <!-- Voies (multivoie) -->
+          <div class="booking-field" id="channels-field" style="display:none;">
+            <label class="booking-label" for="booking-channels">Channels</label>
+            <select class="booking-select" id="booking-channels"></select>
+          </div>
+
+          <!-- ===== MODE NORMAL ===== -->
+          <div id="normal-slots">
+            <div class="booking-row">
+              <div class="booking-field">
+                <label class="booking-label" for="booking-date">Date</label>
+                <input type="date" class="booking-input" id="booking-date">
+              </div>
+              <div class="booking-field">
+                <label class="booking-label" for="booking-duration">Duration (hours)</label>
+                <input type="number" class="booking-input" id="booking-duration" min="0.5" step="0.5" value="1">
+              </div>
+            </div>
+
+            <div class="booking-field">
+              <label class="booking-label">Available start times</label>
+              <div class="timeslots" id="timeslots"></div>
+              <p class="slot-hint">
+                Struck-through slots are already taken (or not enough free channels)
+                for your selected duration. Opening hours: 08:00–20:00.
+              </p>
+            </div>
+          </div>
+
+          <!-- ===== MODE MULTI-JOURS ===== -->
+          <div id="multiday-fields" style="display:none;">
+            <p class="slot-hint" style="margin-bottom:12px;">
+              Define a continuous range. This covers both same-day and overnight
+              bookings (e.g. Mon 18:00 → Wed 09:00).
+            </p>
+            <div class="booking-row">
+              <div class="booking-field">
+                <label class="booking-label" for="md-start-date">Start date</label>
+                <input type="date" class="booking-input" id="md-start-date">
+              </div>
+              <div class="booking-field">
+                <label class="booking-label" for="md-start-time">Start time</label>
+                <input type="time" class="booking-input" id="md-start-time" value="08:00">
+              </div>
+            </div>
+            <div class="booking-row">
+              <div class="booking-field">
+                <label class="booking-label" for="md-end-date">End date</label>
+                <input type="date" class="booking-input" id="md-end-date">
+              </div>
+              <div class="booking-field">
+                <label class="booking-label" for="md-end-time">End time</label>
+                <input type="time" class="booking-input" id="md-end-time" value="10:00">
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== OPTION RÉCURRENCE ===== -->
+          <div id="recurring-fields" style="display:none;">
+            <div class="recurring-box">
+              <p class="slot-hint" style="margin-bottom:12px;">
+                The booking repeats from the date/time chosen above.
+                If any occurrence conflicts, the whole series is blocked.
+              </p>
+              <div class="booking-row">
+                <div class="booking-field">
+                  <label class="booking-label" for="recur-freq">Frequency</label>
+                  <select class="booking-select" id="recur-freq">
+                    <option value="weekly">Every week (same weekday)</option>
+                    <option value="daily">Every day</option>
+                  </select>
+                </div>
+                <div class="booking-field">
+                  <label class="booking-label">Ends</label>
+                  <div class="recur-end-options">
+                    <label class="booking-radio">
+                      <input type="radio" name="recur-end" value="count" checked>
+                      <span>After N times</span>
+                    </label>
+                    <label class="booking-radio">
+                      <input type="radio" name="recur-end" value="until">
+                      <span>Until a date</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="booking-field" id="recur-count-wrap">
+                <label class="booking-label" for="recur-count">Number of occurrences</label>
+                <input type="number" class="booking-input" id="recur-count" min="1" max="52" value="4">
+              </div>
+              <div class="booking-field" id="recur-until-wrap" style="display:none;">
+                <label class="booking-label" for="recur-until">Repeat until</label>
+                <input type="date" class="booking-input" id="recur-until">
+              </div>
+            </div>
+          </div>
+
+          <!-- Commentaire -->
+          <div class="booking-field">
+            <label class="booking-label" for="booking-comment">Comment — what will you do?</label>
+            <textarea class="booking-textarea" id="booking-comment" placeholder="e.g. CV measurements for ORR study"></textarea>
+          </div>
+
+          <div class="booking-alert error" id="step2-alert" style="display:none;"></div>
+        </div>
+
+        <div class="booking-nav">
+          <button class="btn-ghost" id="back-to-1">← Back</button>
+          <div class="spacer"></div>
+          <button class="btn-primary" id="to-step-3" disabled>Review →</button>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 3 -->
+      <div class="booking-panel" id="panel-3">
+        <div class="booking-card">
+          <h2 class="section-title" style="font-size:1.4rem; margin-bottom:20px;">Review your booking</h2>
+          <div id="recap-content"></div>
+          <div class="booking-alert ok" style="margin-top:20px;">
+            Your booking will be submitted as <strong>pending</strong> and confirmed manually by the platform manager.
+          </div>
+        </div>
+        <div class="booking-nav">
+          <button class="btn-ghost" id="back-to-2">← Back</button>
+          <div class="spacer"></div>
+          <button class="btn-primary" id="confirm-booking">Confirm booking ✓</button>
+        </div>
+      </div>
+
+      <!-- SUCCÈS -->
+      <div class="booking-panel" id="panel-success">
+        <div class="booking-card booking-success">
+          <div class="booking-success-icon">✓</div>
+          <h2 class="section-title" style="font-size:1.4rem; margin-bottom:10px;">Booking submitted</h2>
+          <p style="font-size:0.9rem; color:var(--fog); line-height:1.7;">
+            Your request is now pending confirmation. You can see it below and cancel it if needed.
+            It also appears on the equipment calendar.
+          </p>
+          <div style="margin-top:24px;">
+            <button class="btn-primary" id="new-booking">Make another booking</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MES RÉSERVATIONS -->
+      <div class="my-bookings" id="my-bookings" style="display:none;">
+        <h2 class="section-title" style="font-size:1.2rem; margin-bottom:16px;">My bookings this session</h2>
+        <div id="my-bookings-list"></div>
+        <p style="font-size:0.75rem; color:var(--fog); margin-top:12px; line-height:1.5;">
+          Note: this is a local demo — bookings are kept only for this browser session and disappear on reload.
+          Once connected to the platform's login system, they will be saved permanently.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+  <script src="js/bookings-store.js"></script>
+  <script src="js/book-equipment.js"></script>
+</body>
+</html>

@@ -140,37 +140,5 @@
     ],
     "figures": [],
     "results": "Content in progress — results and publications will be added as the work develops."
-  },
-  {
-    "num": "05",
-    "shortTitle": "PhotoElectroChemistry",
-    "title": "Photo-Electro-Chemistry",
-    "image": "photoelectro.png",
-    "tileDesc": "on s'en fout c'est un test",
-    "overview": "le but c'est de montrer que c'est simple",
-    "objectives": "carrééééé",
-    "techniques": [
-      "lsv",
-      "ocv",
-      "photon"
-    ],
-    "equipment": [],
-    "figures": [],
-    "results": "",
-    "id": "photoelectrochemistry"
-  },
-  {
-    "num": "07",
-    "shortTitle": "test",
-    "title": "test",
-    "image": "",
-    "tileDesc": "",
-    "overview": "",
-    "objectives": "",
-    "techniques": [],
-    "equipment": [],
-    "figures": [],
-    "results": "",
-    "id": "test"
   }
 ]

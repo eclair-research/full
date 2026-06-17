@@ -28,7 +28,8 @@
     "usage": "Suitable for corrosion studies, battery characterisation, electrocatalysis, and impedance spectroscopy. Training required before first use.",
     "link": "https://www.biologic.net/products/sp-200/",
     "linkText": "Biologic SP-200 product page",
-    "image": "assets/artwork_battery.png"
+    "image": "assets/artwork_battery.png",
+    "channels": 1
   },
   {
     "id": "potentiostat-2",
@@ -59,7 +60,8 @@
     "usage": "Ideal for electrocatalysis screening and rotating disk electrode experiments. Can be combined with RDE 1.",
     "link": "https://www.metrohm.com",
     "linkText": "Metrohm website",
-    "image": "assets/artwork_battery.png"
+    "image": "assets/artwork_battery.png",
+    "channels": 1
   },
   {
     "id": "potentiostat-3",
@@ -90,7 +92,8 @@
     "usage": "Best suited for parallel catalyst screening and multi-cell battery testing. Comes paired with RDE 2.",
     "link": "https://www.origalys.com",
     "linkText": "Origalys website",
-    "image": "assets/artwork_battery.png"
+    "image": "assets/artwork_battery.png",
+    "channels": 8
   },
   {
     "id": "rde-1",
@@ -121,19 +124,17 @@
     "usage": "Used for oxygen reduction reaction (ORR), hydrogen evolution, and electrocatalyst benchmarking. Koutecky-Levich analysis possible.",
     "link": "https://www.metrohm.com",
     "linkText": "Metrohm website",
-    "image": "assets/artwork_electrocatalyse.png"
+    "image": "assets/artwork_electrocatalyse.png",
+    "channels": 1
   },
   {
+    "id": "rde-2",
     "name": "RDE 2",
-    "desc": "RDE Metrohm",
+    "desc": "RDE Origalys",
     "label": "RDE",
     "status": "available",
-    "image": "assets/artwork_electrocatalyse.png",
     "tooltip": "Rotating disk electrode coupled to the OrigaFlex potentiostat. Supports RRDE configuration.",
     "overview": "The Origalys RDE system supports both RDE and RRDE (rotating ring-disk electrode) configurations. It is directly coupled to the OrigaFlex potentiostat for seamless multichannel operation.",
-    "usage": "Supports RRDE experiments for product detection (e.g. H₂O₂ during ORR). Training required for RRDE configuration.",
-    "link": "https://www.origalys.com",
-    "linkText": "Origalys website",
     "specs": [
       [
         "Rotation speed",
@@ -152,7 +153,11 @@
         "Potentiostat 3 (OrigaFlex)"
       ]
     ],
-    "id": "rde-2"
+    "usage": "Supports RRDE experiments for product detection (e.g. H₂O₂ during ORR). Training required for RRDE configuration.",
+    "link": "https://www.origalys.com",
+    "linkText": "Origalys website",
+    "image": "assets/artwork_electrocatalyse.png",
+    "channels": 1
   },
   {
     "id": "afm",
@@ -183,7 +188,8 @@
     "usage": "Used for surface roughness analysis, thin film characterisation, and operando electrochemical AFM studies. Booking mandatory — training session required.",
     "link": "#",
     "linkText": "Instrument manual (internal)",
-    "image": "assets/artwork_osmosis.png"
+    "image": "assets/artwork_osmosis.png",
+    "channels": 1
   },
   {
     "id": "dems",
@@ -214,7 +220,8 @@
     "usage": "Key instrument for CO₂ reduction product analysis, hydrogen evolution monitoring, and oxygen evolution studies. Requires prior discussion with platform manager.",
     "link": "#",
     "linkText": "Instrument manual (internal)",
-    "image": "assets/artwork_hydrogen_bubble.png"
+    "image": "assets/artwork_hydrogen_bubble.png",
+    "channels": 1
   },
   {
     "id": "polishing",
@@ -245,6 +252,7 @@
     "usage": "Standard protocol: polish with 1 µm then 0.3 µm then 0.05 µm alumina, rinse with ultrapure water, sonicate 5 min.",
     "link": "#",
     "linkText": "Polishing protocol (internal)",
-    "image": "assets/artwork_battery.png"
+    "image": "assets/artwork_battery.png",
+    "channels": 1
   }
 ]

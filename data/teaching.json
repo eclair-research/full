@@ -15,20 +15,20 @@
     "equipment": [
       [
         "Potentiostat 1",
-        "\\instruments\\potentiostat-1.html"
+        "instruments/potentiostat-1.html"
       ],
       [
         "RDE 1",
-        "\\instruments\\rde-1.html"
+        "instruments/rde-1.html"
       ],
       [
         "Electrolysers",
-        "\\instruments\\polishing.html"
+        "instruments/polishing.html"
       ]
     ],
     "figures": [
       [
-        "assets\\oussama.png",
+        "assets/oussama.png",
         ""
       ]
     ],
@@ -39,7 +39,7 @@
     "num": "02",
     "shortTitle": "Formation Electrolyseur - intermédiaire",
     "title": "Everything you need to know about the <em>water electrolyse</em> - intermediate",
-    "image": "assets/formation_electrolyse-intermédiaire.png",
+    "image": "assets/formation_electrolyse-intermediaire.png",
     "tileDesc": "blabla",
     "overview": "blabla",
     "objectives": "bla",
@@ -49,7 +49,7 @@
     "equipment": [],
     "figures": [],
     "results": "",
-    "id": "formation-electrolyseur-intermédiaire"
+    "id": "formation-electrolyseur-intermediaire"
   },
   {
     "num": "03",

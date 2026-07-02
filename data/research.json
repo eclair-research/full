@@ -1,6 +1,6 @@
 [
   {
-    "id": "domain1",
+    "id": "domain-1",
     "num": "01",
     "title": "Water Electrolysis for <em>Hydrogen Production</em>",
     "shortTitle": "Water Electrolysis for Hydrogen Production",
@@ -39,7 +39,7 @@
     "results": "We developed a testing bench allowing reproducible experiments to be conducted, encompassing Biologic potentiostats, electric generators, testing cells from Baltic Fuel Cells, and various controllers for flow speed, temperature and pressure."
   },
   {
-    "id": "domain2",
+    "id": "domain-2",
     "num": "02",
     "title": "<em>Electrocatalysis</em>",
     "shortTitle": "Electrocatalysis",
@@ -83,7 +83,7 @@
     "results": "Experimental studies are ongoing, with a focus on catalyst benchmarking and performance reproducibility. Results and associated publications will be made available soon."
   },
   {
-    "id": "domain3",
+    "id": "domain-3",
     "num": "03",
     "title": "Water Desalination <em>&amp; Osmosis</em>",
     "shortTitle": "Water Desalination & Osmosis",
@@ -112,7 +112,7 @@
     "results": "Content in progress — results and publications will be added as the work develops."
   },
   {
-    "id": "domain4",
+    "id": "domain-4",
     "num": "04",
     "title": "Batteries for <em>Energy Storage</em>",
     "shortTitle": "Batteries for Energy Storage",

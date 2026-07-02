@@ -28,7 +28,9 @@ const draft = {
   channels: 1, user: '', comment: '',
 };
 
-let SESSION_BOOKINGS = [];
+// (Les réservations de session sont désormais gérées par BookingsStore,
+//  qui les persiste en sessionStorage pour qu'elles survivent à la
+//  navigation entre pages.)
 
 Promise.all([
   fetch('data/equipment.json').then(r => r.json()),
@@ -309,20 +311,27 @@ function confirmBooking() {
       channels: draft.channels, status: 'pending', _session: true,
     };
     window.BookingsStore.add(booking);
-    SESSION_BOOKINGS.push(booking);
   });
   showStep('success');
   renderMyBookings();
+}
+
+// Les "réservations de cette session" = celles ajoutées via le store
+// (marquées _session). Elles viennent de sessionStorage, donc elles
+// survivent au changement de page.
+function getSessionBookings() {
+  return window.BookingsStore.all().filter(b => b._session);
 }
 
 function renderMyBookings() {
   const container = document.getElementById('my-bookings-list');
   const section = document.getElementById('my-bookings');
   if (!container) return;
-  if (SESSION_BOOKINGS.length === 0) { section.style.display = 'none'; return; }
+  const list = getSessionBookings();
+  if (list.length === 0) { section.style.display = 'none'; return; }
   section.style.display = 'block';
   container.innerHTML = '';
-  SESSION_BOOKINGS.forEach(b => {
+  list.forEach(b => {
     const sameDayEnd = b.dateStart === b.endDate;
     const when = sameDayEnd
       ? `${b.dateStart} · ${b.startTime}–${b.endTime}`
@@ -349,7 +358,6 @@ function renderMyBookings() {
 
 function cancelBooking(booking) {
   if (!confirm(`Cancel your booking of ${booking.instrument} on ${booking.dateStart} at ${booking.startTime}?`)) return;
-  SESSION_BOOKINGS = SESSION_BOOKINGS.filter(b => b !== booking);
   window.BookingsStore.remove(booking);
   renderMyBookings();
 }
@@ -394,6 +402,50 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('back-to-2').addEventListener('click', () => showStep(2));
   document.getElementById('confirm-booking').addEventListener('click', confirmBooking);
   document.getElementById('new-booking').addEventListener('click', resetBooking);
+
+  // Bouton "Reset demo bookings" : efface toutes les réservations locales
+  const resetBtn = document.getElementById('reset-demo');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (!confirm('Clear ALL demo bookings saved in this browser? This cannot be undone.')) return;
+      window.BookingsStore.clearSaved();
+      renderMyBookings();
+    });
+  }
+
+  // Bouton "Export CSV" : génère les lignes des réservations de session,
+  // au format de bookings.csv, pour les coller dans le fichier et les
+  // gérer dans l'outil gestionnaire (gestion_reservations.py).
+  const exportBtn = document.getElementById('export-csv');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      const list = getSessionBookings();
+      if (list.length === 0) {
+        alert('No demo bookings to export.');
+        return;
+      }
+      const esc = v => {
+        const s = String(v == null ? '' : v);
+        return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+      };
+      const header = 'instrument,date_start,start_time,duration,user,comment,channels,status,end_date,end_time';
+      const lines = list.map(b => [
+        b.instrument, b.dateStart, b.startTime, b.duration,
+        b.user, b.comment, b.channels, b.status,
+        b.endDate || '', b.endTime || '',
+      ].map(esc).join(','));
+      const csv = header + '\n' + lines.join('\n');
+
+      // Télécharge un fichier .csv
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'bookings_export.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
 
   document.getElementById('opt-multiday').addEventListener('change', () => { applyMode(); renderTimeslots(); validateStep2(); });
   document.getElementById('opt-recurring').addEventListener('change', () => { applyMode(); validateStep2(); });

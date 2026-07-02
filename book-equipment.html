@@ -29,6 +29,11 @@
   <section class="page-section bg-cream">
     <div class="container">
 
+      <!-- RETOUR VERS EQUIPMENT -->
+      <div class="booking-back">
+        <a href="equipment.html" class="btn-ghost">← Back to Equipment</a>
+      </div>
+
       <!-- BARRE D'ÉTAPES -->
       <div class="booking-steps">
         <div class="booking-step active">
@@ -231,11 +236,19 @@
 
       <!-- MES RÉSERVATIONS -->
       <div class="my-bookings" id="my-bookings" style="display:none;">
-        <h2 class="section-title" style="font-size:1.2rem; margin-bottom:16px;">My bookings this session</h2>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+          <h2 class="section-title" style="font-size:1.2rem; margin:0;">My bookings</h2>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-ghost" id="export-csv" style="font-size:0.78rem; padding:6px 12px;">⬇ Export CSV</button>
+            <button class="btn-cancel" id="reset-demo">Reset demo bookings</button>
+          </div>
+        </div>
         <div id="my-bookings-list"></div>
         <p style="font-size:0.75rem; color:var(--fog); margin-top:12px; line-height:1.5;">
-          Note: this is a local demo — bookings are kept only for this browser session and disappear on reload.
-          Once connected to the platform's login system, they will be saved permanently.
+          Note: this is a local demo. Bookings are saved in this browser on this computer,
+          so they remain after closing the window — but they are not shared with other users.
+          Real, shared bookings will come once the platform's login system is connected.
+          Use “Reset demo bookings” to clear them all.
         </p>
       </div>
 

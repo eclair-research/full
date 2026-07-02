@@ -185,21 +185,61 @@ function renderCalendar() {
     if (dateMap[dateStr]) {
       dateMap[dateStr].forEach(b => {
         const color = COLORS[b.instrument] || { bg: '#eee', text: '#555' };
-        const chip = document.createElement('div');
-        chip.className = 'booking-chip';
-        chip.style.background = color.bg;
-        chip.style.color = color.text;
-        // Pending : style pointillé pour distinguer
-        if (b.status === 'pending') {
-          chip.style.opacity = '0.7';
-          chip.style.border = '1px dashed rgba(255,255,255,0.8)';
+
+        // Une réservation est "multiday" si elle s'étend sur plusieurs jours
+        const isMultiday = b.endDate && b.endDate !== b.dateStart;
+
+        if (isMultiday) {
+          // Détermine la position de CE jour dans la plage : start / middle / end
+          const isStart = dateStr === b.dateStart;
+          const isEnd = dateStr === b.endDate;
+          // En début de semaine (lundi), on rouvre le segment visuellement
+          const weekday = new Date(dateStr + 'T00:00:00').getDay(); // 0=dim
+          const isWeekStart = (weekday === 1); // lundi
+
+          const bar = document.createElement('div');
+          bar.className = 'booking-bar';
+          if (isStart) bar.classList.add('bar-start');
+          if (isEnd) bar.classList.add('bar-end');
+          if (!isStart && !isEnd) bar.classList.add('bar-mid');
+          bar.style.background = color.bg;
+          bar.style.color = color.text;
+
+          if (b.status === 'pending') {
+            bar.style.opacity = '0.7';
+            bar.classList.add('bar-pending');
+          }
+
+          // Affiche le nom seulement au début (ou en début de semaine si
+          // la barre continue d'une semaine sur l'autre)
+          if (isStart || isWeekStart) {
+            const shortName = b.instrument.split(' ').slice(0, 2).join(' ');
+            bar.textContent = isStart ? `${shortName} ${b.startTime}` : `↪ ${shortName}`;
+          } else {
+            bar.innerHTML = '&nbsp;';
+          }
+
+          bar.addEventListener('mouseenter', e => showTooltip(e, b));
+          bar.addEventListener('mousemove', e => positionTooltip(e));
+          bar.addEventListener('mouseleave', hideTooltip);
+          cell.appendChild(bar);
+        } else {
+          // Réservation classique (dans la journée) : pastille
+          const chip = document.createElement('div');
+          chip.className = 'booking-chip';
+          chip.style.background = color.bg;
+          chip.style.color = color.text;
+          if (b.status === 'pending') {
+            chip.style.opacity = '0.7';
+            chip.style.border = '1px dashed rgba(255,255,255,0.8)';
+          }
+          const shortName = b.instrument.split(' ').slice(0, 2).join(' ');
+          chip.textContent = `${shortName} ${b.startTime}`;
+          chip.addEventListener('mouseenter', e => showTooltip(e, b));
+          chip.addEventListener('mousemove', e => positionTooltip(e));
+          chip.addEventListener('mouseleave', hideTooltip);
+          cell.appendChild(chip);
         }
-        const shortName = b.instrument.split(' ').slice(0, 2).join(' ');
-        chip.textContent = `${shortName} ${b.startTime}`;
-        chip.addEventListener('mouseenter', e => showTooltip(e, b));
-        chip.addEventListener('mousemove', e => positionTooltip(e));
-        chip.addEventListener('mouseleave', hideTooltip);
-        cell.appendChild(chip);
       });
     }
     grid.appendChild(cell);

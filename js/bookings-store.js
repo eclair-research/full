@@ -1,31 +1,64 @@
 /* ============================================================
    js/bookings-store.js — Source de réservations PARTAGÉE
    ============================================================
-   Ce module charge bookings.csv UNE fois et garde les
-   réservations en mémoire pour la session. Le calendrier ET
-   la page de réservation l'utilisent, donc une réservation
-   ajoutée dans le formulaire apparaît aussi sur le calendrier.
+   Charge bookings.csv (réservations "officielles") ET les
+   réservations ajoutées par l'utilisateur, conservées dans
+   localStorage.
 
-   IMPORTANT (maquette) : les ajouts restent en mémoire le temps
-   de la session du navigateur. Au rechargement, on repart du CSV.
-   Le branchement back-end remplacera le stockage CSV/mémoire par
-   des appels au serveur, sans changer l'interface qui consomme
-   ce module.
+   localStorage = persistance LOCALE : les réservations survivent
+   au changement de page ET à la fermeture du navigateur. Mais
+   elles restent dans CE navigateur, sur CETTE machine — un autre
+   utilisateur ne les voit pas. Le partage entre utilisateurs
+   viendra avec le back-end.
 
-   API exposée (window.BookingsStore) :
-     - load()                  → Promise, charge le CSV une fois
-     - all()                   → tableau de toutes les réservations
-     - add(booking)            → ajoute une réservation (session)
-     - remove(booking)         → retire une réservation
-     - onChange(callback)      → s'abonne aux changements
-     - channelsTakenAt(...)    → voies prises sur un intervalle
+   Pour tout effacer : bouton "Reset demo bookings" sur la page,
+   ou en console : BookingsStore.clearSaved().
+
+   Le branchement back-end remplacera : le CSV par un appel
+   serveur (load), et localStorage par l'enregistrement réel
+   côté serveur (add/remove). L'interface qui consomme ce module
+   ne changera pas.
+
+   API (window.BookingsStore) :
+     - load()                       → Promise, charge CSV + session
+     - all()                        → toutes les réservations
+     - add(booking)                 → ajoute (persisté en session)
+     - remove(booking)              → retire
+     - onChange(cb)                 → s'abonne aux changements
+     - channelsTakenInterval(...)   → voies prises sur un intervalle
    ============================================================ */
 
 (function () {
-  let bookings = [];
+  const SESSION_KEY = 'iecp_saved_bookings';
+
+  let csvBookings = [];       // venant du CSV (officielles)
+  let sessionBookings = [];   // ajoutées pendant la session (localStorage)
+  let bookings = [];          // union des deux (ce que tout le monde lit)
   let loaded = false;
   let loadPromise = null;
   const listeners = [];
+
+  // ── localStorage : lecture / écriture sûres ──
+  function readSession() {
+    try {
+      const raw = localStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function writeSession() {
+    try {
+      localStorage.setItem(SESSION_KEY, JSON.stringify(sessionBookings));
+    } catch (e) {
+      // si localStorage indisponible, on reste au moins en mémoire
+    }
+  }
+
+  function rebuild() {
+    bookings = csvBookings.concat(sessionBookings);
+  }
 
   function parseCSV(text) {
     const lines = text.trim().split(/\r?\n/).slice(1);
@@ -40,7 +73,7 @@
         comment:    p[5] || '',
         channels:   parseInt(p[6]) || 1,
         status:     p[7] || 'confirmed',
-        endDate:    p[8] || p[1],   // pour les résa multi-jours (optionnel)
+        endDate:    p[8] || p[1],
       };
     }).filter(b => b.instrument && b.dateStart && b.startTime && !isNaN(b.duration));
   }
@@ -51,19 +84,24 @@
 
   function load() {
     if (loadPromise) return loadPromise;
-    // Détecte le préfixe (au cas où appelé depuis un sous-dossier)
     const base = window.location.pathname.includes('/instruments/')
               || window.location.pathname.includes('/domains/') ? '../' : '';
+
+    // Récupère d'abord les réservations de session (déjà disponibles)
+    sessionBookings = readSession();
+
     loadPromise = fetch(base + 'assets/bookings.csv')
       .then(r => r.ok ? r.text() : '')
       .then(text => {
-        bookings = text ? parseCSV(text) : [];
+        csvBookings = text ? parseCSV(text) : [];
+        rebuild();
         loaded = true;
         notify();
         return bookings;
       })
       .catch(() => {
-        bookings = [];
+        csvBookings = [];
+        rebuild();
         loaded = true;
         notify();
         return bookings;
@@ -74,28 +112,43 @@
   function all() { return bookings; }
 
   function add(booking) {
-    bookings.push(booking);
+    sessionBookings.push(booking);
+    writeSession();
+    rebuild();
     notify();
   }
 
   function remove(booking) {
-    bookings = bookings.filter(b => b !== booking);
+    // On retire par identité d'abord ; si l'objet vient d'une autre page
+    // (rechargé depuis localStorage), on retire par comparaison de contenu.
+    const before = sessionBookings.length;
+    sessionBookings = sessionBookings.filter(b => b !== booking);
+    if (sessionBookings.length === before) {
+      sessionBookings = sessionBookings.filter(b => !sameBooking(b, booking));
+    }
+    writeSession();
+    rebuild();
     notify();
+  }
+
+  function sameBooking(a, b) {
+    return a.instrument === b.instrument
+        && a.dateStart === b.dateStart
+        && a.startTime === b.startTime
+        && a.user === b.user
+        && (a.duration || 0) === (b.duration || 0);
   }
 
   function onChange(cb) {
     listeners.push(cb);
-    if (loaded) cb(bookings);  // appel immédiat si déjà chargé
+    if (loaded) cb(bookings);
   }
 
-  // ── Helpers temps ──
   function timeToHours(t) {
     const [h, m] = t.split(':').map(Number);
     return h + (m || 0) / 60;
   }
 
-  // Convertit une réservation en intervalle absolu [startMs, endMs]
-  // Gère le multi-jours via endDate, sinon reste dans la journée.
   function bookingInterval(b) {
     const start = new Date(`${b.dateStart}T${b.startTime}:00`);
     let end;
@@ -107,7 +160,6 @@
     return [start.getTime(), end.getTime()];
   }
 
-  // Voies prises sur un intervalle absolu [sMs, eMs[ pour un instrument
   function channelsTakenInterval(instrumentName, sMs, eMs) {
     let taken = 0;
     bookings.forEach(b => {
@@ -118,8 +170,16 @@
     return taken;
   }
 
+  // Permet de vider les réservations de session (utile pour debug/démo)
+  function clearSaved() {
+    sessionBookings = [];
+    writeSession();
+    rebuild();
+    notify();
+  }
+
   window.BookingsStore = {
-    load, all, add, remove, onChange,
+    load, all, add, remove, onChange, clearSaved,
     timeToHours, bookingInterval, channelsTakenInterval,
   };
 })();

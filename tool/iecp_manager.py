@@ -2,25 +2,29 @@
 # -*- coding: utf-8 -*-
 """
 ============================================================
- IECP — Gestionnaire de contenu du site
+ IECP — Gestionnaire du site (outil unifié)
 ============================================================
-Outil unique pour gérer SANS CODE :
+Un seul outil pour tout gérer SANS CODE :
   - Research domains
   - Teaching activities
   - Equipment
   - Events / News
-  - Team members (About page)
+  - Team members (page About)
+  - Réservations d'équipement (confirmer / refuser)
 
-Il édite uniquement les fichiers data/*.json.
+Content (research/teaching/equipment/events/team) : édite les
+fichiers data/*.json. Pour research/teaching/equipment, crée
+aussi les sous-pages HTML correspondantes (et les supprime).
+
+Réservations : lit/écrit assets/bookings.csv.
+
 Le site lit ces fichiers et se met à jour tout seul.
 
-Pour research/teaching/equipment, il crée aussi les
-sous-pages HTML correspondantes (et les supprime).
-
-Lancement : double-clic sur l'exe, OU `python gestion_site.py`
+Lancement : double-clic sur l'exe, OU `python iecp_manager.py`
 ============================================================
 """
 
+import csv
 import json
 import os
 import sys
@@ -36,18 +40,21 @@ def find_site_root():
     here = os.path.dirname(os.path.abspath(sys.argv[0]))
     candidates = [here, os.path.dirname(here), os.getcwd()]
     for base in candidates:
-        if os.path.exists(os.path.join(base, "data", "equipment.json")):
+        if os.path.isdir(os.path.join(base, "data")):
             return base
     return os.path.dirname(here)
+
 
 SITE_ROOT = find_site_root()
 DATA_DIR = os.path.join(SITE_ROOT, "data")
 INSTRUMENTS_DIR = os.path.join(SITE_ROOT, "instruments")
 DOMAINS_DIR = os.path.join(SITE_ROOT, "domains")
+ASSETS_DIR = os.path.join(SITE_ROOT, "assets")
+CSV_FILE = os.path.join(ASSETS_DIR, "bookings.csv")
 
 
 # ════════════════════════════════════════════════════════
-#  UTILITAIRES
+#  UTILITAIRES CONTENU (JSON)
 # ════════════════════════════════════════════════════════
 def slugify(name):
     s = name.strip().lower()
@@ -78,7 +85,8 @@ INSTRUMENT_STUB = '''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IECP — Instrument</title>
+  <meta name="description" content="{desc}">
+  <title>IECP — {name}</title>
   <link rel="icon" href="../assets/logo IECP.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -103,6 +111,7 @@ DOMAIN_STUB = '''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{desc}">
   <title>IECP — {label}</title>
   <link rel="icon" href="../assets/logo IECP.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,10 +134,10 @@ DOMAIN_STUB = '''<!DOCTYPE html>
 '''
 
 
-def write_instrument_stub(item_id):
+def write_instrument_stub(item_id, name, desc):
     os.makedirs(INSTRUMENTS_DIR, exist_ok=True)
     with open(os.path.join(INSTRUMENTS_DIR, f"{item_id}.html"), "w", encoding="utf-8") as f:
-        f.write(INSTRUMENT_STUB.format(id=item_id))
+        f.write(INSTRUMENT_STUB.format(id=item_id, name=name, desc=desc))
 
 
 def delete_instrument_stub(item_id):
@@ -137,11 +146,11 @@ def delete_instrument_stub(item_id):
         os.remove(p)
 
 
-def write_domain_stub(kind, item_id, label):
+def write_domain_stub(kind, item_id, label, desc):
     os.makedirs(DOMAINS_DIR, exist_ok=True)
     fname = f"{kind}-{item_id}.html"
     with open(os.path.join(DOMAINS_DIR, fname), "w", encoding="utf-8") as f:
-        f.write(DOMAIN_STUB.format(kind=kind, id=item_id, label=label))
+        f.write(DOMAIN_STUB.format(kind=kind, id=item_id, label=label, desc=desc))
 
 
 def delete_domain_stub(kind, item_id):
@@ -153,7 +162,7 @@ def delete_domain_stub(kind, item_id):
 # ════════════════════════════════════════════════════════
 #  DÉFINITION DES CHAMPS PAR TYPE DE CONTENU
 #  Chaque champ : (clé, libellé, type)
-#  type ∈ {text, multi, status, list_lines, pairs_lines, figures_lines}
+#  type ∈ {text, multi, status, list_lines, pairs_lines}
 # ════════════════════════════════════════════════════════
 EQUIPMENT_FIELDS = [
     ("name", "Nom (ex: Potentiostat 4)", "text"),
@@ -241,9 +250,11 @@ CONTENT_TYPES = {
     },
 }
 
+BOOKINGS_MENU_LABEL = "Réservations d'équipement"
+
 
 # ════════════════════════════════════════════════════════
-#  FORMULAIRE GÉNÉRIQUE
+#  FORMULAIRE GÉNÉRIQUE (contenu JSON)
 # ════════════════════════════════════════════════════════
 class ContentForm(tk.Toplevel):
     def __init__(self, master, config, on_save, existing=None):
@@ -364,7 +375,7 @@ class ContentForm(tk.Toplevel):
 
 
 # ════════════════════════════════════════════════════════
-#  ÉCRAN DE GESTION D'UN TYPE
+#  ÉCRAN DE GESTION D'UN TYPE DE CONTENU (JSON)
 # ════════════════════════════════════════════════════════
 class ManagerFrame(tk.Frame):
     def __init__(self, master, type_name, on_back):
@@ -463,12 +474,201 @@ class ManagerFrame(tk.Frame):
         # Crée / met à jour le stub HTML
         stub = self.config_def["stub"]
         if stub == "instrument":
-            write_instrument_stub(data["id"])
+            desc = data.get("tooltip", "") or data.get("desc", "")
+            write_instrument_stub(data["id"], data.get("name", data["id"]), desc)
         elif stub == "domain":
             label = data.get("shortTitle", data["id"])
-            write_domain_stub(self.config_def["kind"], data["id"], label)
+            desc = data.get("tileDesc", "")
+            write_domain_stub(self.config_def["kind"], data["id"], label, desc)
 
         save_json(self.config_def["file"], self.items)
+        self.refresh()
+
+
+# ════════════════════════════════════════════════════════
+#  UTILITAIRES RÉSERVATIONS (CSV)
+# ════════════════════════════════════════════════════════
+BASE_COLUMNS = ["instrument", "date_start", "start_time", "duration",
+                "user", "comment", "channels", "status"]
+OPT_COLUMNS = ["end_date", "end_time"]
+
+
+def load_bookings():
+    if not os.path.exists(CSV_FILE):
+        return [], list(BASE_COLUMNS)
+    with open(CSV_FILE, "r", encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        fieldnames = reader.fieldnames or list(BASE_COLUMNS)
+        rows = []
+        for r in reader:
+            if not r.get("status"):
+                r["status"] = "confirmed"
+            rows.append(r)
+    return rows, fieldnames
+
+
+def save_bookings(rows, fieldnames):
+    os.makedirs(ASSETS_DIR, exist_ok=True)
+    cols = list(fieldnames)
+    for c in BASE_COLUMNS:
+        if c not in cols:
+            cols.append(c)
+    with open(CSV_FILE, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
+        writer.writeheader()
+        for r in rows:
+            writer.writerow(r)
+
+
+# ════════════════════════════════════════════════════════
+#  ÉCRAN DE GESTION DES RÉSERVATIONS
+# ════════════════════════════════════════════════════════
+class BookingsFrame(tk.Frame):
+    def __init__(self, master, on_back):
+        super().__init__(master, padx=16, pady=16)
+        self.on_back = on_back
+        self.rows = []
+        self.fieldnames = list(BASE_COLUMNS)
+        self.filter_mode = tk.StringVar(value="pending")
+
+        # ── En-tête ──
+        head = tk.Frame(self)
+        head.pack(fill="x")
+        tk.Button(head, text="← Menu", command=self.on_back, width=10).pack(side="left")
+        tk.Label(head, text="  Réservations d'équipement",
+                 font=("Segoe UI", 13, "bold")).pack(side="left")
+
+        tk.Label(self, text=f"Fichier : assets/bookings.csv",
+                 font=("Segoe UI", 7), fg="#888").pack(anchor="w", pady=(4, 8))
+
+        # ── Résumé ──
+        self.summary = tk.Label(self, text="", font=("Segoe UI", 10),
+                                fg="#333", justify="left")
+        self.summary.pack(anchor="w", pady=(0, 10))
+
+        # ── Filtres ──
+        filter_frame = tk.Frame(self)
+        filter_frame.pack(fill="x", pady=(0, 8))
+        tk.Label(filter_frame, text="Afficher : ", font=("Segoe UI", 9)).pack(side="left")
+        for label, val in [("En attente", "pending"), ("Confirmées", "confirmed"), ("Toutes", "all")]:
+            tk.Radiobutton(filter_frame, text=label, variable=self.filter_mode,
+                           value=val, command=self.refresh,
+                           font=("Segoe UI", 9)).pack(side="left", padx=4)
+        tk.Button(filter_frame, text="↻ Recharger", command=self.reload,
+                  font=("Segoe UI", 9)).pack(side="right")
+
+        # ── Tableau (Treeview) ──
+        table_frame = tk.Frame(self)
+        table_frame.pack(fill="both", expand=True)
+
+        cols = ("status", "instrument", "date", "time", "duration", "channels", "user", "comment")
+        self.tree = ttk.Treeview(table_frame, columns=cols, show="headings", height=14)
+        headings = {
+            "status": ("Statut", 90),
+            "instrument": ("Équipement", 120),
+            "date": ("Date", 90),
+            "time": ("Heure", 60),
+            "duration": ("Durée", 55),
+            "channels": ("Voies", 50),
+            "user": ("Utilisateur", 120),
+            "comment": ("Commentaire", 200),
+        }
+        for c in cols:
+            text, width = headings[c]
+            self.tree.heading(c, text=text)
+            self.tree.column(c, width=width, anchor="w")
+
+        self.tree.tag_configure("pending", background="#fdf6e3")
+        self.tree.tag_configure("confirmed", background="#eafaf5")
+
+        vsb = ttk.Scrollbar(table_frame, orient="vertical", command=self.tree.yview)
+        self.tree.configure(yscrollcommand=vsb.set)
+        vsb.pack(side="right", fill="y")
+        self.tree.pack(side="left", fill="both", expand=True)
+
+        # ── Boutons d'action ──
+        action_frame = tk.Frame(self)
+        action_frame.pack(fill="x", pady=(12, 0))
+        tk.Button(action_frame, text="✓ Confirmer", command=self.confirm_selected,
+                  width=16, bg="#00b4a0", fg="white",
+                  font=("Segoe UI", 9, "bold")).pack(side="left", padx=2)
+        tk.Button(action_frame, text="✗ Refuser (supprimer)", command=self.reject_selected,
+                  width=20, bg="#c0392b", fg="white",
+                  font=("Segoe UI", 9)).pack(side="left", padx=2)
+        tk.Label(action_frame, text="  (sélectionnez une ou plusieurs lignes)",
+                 font=("Segoe UI", 8), fg="#888").pack(side="left")
+
+        self.reload()
+
+    def reload(self):
+        self.rows, self.fieldnames = load_bookings()
+        self.refresh()
+
+    def refresh(self):
+        n_pending = sum(1 for r in self.rows if r.get("status") == "pending")
+        n_confirmed = sum(1 for r in self.rows if r.get("status") == "confirmed")
+        self.summary.config(
+            text=f"📋  {n_pending} en attente    •    ✓ {n_confirmed} confirmées    •    "
+                 f"total : {len(self.rows)}")
+
+        for item in self.tree.get_children():
+            self.tree.delete(item)
+
+        mode = self.filter_mode.get()
+        for idx, r in enumerate(self.rows):
+            status = r.get("status", "confirmed")
+            if mode != "all" and status != mode:
+                continue
+            status_label = "⏳ En attente" if status == "pending" else "✓ Confirmée"
+            self.tree.insert(
+                "", "end", iid=str(idx),
+                values=(
+                    status_label,
+                    r.get("instrument", ""),
+                    r.get("date_start", ""),
+                    r.get("start_time", ""),
+                    r.get("duration", ""),
+                    r.get("channels", "1"),
+                    r.get("user", ""),
+                    r.get("comment", ""),
+                ),
+                tags=(status,),
+            )
+
+    def selected_indices(self):
+        return [int(iid) for iid in self.tree.selection()]
+
+    def confirm_selected(self):
+        idxs = self.selected_indices()
+        if not idxs:
+            messagebox.showinfo("Sélection", "Sélectionnez au moins une réservation.")
+            return
+        count = 0
+        for i in idxs:
+            if self.rows[i].get("status") != "confirmed":
+                self.rows[i]["status"] = "confirmed"
+                count += 1
+        save_bookings(self.rows, self.fieldnames)
+        self.refresh()
+        messagebox.showinfo("Confirmé", f"{count} réservation(s) confirmée(s).")
+
+    def reject_selected(self):
+        idxs = self.selected_indices()
+        if not idxs:
+            messagebox.showinfo("Sélection", "Sélectionnez au moins une réservation.")
+            return
+        names = "\n".join(
+            f"  • {self.rows[i].get('instrument')} — {self.rows[i].get('date_start')} "
+            f"{self.rows[i].get('start_time')} ({self.rows[i].get('user')})"
+            for i in idxs
+        )
+        if not messagebox.askyesno(
+            "Confirmer le refus",
+            f"Supprimer définitivement {len(idxs)} réservation(s) ?\n\n{names}"):
+            return
+        for i in sorted(idxs, reverse=True):
+            self.rows.pop(i)
+        save_bookings(self.rows, self.fieldnames)
         self.refresh()
 
 
@@ -478,15 +678,22 @@ class ManagerFrame(tk.Frame):
 class MenuFrame(tk.Frame):
     def __init__(self, master, on_choose):
         super().__init__(master, padx=24, pady=24)
-        tk.Label(self, text="IECP — Gestion du contenu",
+        tk.Label(self, text="IECP — Gestionnaire du site",
                  font=("Segoe UI", 15, "bold")).pack(pady=(0, 4))
         tk.Label(self, text="Que voulez-vous gérer ?",
                  font=("Segoe UI", 10), fg="#555").pack(pady=(0, 20))
 
         for name in CONTENT_TYPES:
-            tk.Button(self, text=name, width=30, height=2,
+            tk.Button(self, text=name, width=34, height=2,
                       font=("Segoe UI", 10),
                       command=lambda n=name: on_choose(n)).pack(pady=4)
+
+        tk.Frame(self, height=1, bg="#ddd").pack(fill="x", pady=10)
+
+        tk.Button(self, text=BOOKINGS_MENU_LABEL, width=34, height=2,
+                  font=("Segoe UI", 10, "bold"),
+                  bg="#00b4a0", fg="white",
+                  command=lambda: on_choose(BOOKINGS_MENU_LABEL)).pack(pady=4)
 
         tk.Label(self, text=f"\nSite : {SITE_ROOT}",
                  font=("Segoe UI", 7), fg="#aaa").pack(side="bottom", pady=(20, 0))
@@ -498,8 +705,9 @@ class MenuFrame(tk.Frame):
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("IECP — Gestion du contenu")
-        self.geometry("600x600")
+        self.title("IECP — Gestionnaire du site")
+        self.geometry("980x680")
+        self.minsize(820, 560)
         self.current = None
         self.show_menu()
 
@@ -510,12 +718,15 @@ class App(tk.Tk):
 
     def show_menu(self):
         self.clear()
-        self.current = MenuFrame(self, self.show_manager)
+        self.current = MenuFrame(self, self.show_screen)
         self.current.pack(fill="both", expand=True)
 
-    def show_manager(self, type_name):
+    def show_screen(self, name):
         self.clear()
-        self.current = ManagerFrame(self, type_name, self.show_menu)
+        if name == BOOKINGS_MENU_LABEL:
+            self.current = BookingsFrame(self, self.show_menu)
+        else:
+            self.current = ManagerFrame(self, name, self.show_menu)
         self.current.pack(fill="both", expand=True)
 
 
@@ -525,6 +736,7 @@ if __name__ == "__main__":
         messagebox.showerror(
             "Dossier introuvable",
             f"Impossible de trouver le dossier :\n{DATA_DIR}\n\n"
-            "Placez cet outil dans 'tool/' à la racine du site, à côté de 'data/'.")
+            "Placez cet outil à la racine du site (ou dans 'tool/'), "
+            "à côté du dossier 'data/'.")
         sys.exit(1)
     App().mainloop()

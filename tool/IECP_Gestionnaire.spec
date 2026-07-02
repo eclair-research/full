@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['gestion_reservations.py'],
+    ['iecp_manager.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Gestion-Reservations',
+    name='IECP_Gestionnaire',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

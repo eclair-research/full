@@ -1,0 +1,11 @@
+# Outil de gestion : exécutable compilé (à reconstruire via tool/iecp_manager.py)
+IECP_Gestionnaire.exe
+tool/build/
+tool/dist/
+tool/__pycache__/
+__pycache__/
+*.pyc
+
+# Archives / exports transitoires (pas du contenu source)
+full.zip
+assets/bookings_export.csv

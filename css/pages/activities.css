@@ -26,6 +26,10 @@
   gap: 0;
 }
 
+#teaching-mosaic {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .domain-tile {
   position: relative;
   height: 320px;
@@ -153,8 +157,13 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  #teaching-mosaic { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 820px) {
-  .domains-mosaic { grid-template-columns: 1fr; }
+  .domains-mosaic,
+  #teaching-mosaic { grid-template-columns: 1fr; }
   .domain-tile    { height: 260px; }
   .activities-section-head { padding: 0 24px; }
 }

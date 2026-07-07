@@ -13,6 +13,11 @@
   margin-top: 68px;
 }
 
+/* Pages teaching : même image que la tuile, recadrée plus haut */
+#domain-detail[data-domain-kind="teaching"] .domain-hero {
+  background-position: center 45%;
+}
+
 .domain-hero-overlay {
   position: absolute;
   inset: 0;

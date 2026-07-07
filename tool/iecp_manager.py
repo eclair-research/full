@@ -30,7 +30,7 @@ import os
 import sys
 import re
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, filedialog
 
 
 # ════════════════════════════════════════════════════════
@@ -520,6 +520,43 @@ def save_bookings(rows, fieldnames):
             writer.writerow(r)
 
 
+def load_bookings_file(path):
+    """Charge un CSV de réservations exporté depuis le site (même format que bookings.csv)."""
+    with open(path, "r", encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        rows = []
+        for r in reader:
+            if not r.get("status"):
+                r["status"] = "pending"
+            rows.append(r)
+    return rows
+
+
+def same_booking(a, b):
+    """Même critère d'identité que sameBooking() dans js/bookings-store.js."""
+    return (
+        (a.get("instrument") or "") == (b.get("instrument") or "")
+        and (a.get("date_start") or "") == (b.get("date_start") or "")
+        and (a.get("start_time") or "") == (b.get("start_time") or "")
+        and (a.get("user") or "") == (b.get("user") or "")
+        and str(a.get("duration") or "") == str(b.get("duration") or "")
+    )
+
+
+def merge_bookings(existing_rows, imported_rows):
+    """Ajoute les réservations importées absentes de existing_rows. Retourne (rows, n_added, n_dupes)."""
+    rows = list(existing_rows)
+    n_added = 0
+    n_dupes = 0
+    for imp in imported_rows:
+        if any(same_booking(imp, r) for r in rows):
+            n_dupes += 1
+            continue
+        rows.append(imp)
+        n_added += 1
+    return rows, n_added, n_dupes
+
+
 # ════════════════════════════════════════════════════════
 #  ÉCRAN DE GESTION DES RÉSERVATIONS
 # ════════════════════════════════════════════════════════
@@ -556,6 +593,8 @@ class BookingsFrame(tk.Frame):
                            font=("Segoe UI", 9)).pack(side="left", padx=4)
         tk.Button(filter_frame, text="↻ Recharger", command=self.reload,
                   font=("Segoe UI", 9)).pack(side="right")
+        tk.Button(filter_frame, text="⇩ Importer un export du site...", command=self.import_export,
+                  font=("Segoe UI", 9)).pack(side="right", padx=(0, 8))
 
         # ── Tableau (Treeview) ──
         table_frame = tk.Frame(self)
@@ -637,6 +676,38 @@ class BookingsFrame(tk.Frame):
 
     def selected_indices(self):
         return [int(iid) for iid in self.tree.selection()]
+
+    def import_export(self):
+        path = filedialog.askopenfilename(
+            title="Importer un export de réservations",
+            initialdir=os.path.join(os.path.expanduser("~"), "Downloads"),
+            filetypes=[("Fichiers CSV", "*.csv"), ("Tous les fichiers", "*.*")],
+        )
+        if not path:
+            return
+        try:
+            imported = load_bookings_file(path)
+        except Exception as e:
+            messagebox.showerror("Import impossible", f"Impossible de lire ce fichier :\n{e}")
+            return
+        if not imported:
+            messagebox.showinfo("Import", "Ce fichier ne contient aucune réservation.")
+            return
+
+        merged, n_added, n_dupes = merge_bookings(self.rows, imported)
+        if n_added == 0:
+            messagebox.showinfo(
+                "Import", f"Rien à importer : les {n_dupes} réservation(s) du fichier "
+                          "sont déjà présentes dans bookings.csv.")
+            return
+
+        self.rows = merged
+        save_bookings(self.rows, self.fieldnames)
+        self.refresh()
+        msg = f"{n_added} réservation(s) importée(s) et ajoutée(s) à bookings.csv."
+        if n_dupes:
+            msg += f"\n{n_dupes} déjà présente(s), ignorée(s)."
+        messagebox.showinfo("Import terminé", msg)
 
     def confirm_selected(self):
         idxs = self.selected_indices()

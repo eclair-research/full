@@ -1,6 +1,4 @@
 instrument,date_start,start_time,duration,user,comment,channels,status
-Potentiostat 1,2026-06-18,14:00,2,John Doe,CV measurements for ORR study,1,confirmed
-Potentiostat 3,2026-06-18,09:00,3,Jane Smith,EIS on new catalyst batch,4,confirmed
-DEMS,2026-06-19,16:00,2,David Miller,CO2 reduction product analysis,1,confirmed
-RDE 1,2026-06-25,10:00,2,Marie Curie,ORR benchmarking,1,pending
-AFM,2026-06-26,14:00,3,Paul LEbigBOSS,Surface roughness study,1,pending
+DEMS,2026-06-19,18:00,2,Freville Mathieu boosted,damned,1,pending
+AFM,2026-07-07,12:00,3,mATHIEU fREVILLE,,1,pending
+DEMS,2026-07-08,10:00,2.5,Test GO,aaaa,1,pending

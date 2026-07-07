@@ -39,14 +39,13 @@
     "results": "We developed a testing bench allowing reproducible experiments to be conducted, encompassing Biologic potentiostats, electric generators, testing cells from Baltic Fuel Cells, and various controllers for flow speed, temperature and pressure."
   },
   {
-    "id": "domain-2",
     "num": "02",
-    "title": "<em>Electrocatalysis</em>",
     "shortTitle": "Electrocatalysis",
+    "title": "<em>Electrocatalysis</em>",
     "image": "assets/artwork_electrocatalyse.png",
-    "tileDesc": "CO₂ reduction, nitrogen fixation, rotating disk electrode studies and catalyst characterisation.",
+    "tileDesc": "CO₂ reduction, nitrogen fixation, rotating disk electrode studies and catalyst characterisation. for the big boss jL",
     "overview": "Catalysts play a central role across many scientific and industrial processes. Electrocatalysis has emerged as a crucial field for applications such as fertilizer synthesis and carbon dioxide reduction, both essential for a sustainable future.",
-    "objectives": "At the IECP platform, research in catalyst science focuses on standardizing characterization methods to enable reliable and meaningful comparisons. We explore a wide range of chemistries and synthesis strategies, before evaluating catalyst performance under various multiscale conditions.",
+    "objectives": "At the IECP platform, research in catalyst science focuses on standardizing characterization methods to enable reliable and meaningful comparisons. We explorzdaufdafdkavdjj\tbdouyagzie a wide range of chemistries and synthesis strategies, before evaluating catalyst performance under various multiscale conditions.",
     "techniques": [
       "Rotating Disk Electrode (RDE)",
       "RRDE",
@@ -80,7 +79,8 @@
         "Rotating Disk Electrode (RDE) setup from Metrohm"
       ]
     ],
-    "results": "Experimental studies are ongoing, with a focus on catalyst benchmarking and performance reproducibility. Results and associated publications will be made available soon."
+    "results": "Experimental studies are ongoing, with a focus on catalyst benchmarking and performance reproducibility. Results and associated publications will be made available soon.",
+    "id": "domain-2"
   },
   {
     "id": "domain-3",

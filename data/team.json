@@ -26,12 +26,5 @@
     "role": "Platform Engineer",
     "email": "mathieu.freville@espci.fr",
     "photo": "assets/mathieu.png"
-  },
-  {
-    "name": "Oussama",
-    "role": "Flight director",
-    "email": "oussama.lol@outlook.fr",
-    "photo": "oussama.png",
-    "id": "oussama"
   }
 ]

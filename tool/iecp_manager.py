@@ -95,6 +95,7 @@ INSTRUMENT_STUB = '''<!DOCTYPE html>
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages/subpages.css">
+  <link rel="stylesheet" href="../css/pages/equipment.css">
 </head>
 <body>
   <div id="navbar-placeholder"></div>

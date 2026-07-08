@@ -87,7 +87,9 @@
 .hero-stats {
   position: absolute;
   bottom: 52px;
-  left: 56px;
+  /* même bord gauche que le contenu de .section-domains ("What we do")
+     juste en dessous, au lieu d'être centré ou collé à 56px fixe. */
+  left: max(24px, calc((100% - 912px) / 2));
   display: flex;
   gap: 48px;
   opacity: 0;
@@ -113,8 +115,10 @@
 }
 
 /* ── ACTIVITIES ENTRY (2 grandes tuiles) ── */
+/* Le fond blanc reste plein écran ; le contenu est centré sur la même
+   colonne de 912px que le reste du site (voir .container / .page-header). */
 .section-domains {
-  padding: 100px 56px;
+  padding: 100px max(24px, calc((100% - 912px) / 2));
   background: white;
 }
 
@@ -122,8 +126,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .entry-tile {
@@ -229,7 +231,7 @@
 
 /* ── EQUIPMENT (section home) ── */
 .section-equip {
-  padding: 100px 56px;
+  padding: 100px max(24px, calc((100% - 912px) / 2));
   background: var(--cream);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -271,7 +273,7 @@
 
 /* ── EVENTS (section home) ── */
 .section-events {
-  padding: 100px 56px;
+  padding: 100px max(24px, calc((100% - 912px) / 2));
   background: var(--white);
 }
 
@@ -326,7 +328,7 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 820px) {
   .hero { padding: 100px 24px 120px; }
-  .hero-stats { left: 24px; gap: 28px; }
+  .hero-stats { gap: 28px; }
   .section-domains { padding: 80px 24px; }
   .activities-entry { grid-template-columns: 1fr; gap: 16px; }
   .entry-tile { height: 300px; }

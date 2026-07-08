@@ -2,9 +2,9 @@
   {
     "num": "01",
     "shortTitle": "Formation Electrolyseur - novice",
-    "title": "Everything you need to know about the <em>water electrolyse</em> - novice",
+    "title": "<em>Water electrolyse</em> - beginners",
     "image": "assets/formation electrolyse- debutant.png",
-    "tileDesc": "Everything you need to know about basics for hydrogen production through water electrolysis.",
+    "tileDesc": "Hydrogen production through electrochemical water splitting",
     "overview": "Water electrolysis for hydrogen  production is widely used in ecological transition. It represents a potential clean vector to progressively replace fossile fuels.\nIn this beginner-oriented training course, you will learn the electrochemical fundamentals required to understand hydrogen production. You will then have the opportunity to observe a simplified hydrogen production system in operation, allowing you to identify the constraints associated with this production method, potential areas for improvement, and its current limitations. You will leave with a training booklet summarizing the key concepts covered during the course, along with a few exercises to reinforce your understanding.",
     "objectives": "- electrochemistry basics required for water hydrolysis understanding\n- identifying constraints, improvement axis and limits intrinsic to this method",
     "techniques": [
@@ -38,7 +38,7 @@
   {
     "num": "02",
     "shortTitle": "Formation Electrolyseur - intermédiaire",
-    "title": "Everything you need to know about the <em>water electrolyse</em> - intermediate",
+    "title": "<em>Water electrolyse</em> - intermediate",
     "image": "assets/formation electrolyse- intermediaire.png",
     "tileDesc": "blabla",
     "overview": "blabla",
@@ -54,7 +54,7 @@
   {
     "num": "03",
     "shortTitle": "Formation Electrolyseur - expert",
-    "title": "Everything you need to know about the <em>water electrolyse</em> - expert",
+    "title": "<em>Water electrolyse</em> - expert",
     "image": "assets/formation electrolyse- expert.png",
     "tileDesc": "blablabla",
     "overview": "damned",
@@ -70,9 +70,9 @@
   {
     "num": "04",
     "shortTitle": "Formation Battery - novice",
-    "title": "Everything you need to know about the <em>batteries</em> - novice",
+    "title": "<em>Batteries</em> - beginners",
     "image": "assets/formation batteries- debutant.png",
-    "tileDesc": "Everything you need to know about basics for battery assembly and cyclng",
+    "tileDesc": "<em>Batteries</em> - beginners",
     "overview": "",
     "objectives": "",
     "techniques": [],
@@ -84,7 +84,7 @@
   {
     "num": "05",
     "shortTitle": "Formation Battery - intermediate",
-    "title": "Everything you need to know about the <em>batteries</em> - intermediate",
+    "title": "<em>Batteries</em> - intermediate",
     "image": "assets/formation batteries- intermediate.png",
     "tileDesc": "Everything you need to know about basics for battery assembly and cyclng",
     "overview": "",
@@ -98,7 +98,7 @@
   {
     "num": "06",
     "shortTitle": "Formation Battery - expert",
-    "title": "Everything you need to know about the <em>batteries</em> - expert",
+    "title": "<em>Batteries</em> - expert",
     "image": "assets/formation batteries- expert.png",
     "tileDesc": "Everything you need to know about basics for battery assembly and cyclng",
     "overview": "",

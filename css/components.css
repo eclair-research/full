@@ -106,8 +106,12 @@
 }
 
 /* ── PAGE HEADER (sous-pages) ── */
+/* Le fond cream reste plein écran, mais le contenu (titre, texte) est
+   centré sur la même largeur de colonne que .container (960px de boîte,
+   moins 24px de padding de chaque côté = 912px de contenu), pour que le
+   titre s'aligne toujours avec le contenu de la page en dessous. */
 .page-header {
-  padding: 120px 56px 56px;
+  padding: 120px max(24px, calc((100% - 912px) / 2)) 56px;
   background: var(--cream);
   animation: fadeUp 0.6s 0.1s both;
 }

@@ -311,6 +311,13 @@ a.equip-card--has-image .equip-card-tooltip {
   margin-bottom: 8px;
 }
 
+/* Sans min-width:0, une grille place ses colonnes à la taille naturelle
+   de leur contenu (ici l'image) avant d'appliquer le %, ce qui la fait
+   déborder du conteneur. */
+.instrument-overview-grid > * {
+  min-width: 0;
+}
+
 .instrument-image img {
   width: 100%;
   height: auto;

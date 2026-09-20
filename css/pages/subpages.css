@@ -67,6 +67,7 @@
   border-radius: 12px;
   padding: 28px 20px;
   text-align: center;
+  min-width: 0;
 }
 
 .team-avatar {
@@ -91,7 +92,7 @@
 
 .team-name  { font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
 .team-role  { font-size: 0.78rem; font-weight: 300; color: var(--fog); margin-bottom: 8px; }
-.team-email { font-size: 0.75rem; color: var(--teal); }
+.team-email { display: block; font-size: 0.75rem; color: var(--teal); overflow-wrap: anywhere; }
 
 .contact-grid {
   display: grid;

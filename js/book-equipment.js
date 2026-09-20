@@ -51,14 +51,16 @@ function renderEquipmentChoices() {
     const maint = eq.status === 'maintenance';
     const div = document.createElement('div');
     div.className = 'equipment-choice' + (maint ? ' disabled' : '');
-    const channels = eq.channels || 1;
-    const chLabel = channels > 1 ? `${channels} channels` : 'single channel';
+    // Voies : affichées seulement si l'équipement en a (channels >= 1 ; 0 ou absent = sans objet)
+    const channels = eq.channels || 0;
+    const chLabel = channels > 1 ? `${channels} channels` : (channels === 1 ? 'single channel' : '');
+    const metaText = maint ? '⚠ Maintenance' : (chLabel ? '✓ ' + chLabel : '');
     div.innerHTML = `
       <div>
         <div class="equipment-choice-name">${eq.name}</div>
         <div class="equipment-choice-desc">${eq.desc || ''}</div>
       </div>
-      <div class="equipment-choice-meta">${maint ? '⚠ Maintenance' : '✓ ' + chLabel}</div>
+      <div class="equipment-choice-meta">${metaText}</div>
     `;
     if (!maint) {
       div.addEventListener('click', () => {

@@ -285,6 +285,7 @@ EQUIPMENT_FIELDS = [
     ("category", "Catégorie de regroupement sur la page Equipment (ex: Potentiostats)", "text"),
     ("size", "Taille de la tuile", "size"),
     ("status", "Statut", "status"),
+    ("channels", "Nombre de voies pour la réservation (0 = sans objet, 1 = single channel, 2+ = multi channel)", "int"),
     ("image", "Image de la tuile (optionnel)", "image"),
     ("gallery", "Galerie d'images de la fiche (cliquer sur + pour en ajouter)", "images"),
     ("tooltip", "Description courte (tuile)", "multi"),
@@ -428,6 +429,11 @@ class ContentForm(tk.Toplevel):
                 w.set(val or "small")
                 w.grid(row=row, column=0, sticky="we", pady=(0, 4))
 
+            elif ftype == "int":
+                w = tk.Entry(frame, width=10, font=("Segoe UI", 9))
+                w.insert(0, str(val) if val not in ("", None) else "0")
+                w.grid(row=row, column=0, sticky="w", pady=(0, 4))
+
             elif ftype == "image":
                 w = ImagePicker(frame, val if isinstance(val, str) else "", config.get("asset_dir", "images"))
                 w.grid(row=row, column=0, sticky="we", pady=(0, 4))
@@ -468,6 +474,11 @@ class ContentForm(tk.Toplevel):
         for key, (w, ftype) in self.widgets.items():
             if ftype in ("text", "status", "event_type", "size", "image"):
                 out[key] = w.get().strip()
+            elif ftype == "int":
+                try:
+                    out[key] = max(0, int(w.get().strip() or 0))
+                except ValueError:
+                    out[key] = 0
             elif ftype == "images":
                 out[key] = w.get()
             elif ftype == "multi":

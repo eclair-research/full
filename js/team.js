@@ -22,7 +22,7 @@ function renderTeam(container, members) {
       <div class="team-avatar">${avatarInner}</div>
       <div class="team-name">${m.name}</div>
       <div class="team-role">${m.role || ''}</div>
-      ${m.email ? `<a href="mailto:${m.email}" class="team-email">${m.email}</a>` : ''}
+      ${m.email ? `<a href="mailto:${m.email}" class="team-email">${m.email.replace("@", "@<wbr>")}</a>` : ''}
     `;
     container.appendChild(card);
   });

@@ -107,6 +107,24 @@ function renderEventsFeed(container, events) {
       content.appendChild(bodyEl);
     }
 
+    if (ev.gallery && ev.gallery.length) {
+      const gal = document.createElement('div');
+      gal.className = 'news-gallery';
+      ev.gallery.forEach(([src, cap]) => {
+        const a = document.createElement('a');
+        a.href = src;
+        a.target = '_blank';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = cap || ev.title;
+        img.loading = 'lazy';
+        if (cap) img.title = cap;
+        a.appendChild(img);
+        gal.appendChild(a);
+      });
+      content.appendChild(gal);
+    }
+
     item.append(dateBox, content);
     container.appendChild(item);
   });

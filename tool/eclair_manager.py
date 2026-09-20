@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 ============================================================
- IECP — Gestionnaire du site (outil unifié)
+ eclair — Gestionnaire du site (outil unifié)
 ============================================================
 Un seul outil pour tout gérer SANS CODE :
   - Research domains
@@ -20,7 +20,7 @@ Réservations : lit/écrit assets/bookings.csv.
 
 Le site lit ces fichiers et se met à jour tout seul.
 
-Lancement : double-clic sur l'exe, OU `python iecp_manager.py`
+Lancement : double-clic sur l'exe, OU `python eclair_manager.py`
 ============================================================
 """
 
@@ -29,6 +29,7 @@ import json
 import os
 import sys
 import re
+import shutil
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 
@@ -86,8 +87,8 @@ INSTRUMENT_STUB = '''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{desc}">
-  <title>IECP — {name}</title>
-  <link rel="icon" href="../assets/logo IECP.svg" type="image/svg+xml">
+  <title>eclair — {name}</title>
+  <link rel="icon" href="../assets/ECLAIR V4.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
@@ -113,8 +114,8 @@ DOMAIN_STUB = '''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{desc}">
-  <title>IECP — {label}</title>
-  <link rel="icon" href="../assets/logo IECP.svg" type="image/svg+xml">
+  <title>eclair — {label}</title>
+  <link rel="icon" href="../assets/ECLAIR V4.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
@@ -161,6 +162,118 @@ def delete_domain_stub(kind, item_id):
 
 
 # ════════════════════════════════════════════════════════
+#  IMAGES : import + widgets (une image / liste d'images)
+# ════════════════════════════════════════════════════════
+IMAGE_TYPES = [("Images", "*.png *.jpg *.jpeg *.gif *.webp *.svg"), ("Tous les fichiers", "*.*")]
+
+
+def import_image(path, subdir="images"):
+    """Retourne le chemin relatif au site. Si le fichier est hors du site,
+    il est copié dans assets/<subdir>/ (sans écraser un fichier existant)."""
+    path = os.path.abspath(path)
+    root = os.path.abspath(SITE_ROOT)
+    try:
+        inside = os.path.commonpath([root, path]) == root
+    except ValueError:
+        inside = False
+    if inside:
+        return os.path.relpath(path, root).replace(os.sep, "/")
+    dest_dir = os.path.join(ASSETS_DIR, subdir)
+    os.makedirs(dest_dir, exist_ok=True)
+    name, ext = os.path.splitext(os.path.basename(path))
+    dest = os.path.join(dest_dir, name + ext)
+    n = 2
+    while os.path.exists(dest):
+        dest = os.path.join(dest_dir, f"{name}-{n}{ext}")
+        n += 1
+    shutil.copy2(path, dest)
+    return os.path.relpath(dest, root).replace(os.sep, "/")
+
+
+class ImagePicker(tk.Frame):
+    """Une seule image : champ chemin + bouton Parcourir."""
+    def __init__(self, master, value, subdir):
+        super().__init__(master)
+        self.subdir = subdir
+        self.entry = tk.Entry(self, width=48, font=("Segoe UI", 9))
+        self.entry.insert(0, value)
+        self.entry.pack(side="left", fill="x", expand=True)
+        tk.Button(self, text="Parcourir…", command=self.browse).pack(side="left", padx=(6, 0))
+
+    def browse(self):
+        f = filedialog.askopenfilename(parent=self.winfo_toplevel(), initialdir=ASSETS_DIR,
+                                       filetypes=IMAGE_TYPES)
+        if f:
+            self.entry.delete(0, "end")
+            self.entry.insert(0, import_image(f, self.subdir))
+
+    def get(self):
+        return self.entry.get()
+
+
+class ImageListEditor(tk.Frame):
+    """Liste d'images [chemin, légende] : bouton + pour en ajouter autant qu'on veut."""
+    def __init__(self, master, pairs, subdir):
+        super().__init__(master)
+        self.subdir = subdir
+        self.rows = []
+        self.list_frame = tk.Frame(self)
+        self.list_frame.pack(fill="x")
+        for pair in pairs:
+            a, b = (list(pair) + ["", ""])[:2]
+            self._add_row(a, b)
+        tk.Button(self, text="+  Ajouter des images…", command=self.add_files,
+                  bg="#00b4a0", fg="white", font=("Segoe UI", 9, "bold")).pack(anchor="w", pady=(4, 0))
+
+    def _add_row(self, path="", caption=""):
+        fr = tk.Frame(self.list_frame, relief="groove", borderwidth=1, padx=6, pady=4)
+        path_var, cap_var = tk.StringVar(value=path), tk.StringVar(value=caption)
+        row = {"frame": fr, "path": path_var, "cap": cap_var}
+        tk.Entry(fr, textvariable=path_var, width=36, font=("Segoe UI", 9)).grid(row=0, column=0, sticky="we")
+        tk.Button(fr, text="Changer…", command=lambda r=row: self.change(r)).grid(row=0, column=1, padx=(4, 0))
+        tk.Button(fr, text="▲", width=2, command=lambda r=row: self.move(r, -1)).grid(row=0, column=2, padx=(4, 0))
+        tk.Button(fr, text="▼", width=2, command=lambda r=row: self.move(r, 1)).grid(row=0, column=3)
+        tk.Button(fr, text="✕", width=2, fg="#c0392b", command=lambda r=row: self.remove(r)).grid(row=0, column=4, padx=(4, 0))
+        tk.Label(fr, text="Légende :", font=("Segoe UI", 8), fg="#666").grid(row=1, column=0, sticky="w", pady=(4, 0))
+        tk.Entry(fr, textvariable=cap_var, width=52, font=("Segoe UI", 9)).grid(row=2, column=0, columnspan=5, sticky="we")
+        self.rows.append(row)
+        self._repack()
+
+    def _repack(self):
+        for r in self.rows:
+            r["frame"].pack_forget()
+        for r in self.rows:
+            r["frame"].pack(fill="x", pady=(0, 6))
+
+    def add_files(self):
+        files = filedialog.askopenfilenames(parent=self.winfo_toplevel(), initialdir=ASSETS_DIR,
+                                            title="Choisir une ou plusieurs images", filetypes=IMAGE_TYPES)
+        for f in files:
+            self._add_row(import_image(f, self.subdir), "")
+
+    def change(self, row):
+        f = filedialog.askopenfilename(parent=self.winfo_toplevel(), initialdir=ASSETS_DIR,
+                                       filetypes=IMAGE_TYPES)
+        if f:
+            row["path"].set(import_image(f, self.subdir))
+
+    def move(self, row, delta):
+        i = self.rows.index(row)
+        j = i + delta
+        if 0 <= j < len(self.rows):
+            self.rows[i], self.rows[j] = self.rows[j], self.rows[i]
+            self._repack()
+
+    def remove(self, row):
+        self.rows.remove(row)
+        row["frame"].destroy()
+
+    def get(self):
+        return [[r["path"].get().strip(), r["cap"].get().strip()]
+                for r in self.rows if r["path"].get().strip()]
+
+
+# ════════════════════════════════════════════════════════
 #  DÉFINITION DES CHAMPS PAR TYPE DE CONTENU
 #  Chaque champ : (clé, libellé, type)
 #  type ∈ {text, multi, status, list_lines, pairs_lines}
@@ -168,9 +281,12 @@ def delete_domain_stub(kind, item_id):
 EQUIPMENT_FIELDS = [
     ("name", "Nom (ex: Potentiostat 4)", "text"),
     ("desc", "Sous-titre / modèle", "text"),
-    ("label", "Catégorie (Potentiostat, RDE...)", "text"),
+    ("label", "Type d'instrument (affiché sur la fiche : Potentiostat, RDE...)", "text"),
+    ("category", "Catégorie de regroupement sur la page Equipment (ex: Potentiostats)", "text"),
+    ("size", "Taille de la tuile", "size"),
     ("status", "Statut", "status"),
-    ("image", "Image de fond (assets/xxx.png, optionnel)", "text"),
+    ("image", "Image de la tuile (optionnel)", "image"),
+    ("gallery", "Galerie d'images de la fiche (cliquer sur + pour en ajouter)", "images"),
     ("tooltip", "Description courte (tuile)", "multi"),
     ("overview", "Présentation (texte long)", "multi"),
     ("usage", "Usage & accès", "multi"),
@@ -183,13 +299,13 @@ DOMAIN_FIELDS = [
     ("num", "Numéro (ex: 05)", "text"),
     ("shortTitle", "Titre simple (sans mise en forme)", "text"),
     ("title", "Titre affiché (peut contenir <em>...</em>)", "text"),
-    ("image", "Image de fond (assets/xxx.png)", "text"),
+    ("image", "Image de fond", "image"),
     ("tileDesc", "Description sur la tuile", "multi"),
     ("overview", "Overview", "multi"),
     ("objectives", "Objectives / Course content", "multi"),
     ("techniques", "Techniques / Topics (un par ligne)", "list_lines"),
     ("equipment", "Équipements liés (Nom = lien par ligne)", "pairs_lines"),
-    ("figures", "Figures (chemin = légende par ligne)", "pairs_lines"),
+    ("figures", "Galerie d'images (cliquer sur + pour en ajouter)", "images"),
     ("results", "Results / Practical info", "multi"),
 ]
 
@@ -199,16 +315,18 @@ EVENT_FIELDS = [
     ("title", "Titre", "text"),
     ("meta", "Sous-titre (lieu, revue...)", "text"),
     ("body", "Description", "multi"),
+    ("gallery", "Images (optionnel, cliquer sur + pour en ajouter)", "images"),
 ]
 
 TEAM_FIELDS = [
     ("name", "Nom complet", "text"),
     ("role", "Fonction", "text"),
     ("email", "Email", "text"),
-    ("photo", "Photo (assets/xxx.png, optionnel)", "text"),
+    ("photo", "Photo (optionnel)", "image"),
 ]
 
 STATUS_OPTIONS = ["available", "busy", "maintenance"]
+SIZE_OPTIONS = ["small", "large"]
 EVENT_TYPES = ["seminar", "publication", "news", "equipment"]
 
 
@@ -231,9 +349,10 @@ CONTENT_TYPES = {
     "Equipment": {
         "file": "equipment.json",
         "fields": EQUIPMENT_FIELDS,
-        "display": lambda it: f"{it.get('name','')} — {it.get('desc','')} [{it.get('status','')}]",
+        "display": lambda it: f"{it.get('category', it.get('label',''))} · {it.get('name','')} — {it.get('desc','')} [{it.get('size','small')}, {it.get('status','')}]",
         "kind": None,
         "stub": "instrument",
+        "asset_dir": "equipments",
     },
     "Events / News": {
         "file": "events.json",
@@ -241,6 +360,7 @@ CONTENT_TYPES = {
         "display": lambda it: f"{it.get('date','')} — {it.get('title','')} [{it.get('type','')}]",
         "kind": None,
         "stub": None,
+        "reorderable": False,
     },
     "Team members": {
         "file": "team.json",
@@ -303,6 +423,19 @@ class ContentForm(tk.Toplevel):
                 w.set(val or "available")
                 w.grid(row=row, column=0, sticky="we", pady=(0, 4))
 
+            elif ftype == "size":
+                w = ttk.Combobox(frame, values=SIZE_OPTIONS, state="readonly", width=59)
+                w.set(val or "small")
+                w.grid(row=row, column=0, sticky="we", pady=(0, 4))
+
+            elif ftype == "image":
+                w = ImagePicker(frame, val if isinstance(val, str) else "", config.get("asset_dir", "images"))
+                w.grid(row=row, column=0, sticky="we", pady=(0, 4))
+
+            elif ftype == "images":
+                w = ImageListEditor(frame, val if isinstance(val, list) else [], config.get("asset_dir", "images"))
+                w.grid(row=row, column=0, sticky="we", pady=(0, 4))
+
             elif ftype == "event_type":
                 w = ttk.Combobox(frame, values=EVENT_TYPES, state="readonly", width=59)
                 w.set(val or "news")
@@ -333,8 +466,10 @@ class ContentForm(tk.Toplevel):
     def collect(self):
         out = {}
         for key, (w, ftype) in self.widgets.items():
-            if ftype in ("text", "status", "event_type"):
+            if ftype in ("text", "status", "event_type", "size", "image"):
                 out[key] = w.get().strip()
+            elif ftype == "images":
+                out[key] = w.get()
             elif ftype == "multi":
                 out[key] = w.get("1.0", "end").strip()
             elif ftype == "list_lines":
@@ -415,13 +550,42 @@ class ManagerFrame(tk.Frame):
         tk.Button(bf, text="Supprimer", command=self.delete, width=14,
                   bg="#c0392b", fg="white").pack(side="left", padx=2)
 
+        if self.config_def.get("reorderable", True):
+            tk.Button(bf, text="▼ Descendre", command=lambda: self.move(1),
+                      width=12).pack(side="right", padx=2)
+            tk.Button(bf, text="▲ Monter", command=lambda: self.move(-1),
+                      width=12).pack(side="right", padx=2)
+            tk.Label(self, text="Monter / Descendre : change l'ordre d'apparition sur le site "
+                                "(le premier de la liste s'affiche en premier ; pour Equipment, "
+                                "les catégories apparaissent dans l'ordre de leur premier élément).",
+                     font=("Segoe UI", 8), fg="#888").pack(anchor="w", pady=(8, 0))
+        else:
+            tk.Label(self, text="Ces éléments s'affichent automatiquement par date (les plus récents en premier).",
+                     font=("Segoe UI", 8), fg="#888").pack(anchor="w", pady=(8, 0))
+
         self.refresh()
 
-    def refresh(self):
+    def refresh(self, select=None):
         self.listbox.delete(0, "end")
         disp = self.config_def["display"]
         for it in self.items:
             self.listbox.insert("end", "  " + disp(it))
+        if select is not None and 0 <= select < len(self.items):
+            self.listbox.selection_set(select)
+            self.listbox.activate(select)
+            self.listbox.see(select)
+
+    def move(self, delta):
+        i = self.sel()
+        if i is None:
+            messagebox.showinfo("Sélection", "Sélectionnez un élément.")
+            return
+        j = i + delta
+        if j < 0 or j >= len(self.items):
+            return
+        self.items[i], self.items[j] = self.items[j], self.items[i]
+        save_json(self.config_def["file"], self.items)
+        self.refresh(select=j)
 
     def sel(self):
         s = self.listbox.curselection()
@@ -750,7 +914,7 @@ class BookingsFrame(tk.Frame):
 class MenuFrame(tk.Frame):
     def __init__(self, master, on_choose):
         super().__init__(master, padx=24, pady=24)
-        tk.Label(self, text="IECP — Gestionnaire du site",
+        tk.Label(self, text="eclair — Gestionnaire du site",
                  font=("Segoe UI", 15, "bold")).pack(pady=(0, 4))
         tk.Label(self, text="Que voulez-vous gérer ?",
                  font=("Segoe UI", 10), fg="#555").pack(pady=(0, 20))
@@ -777,7 +941,7 @@ class MenuFrame(tk.Frame):
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("IECP — Gestionnaire du site")
+        self.title("eclair — Gestionnaire du site")
         self.geometry("980x680")
         self.minsize(820, 560)
         self.current = None

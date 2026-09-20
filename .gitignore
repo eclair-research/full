@@ -1,5 +1,5 @@
-# Outil de gestion : exécutable compilé (à reconstruire via tool/iecp_manager.py)
-IECP_Gestionnaire.exe
+# Outil de gestion : exécutable compilé (à reconstruire via tool/eclair_manager.py)
+eclair_Gestionnaire.exe
 tool/build/
 tool/dist/
 tool/__pycache__/

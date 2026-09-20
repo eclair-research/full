@@ -1,4 +1,4 @@
-# IECP — Gestion complète du contenu (research, teaching, equipment, events, team)
+# eclair — Gestion complète du contenu (research, teaching, equipment, events, team)
 
 Extension du système "piloté par les données" à TOUT le site.
 Un seul outil gère désormais les 5 types de contenu.

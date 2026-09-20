@@ -1,10 +1,10 @@
 [
   {
-    "id": "loic-assaud",
     "name": "Loïc Assaud",
-    "role": "Associate Professor",
+    "role": "Professor",
     "email": "loic.assaud@espci.fr",
-    "photo": "assets/loic.png"
+    "photo": "assets/loic.png",
+    "id": "loic-assaud"
   },
   {
     "id": "alexandr-oshchepkov",

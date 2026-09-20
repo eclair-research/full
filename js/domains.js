@@ -41,7 +41,7 @@ function renderMosaic(container, items, kind) {
 /* ── FICHE DÉTAILLÉE (domains/*.html) ── */
 function renderDomainDetail(container, item, kind) {
   const numLabel = kind === 'teaching' ? `Teaching · Course ${item.num}` : `Domain ${item.num}`;
-  document.title = `IECP — ${item.shortTitle || item.num}`;
+  document.title = `eclair — ${item.shortTitle || item.num}`;
 
   // Techniques
   const tags = (item.techniques || [])
@@ -56,8 +56,8 @@ function renderDomainDetail(container, item, kind) {
   if (item.figures && item.figures.length) {
     const figs = item.figures.map(([src, cap]) => `
       <div class="figure-card">
-        <img src="${DOM_BASE}${src}" alt="${cap}">
-        <p>${cap}</p>
+        <img src="${DOM_BASE}${src}" alt="${cap || item.title}">
+        ${cap ? `<p>${cap}</p>` : ""}
       </div>`).join('\n');
     figuresBlock = `
       <div class="domain-card">

@@ -26,13 +26,41 @@ const STATUS_INFO_DETAIL = {
 function renderEquipmentGrid(container, items) {
   container.innerHTML = '';
 
+  // Regroupe par catégorie, dans l'ordre de première apparition
+  const groups = new Map();
+  items.forEach(item => {
+    const cat = item.category || item.label || 'Other';
+    if (!groups.has(cat)) groups.set(cat, []);
+    groups.get(cat).push(item);
+  });
+
+  groups.forEach((groupItems, cat) => {
+    const section = document.createElement('div');
+    section.className = 'equip-category';
+
+    const title = document.createElement('h3');
+    title.className = 'equip-category-title';
+    title.textContent = cat;
+
+    const grid = document.createElement('div');
+    grid.className = 'equip-grid';
+
+    section.append(title, grid);
+    container.appendChild(section);
+    renderEquipmentCards(grid, groupItems);
+  });
+}
+
+function renderEquipmentCards(container, items) {
   items.forEach(item => {
     const status = STATUS_INFO[item.status] || STATUS_INFO.available;
     const disabled = item.status === 'maintenance';
 
     const card = document.createElement('a');
     card.href = `instruments/${item.id}.html`;
-    card.className = 'equip-card' + (disabled ? ' equip-card--disabled' : '');
+    card.className = 'equip-card'
+      + (item.size === 'large' ? ' equip-card--large' : '')
+      + (disabled ? ' equip-card--disabled' : '');
 
     // Image de fond (si fournie) + voile pour la lisibilité
     if (item.image) {
@@ -91,7 +119,7 @@ function renderInstrumentDetail(container, item) {
   `).join('');
 
   // Met à jour le titre de l'onglet
-  document.title = `IECP — ${item.name}`;
+  document.title = `eclair — ${item.name}`;
 
   // Bloc image (si fournie) — affiché à côté de l'overview
   const imageBlock = item.image ? `
@@ -108,6 +136,18 @@ function renderInstrumentDetail(container, item) {
         <h2 class="section-title">Overview</h2>
         <p class="section-text">${item.overview || ''}</p>
   `;
+
+  // Galerie (autant d'images que souhaité) — bloc masqué s'il n'y en a pas
+  const galleryBlock = (item.gallery && item.gallery.length) ? `
+        <h2 class="section-title">Gallery</h2>
+        <div class="figures-grid">
+          ${item.gallery.map(([src, cap]) => `
+            <div class="figure-card">
+              <img src="${EQ_BASE}${src}" alt="${cap || item.name}">
+              ${cap ? `<p>${cap}</p>` : ''}
+            </div>`).join('')}
+        </div>
+  ` : '';
 
   container.innerHTML = `
     <div class="page-header">
@@ -126,6 +166,8 @@ function renderInstrumentDetail(container, item) {
         </div>
 
         ${imageBlock}
+
+        ${galleryBlock}
 
         <h2 class="section-title">Specifications</h2>
         <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:40px; max-width:600px;">

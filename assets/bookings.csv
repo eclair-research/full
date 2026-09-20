@@ -1,4 +1,4 @@
-instrument,date_start,start_time,duration,user,comment,channels,status
-DEMS,2026-06-19,18:00,2,Freville Mathieu boosted,damned,1,pending
-AFM,2026-07-07,12:00,3,mATHIEU fREVILLE,,1,pending
-DEMS,2026-07-08,10:00,2.5,Test GO,aaaa,1,pending
+"instrument;date_start;start_time;duration;user;comment;channels;status"
+"DEMS;2026-06-19;18;00;2;Freville Mathieu boosted;damned;1;pending"
+"AFM;2026-07-07;12;00;3;mATHIEU fREVILLE;;1;pending"
+"DEMS;2026-07-08;10;00;2.5;Test GO;aaaa;1;pending"

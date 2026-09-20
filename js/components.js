@@ -60,6 +60,31 @@ async function initComponents() {
     });
   }
 
+  // Le dégradé du footer part de la couleur de la section juste au-dessus
+  const footerEl = document.querySelector('footer');
+  if (footerEl) {
+    let prev = footerEl.previousElementSibling;
+    while (prev && (prev.offsetHeight === 0 || getComputedStyle(prev).position === 'fixed')) {
+      prev = prev.previousElementSibling;
+    }
+    let el = prev || footerEl.parentElement;
+    let color = '';
+    while (el) {
+      color = getComputedStyle(el).backgroundColor;
+      if (color && color !== 'rgba(0, 0, 0, 0)' && color !== 'transparent') break;
+      el = el.parentElement;
+    }
+    if (color) footerEl.style.setProperty('--footer-top', color);
+  }
+
+  // Back to top
+  const footerTop = document.getElementById('footer-top');
+  if (footerTop) {
+    footerTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // Burger
   const burger = document.getElementById('burger');
   const navLinks = document.querySelector('.nav-links');

@@ -232,7 +232,7 @@
 /* ── EQUIPMENT (section home) ── */
 .section-equip {
   padding: 100px max(24px, calc((100% - 912px) / 2));
-  background: var(--cream);
+  background: var(--white);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 72px;
@@ -274,7 +274,7 @@
 /* ── EVENTS (section home) ── */
 .section-events {
   padding: 100px max(24px, calc((100% - 912px) / 2));
-  background: var(--white);
+  background: var(--cream);
 }
 
 .section-events-head {

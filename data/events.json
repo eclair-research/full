@@ -1,19 +1,17 @@
 [
   {
-    "id": "ev-website-launch",
-    "date": "2026-04-01",
+    "date": "2026-10-01",
     "type": "news",
-    "title": "IECP platform website launched",
+    "title": "eclair platform website launched",
     "meta": "Internal announcement",
-    "body": "The platform website has been launched. You can suggest any modifications."
-  },
-  {
-    "id": "ev-seminar-dupont",
-    "date": "2025-06-21",
-    "type": "seminar",
-    "title": "IECP Seminar — Dr. Marie Dupont (CNRS)",
-    "meta": "14h00 · Salle Boreau, ESPCI 2nd floor",
-    "body": "Seminar description — add a short summary of the talk, the topics covered, and any practical information here."
+    "body": "The platform website has been launched. You can suggest any modifications.",
+    "gallery": [
+      [
+        "assets/ECLAIR V4.png",
+        ""
+      ]
+    ],
+    "id": "ev-website-launch"
   },
   {
     "id": "ev-paper-co2",
@@ -22,21 +20,5 @@
     "title": "New paper: CO2 electroreduction with molecular catalysts",
     "meta": "ACS Catalysis",
     "body": "Short commentary about the paper."
-  },
-  {
-    "date": "2026-09-07",
-    "type": "news",
-    "title": "Livraison de l'AFM incoming -- Incredible",
-    "meta": "L'AFM sera livré incessament sous peu...",
-    "body": "afm is coming, on ne sait pas ou mais on sait qu'il arrive. seul dieu sait comment cela va se passer",
-    "id": "livraison-de-lafm-incoming-incredible"
-  },
-  {
-    "date": "2026-09-01",
-    "type": "publication",
-    "title": "test",
-    "meta": "TEST",
-    "body": "TESTESTESTEST",
-    "id": "test"
   }
 ]

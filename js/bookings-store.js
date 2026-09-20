@@ -29,7 +29,7 @@
    ============================================================ */
 
 (function () {
-  const SESSION_KEY = 'iecp_saved_bookings';
+  const SESSION_KEY = 'eclair_saved_bookings';
 
   let csvBookings = [];       // venant du CSV (officielles)
   let sessionBookings = [];   // ajoutées pendant la session (localStorage)

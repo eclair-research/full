@@ -125,3 +125,19 @@
   .team-grid    { grid-template-columns: 1fr 1fr; }
   .news-item    { flex-direction: column; gap: 16px; }
 }
+
+/* ── IMAGES D'UNE NEWS / D'UN ÉVÉNEMENT ── */
+.news-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.news-gallery img {
+  height: 120px;
+  width: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}

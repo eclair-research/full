@@ -7,7 +7,7 @@
     "image": "assets/artwork_hydrogen_bubble.png",
     "tileDesc": "Hydrolysis bench, redox cells, benchmarking of catalysts and operating conditions for clean hydrogen generation.",
     "overview": "Driven by the ecological transition, alternatives to fossil fuels are being intensively explored. Among them, hydrogen has emerged as one of the most promising energy carriers for a sustainable future. Water electrolysis represents a central pathway for clean and controlled hydrogen generation.",
-    "objectives": "Hydrogen production is highly energy-intensive, and several key parameters must be carefully controlled. Ionic mass transport to the electrodes, temperature, flow control within the cells, and catalyst performance are all critical. At the IECP, our work focuses on establishing a robust benchmarking framework that enables reliable and reproducible comparisons across different operating conditions.",
+    "objectives": "Hydrogen production is highly energy-intensive, and several key parameters must be carefully controlled. Ionic mass transport to the electrodes, temperature, flow control within the cells, and catalyst performance are all critical. At eclair, our work focuses on establishing a robust benchmarking framework that enables reliable and reproducible comparisons across different operating conditions.",
     "techniques": [
       "Chronoamperometry",
       "EIS",
@@ -45,7 +45,7 @@
     "image": "assets/artwork_electrocatalyse.png",
     "tileDesc": "CO₂ reduction, nitrogen fixation, rotating disk electrode studies and catalyst characterisation. for the big boss jL",
     "overview": "Catalysts play a central role across many scientific and industrial processes. Electrocatalysis has emerged as a crucial field for applications such as fertilizer synthesis and carbon dioxide reduction, both essential for a sustainable future.",
-    "objectives": "At the IECP platform, research in catalyst science focuses on standardizing characterization methods to enable reliable and meaningful comparisons. We explorzdaufdafdkavdjj\tbdouyagzie a wide range of chemistries and synthesis strategies, before evaluating catalyst performance under various multiscale conditions.",
+    "objectives": "At the eclair platform, research in catalyst science focuses on standardizing characterization methods to enable reliable and meaningful comparisons. We explorzdaufdafdkavdjj\tbdouyagzie a wide range of chemistries and synthesis strategies, before evaluating catalyst performance under various multiscale conditions.",
     "techniques": [
       "Rotating Disk Electrode (RDE)",
       "RRDE",

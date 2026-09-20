@@ -1,12 +1,17 @@
 [
   {
-    "id": "potentiostat-1",
     "name": "Potentiostat 1",
-    "desc": "Biologic SP 200",
+    "desc": "Biologic VSP",
     "label": "Potentiostat",
+    "category": "Potentiostats",
+    "size": "small",
     "status": "available",
+    "image": "assets/equipments/potentiostat3_vsp300.png",
     "tooltip": "High-performance potentiostat for EIS, CV and chronoamperometry. Frequency range up to 7 MHz.",
     "overview": "The Biologic SP-200 is a high-performance research-grade potentiostat/galvanostat with built-in EIS capabilities. It is one of the most widely used instruments in electrochemical research worldwide.",
+    "usage": "Suitable for corrosion studies, battery characterisation, electrocatalysis, and impedance spectroscopy. Training required before first use.",
+    "link": "https://www.biologic.net/products/sp-200/",
+    "linkText": "Biologic SP-200 product page",
     "specs": [
       [
         "Potential range",
@@ -25,234 +30,341 @@
         "CV, CA, CP, EIS, GEIS, PEIS, OCV"
       ]
     ],
-    "usage": "Suitable for corrosion studies, battery characterisation, electrocatalysis, and impedance spectroscopy. Training required before first use.",
-    "link": "https://www.biologic.net/products/sp-200/",
-    "linkText": "Biologic SP-200 product page",
-    "image": "assets/artwork_battery.png",
-    "channels": 1
+    "id": "potentiostat-1"
   },
   {
-    "id": "potentiostat-2",
     "name": "Potentiostat 2",
-    "desc": "Metrohm Vionic",
+    "desc": "Palmsens Nexus",
     "label": "Potentiostat",
+    "category": "Potentiostats",
+    "size": "small",
     "status": "available",
-    "tooltip": "Modular potentiostat with built-in impedance analyser. Ideal for battery and fuel cell characterisation.",
+    "image": "assets/equipments/potentiostat2_nexus.jpg",
+    "tooltip": "High quality measurements and",
     "overview": "The Metrohm Vionic is a modular potentiostat with an integrated impedance analyser. Its compact design and high accuracy make it well-suited for fuel cell and battery testing.",
+    "usage": "Ideal for electrocatalysis screening and rotating disk electrode experiments. Can be combined with RDE 1.",
+    "link": "https://www.palmsens.com/product/nexus/?utm_source=google_ads&utm_medium=cpc&utm_campaign=instruments&gad_source=1&gad_campaignid=24013032944&gbraid=0AAAAAD2_frKnID9AI8DkyoRolVLcwv3qh&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmrc9q6gyc4bFyfqIYU7E4rVcjKe062nTFapO7sBF_o-l-FhYyZWJ-EaAj6LEALw_wcB",
+    "linkText": "Palmsens website",
     "specs": [
       [
         "Potential range",
-        "±10 V"
+        "±12 V"
       ],
       [
         "Current range",
-        "±2 A"
+        "±100 pA to 1A"
       ],
       [
         "EIS frequency range",
         "10 µHz – 1 MHz"
-      ],
-      [
-        "Techniques",
-        "CV, EIS, LSV, GEIS"
       ]
     ],
-    "usage": "Ideal for electrocatalysis screening and rotating disk electrode experiments. Can be combined with RDE 1.",
-    "link": "https://www.metrohm.com",
-    "linkText": "Metrohm website",
-    "image": "assets/artwork_battery.png",
-    "channels": 1
+    "id": "potentiostat-2"
   },
   {
-    "id": "potentiostat-3",
     "name": "Potentiostat 3",
-    "desc": "Origalys OrigaFlex",
+    "desc": "Palmsens Nexus with BiPotentiostat module",
     "label": "Potentiostat",
+    "category": "Potentiostats",
+    "size": "small",
     "status": "available",
+    "image": "assets/equipments/potentiostat2_nexus.jpg",
     "tooltip": "Flexible multichannel system for simultaneous electrochemical measurements on several cells.",
     "overview": "The Origalys OrigaFlex is a flexible multichannel electrochemical system allowing simultaneous measurements on several cells. Particularly useful for parallel screening experiments.",
+    "usage": "Best suited for parallel catalyst screening and multi-cell battery testing. Comes paired with RDE 2.",
+    "link": "https://www.origalys.com",
+    "linkText": "Origalys website",
     "specs": [
       [
-        "Channels",
-        "Up to 8 independent"
+        "Potential range",
+        "±12 V"
       ],
+      [
+        "Current range",
+        "±100 pA to 1A"
+      ],
+      [
+        "EIS frequency range",
+        "10 µHz – 1 MHz"
+      ]
+    ],
+    "id": "potentiostat-3"
+  },
+  {
+    "name": "Potentiostat 4",
+    "desc": "Iviumstat 2.h",
+    "label": "Potentiostat",
+    "category": "Potentiostats",
+    "size": "small",
+    "status": "available",
+    "image": "assets/equipments/potentiostat4_Ivium.jpg",
+    "tooltip": "High performance potentiostat for large current application and precise measurements.",
+    "overview": "The IviumStat2.h is well suited for applications requiring a wide dynamic range, such as battery testing, corrosion measurements and electrochemical research applications. It has a high power of ±5A and low current ranges, down to 1pA full scale.",
+    "usage": "",
+    "link": "https://www.ivium.com/product/iviumstat2-h/",
+    "linkText": "Iviumstat 2.h",
+    "specs": [
       [
         "Potential range",
         "±10 V"
       ],
       [
         "Current range",
-        "±200 mA per channel"
+        "±10 pA to 5A"
       ],
       [
-        "Techniques",
-        "CV, CA, EIS, OCV"
+        "EIS frequency range",
+        "10 µHz – 8 MHz"
       ]
     ],
-    "usage": "Best suited for parallel catalyst screening and multi-cell battery testing. Comes paired with RDE 2.",
-    "link": "https://www.origalys.com",
-    "linkText": "Origalys website",
-    "image": "assets/artwork_battery.png",
-    "channels": 8
+    "id": "potentiostat-4"
   },
   {
-    "id": "rde-1",
     "name": "RDE 1",
     "desc": "RDE Metrohm",
     "label": "RDE",
+    "category": "Rotating disk electrodes",
+    "size": "small",
     "status": "available",
-    "tooltip": "Rotating disk electrode for hydrodynamic voltammetry. Speed range 100–10 000 rpm.",
-    "overview": "A rotating disk electrode (RDE) system used for hydrodynamic voltammetry. The controlled rotation speed allows mass transport to the electrode to be precisely tuned, enabling accurate kinetic measurements.",
-    "specs": [
-      [
-        "Rotation speed",
-        "100 – 10 000 rpm"
-      ],
-      [
-        "Electrode materials",
-        "Glassy carbon, Pt, Au"
-      ],
-      [
-        "Configuration",
-        "RDE (disk only)"
-      ],
-      [
-        "Compatible potentiostat",
-        "Potentiostat 2 (Metrohm Vionic)"
-      ]
-    ],
-    "usage": "Used for oxygen reduction reaction (ORR), hydrogen evolution, and electrocatalyst benchmarking. Koutecky-Levich analysis possible.",
-    "link": "https://www.metrohm.com",
+    "image": "assets/equipments/rde.png",
+    "gallery": [],
+    "tooltip": "Rotating disk electrode. Supports RRDE configuration.",
+    "overview": "The Autolab RDE is a high-end rotating disk electrode designed for measurements on systems requiring high rotation speeds and low noise levels. This unit can reach speeds of up to 10,000 rpm, and a liquid mercury contact ensures low-noise operation. The PCTFE shaft has been designed to fit both Metrohm cell vessels and most other electrochemical cells. The tip diameter is 10 mm, with an active surface diameter of either 3 or 5 mm.\n\nThe RDE rotation speed is manually controlled using the knob located on the front panel of the motor control unit. The RDE can also be remotely controlled via Autolab software. The rotation speed can be continuously adjusted from 100 to 10,000 rpm, with a resolution of 1 rpm.",
+    "usage": "",
+    "link": "https://www.metrohm.com/fr_fr/products/a/ut_r/aut_rde_s.html",
     "linkText": "Metrohm website",
-    "image": "assets/artwork_electrocatalyse.png",
-    "channels": 1
+    "specs": [
+      [
+        "High-performance rotating disk electrode designed for electrochemical measurements under controlled hydrodynamic conditions",
+        ""
+      ],
+      [
+        "High-speed operation up to 10,000 rpm with continuous rotation control from 100 to 10,000 rpm (1 rpm resolution)",
+        ""
+      ],
+      [
+        "Low-noise measurements enabled by a sealed liquid mercury contact",
+        ""
+      ],
+      [
+        "Compatible with Metrohm cells and most standard electrochemical cells thanks to the PCTFE shaft design",
+        ""
+      ],
+      [
+        "Interchangeable electrode tips with 3 mm or 5 mm active surface areas (Pt, Au, Ag, and glassy carbon options)",
+        ""
+      ],
+      [
+        "Manual or software-controlled rotation speed via Autolab control software",
+        ""
+      ]
+    ],
+    "id": "rde-2"
   },
   {
-    "id": "rde-2",
     "name": "RDE 2",
-    "desc": "RDE Origalys",
+    "desc": "RDE Metrohm",
     "label": "RDE",
+    "category": "Rotating disk electrodes",
+    "size": "small",
     "status": "available",
-    "tooltip": "Rotating disk electrode coupled to the OrigaFlex potentiostat. Supports RRDE configuration.",
-    "overview": "The Origalys RDE system supports both RDE and RRDE (rotating ring-disk electrode) configurations. It is directly coupled to the OrigaFlex potentiostat for seamless multichannel operation.",
+    "image": "assets/equipments/rde.png",
+    "gallery": [],
+    "tooltip": "Rotating disk electrode. Supports RRDE configuration.",
+    "overview": "The Autolab RDE is a high-end rotating disk electrode designed for measurements on systems requiring high rotation speeds and low noise levels. This unit can reach speeds of up to 10,000 rpm, and a liquid mercury contact ensures low-noise operation. The PCTFE shaft has been designed to fit both Metrohm cell vessels and most other electrochemical cells. The tip diameter is 10 mm, with an active surface diameter of either 3 or 5 mm.\n\nThe RDE rotation speed is manually controlled using the knob located on the front panel of the motor control unit. The RDE can also be remotely controlled via Autolab software. The rotation speed can be continuously adjusted from 100 to 10,000 rpm, with a resolution of 1 rpm.",
+    "usage": "",
+    "link": "https://www.metrohm.com/fr_fr/products/a/ut_r/aut_rde_s.html",
+    "linkText": "Metrohm website",
     "specs": [
       [
-        "Rotation speed",
-        "100 – 10 000 rpm"
+        "High-performance rotating disk electrode designed for electrochemical measurements under controlled hydrodynamic conditions",
+        ""
       ],
       [
-        "Electrode materials",
-        "Glassy carbon, Pt, Au"
+        "High-speed operation up to 10,000 rpm with continuous rotation control from 100 to 10,000 rpm (1 rpm resolution)",
+        ""
       ],
       [
-        "Configuration",
-        "RDE and RRDE"
+        "Low-noise measurements enabled by a sealed liquid mercury contact",
+        ""
       ],
       [
-        "Compatible potentiostat",
-        "Potentiostat 3 (OrigaFlex)"
+        "Compatible with Metrohm cells and most standard electrochemical cells thanks to the PCTFE shaft design",
+        ""
+      ],
+      [
+        "Interchangeable electrode tips with 3 mm or 5 mm active surface areas (Pt, Au, Ag, and glassy carbon options)",
+        ""
+      ],
+      [
+        "Manual or software-controlled rotation speed via Autolab control software",
+        ""
       ]
     ],
-    "usage": "Supports RRDE experiments for product detection (e.g. H₂O₂ during ORR). Training required for RRDE configuration.",
-    "link": "https://www.origalys.com",
-    "linkText": "Origalys website",
-    "image": "assets/artwork_electrocatalyse.png",
-    "channels": 1
+    "id": "rde-2-2"
   },
   {
-    "id": "afm",
-    "name": "AFM",
-    "desc": "Contact / tapping mode · sub-nm resolution",
-    "label": "Microscopy",
-    "status": "available",
-    "tooltip": "Atomic Force Microscope for surface topography at sub-nanometre resolution. Contact and tapping modes available.",
-    "overview": "The Atomic Force Microscope (AFM) provides topographic imaging of surfaces at sub-nanometre resolution without requiring a vacuum environment. It is essential for characterising electrode surfaces before and after electrochemical experiments.",
-    "specs": [
-      [
-        "Resolution",
-        "Sub-nm vertical, ~1 nm lateral"
-      ],
-      [
-        "Imaging modes",
-        "Contact, tapping (AC), non-contact"
-      ],
-      [
-        "Sample environment",
-        "Air and liquid cell available"
-      ],
-      [
-        "Max scan area",
-        "100 × 100 µm"
-      ]
-    ],
-    "usage": "Used for surface roughness analysis, thin film characterisation, and operando electrochemical AFM studies. Booking mandatory — training session required.",
-    "link": "#",
-    "linkText": "Instrument manual (internal)",
-    "image": "assets/artwork_osmosis.png",
-    "channels": 1
-  },
-  {
-    "id": "dems",
-    "name": "DEMS",
-    "desc": "Online gas analysis · operando measurements",
-    "label": "Spectroscopy",
-    "status": "available",
-    "tooltip": "Differential Electrochemical Mass Spectrometer for real-time detection of gaseous products during electrochemical reactions.",
-    "overview": "The DEMS (Differential Electrochemical Mass Spectrometer) enables real-time, online detection of volatile and gaseous products formed during electrochemical reactions. It is a powerful tool for mechanistic studies.",
-    "specs": [
-      [
-        "Detection",
-        "Volatile & gaseous products"
-      ],
-      [
-        "Mass range",
-        "1 – 200 amu"
-      ],
-      [
-        "Response time",
-        "< 1 s"
-      ],
-      [
-        "Coupling",
-        "Direct to electrochemical cell"
-      ]
-    ],
-    "usage": "Key instrument for CO₂ reduction product analysis, hydrogen evolution monitoring, and oxygen evolution studies. Requires prior discussion with platform manager.",
-    "link": "#",
-    "linkText": "Instrument manual (internal)",
-    "image": "assets/artwork_hydrogen_bubble.png",
-    "channels": 1
-  },
-  {
-    "id": "polishing",
     "name": "Polishing Machine",
-    "desc": "Electrode surface preparation",
-    "label": "Preparation",
-    "status": "maintenance",
-    "tooltip": "Mechanical polishing station for electrode surface preparation. Currently under maintenance.",
-    "overview": "The polishing machine is used to prepare electrode surfaces before electrochemical experiments. A clean, well-polished electrode is critical for reproducible results.",
+    "desc": "MECATECH 250 SPI",
+    "label": "Polishing Machine",
+    "category": "Cell and sample preparation",
+    "size": "small",
+    "status": "available",
+    "image": "assets/equipments/polishing machine.png",
+    "gallery": [],
+    "tooltip": "Mechanical polishing station for electrode surface preparation.  Fully automated.",
+    "overview": "The MECATECH 250 SPI is equipped with a 200 to 250 mm diameter platen, four pistons, and individual pressure control. It incorporates the most advanced technologies available. The MECATECH range can be used in both manual and automatic modes. Thanks to motor power ranging from 750 W to 1500 W, this comprehensive product line concentrates all of PRESI’s expertise into one of the most complete ranges on the market. Regardless of the sample size or number of specimens, MECATECH ensures optimal polishing performance. With its distinctive style and sharp, modern lines, this new range stands out with its elegant and refined carbon-effect design, making it easily recognizable.",
+    "usage": "",
+    "link": "https://www.presi.com/produit/mecatech-250-spi/",
+    "linkText": "PRESI polishing machine",
     "specs": [
       [
-        "Polishing media",
-        "Alumina suspensions (1 µm, 0.3 µm, 0.05 µm)"
+        "Single-station polishing machine with a Ø 200–250 mm platen",
+        ""
       ],
       [
-        "Electrode diameter",
-        "3 mm, 5 mm glassy carbon"
+        "4 pistons with individual pressure control for optimal sample preparation",
+        ""
       ],
       [
-        "Polishing cloth",
-        "Microcloth and felt"
+        "Manual and automatic operation modes",
+        ""
       ],
       [
-        "Status",
-        "Currently under maintenance"
+        "Motor power ranging from 750 W to 1500 W",
+        ""
+      ],
+      [
+        "Advanced technologies ensuring high-quality and reproducible polishing performance",
+        ""
       ]
     ],
-    "usage": "Standard protocol: polish with 1 µm then 0.3 µm then 0.05 µm alumina, rinse with ultrapure water, sonicate 5 min.",
-    "link": "#",
-    "linkText": "Polishing protocol (internal)",
-    "image": "assets/artwork_battery.png",
-    "channels": 1
+    "id": "polishing"
+  },
+  {
+    "name": "AFM-SECM",
+    "desc": "Icon FastScan with MB20G Glovebox System and an Acoustic Hood The AVH-1000",
+    "label": "Microscopy",
+    "category": "Microscopy",
+    "size": "large",
+    "status": "maintenance",
+    "image": "assets/equipments/afm.png",
+    "gallery": [
+      [
+        "assets/equipments/acoustic hood.png.png",
+        "The AVH-100 acoustic Hood"
+      ],
+      [
+        "assets/equipments/MB20G Glovebox.png",
+        "MB20G Glovebox"
+      ]
+    ],
+    "tooltip": "Atomic Force Microscope for surface topography at sub-nanometre resolution. Contact and tapping modes available. A three-gloves glove-box allows a controlled atmosphere. Accoustic Hood is also available to accurate measurements in ambiant atmosphere.",
+    "overview": "The Bruker Dimension FastScan® Atomic Force Microscope (AFM) is a high-performance nanoscale characterization platform designed to achieve high-speed imaging without compromising resolution, force control, or measurement accuracy. It enables real-time visualization of dynamic nanoscale phenomena in both air and liquid environments, making it particularly suitable for advanced materials characterization, surface science, electrochemistry, and interface studies.\n\nThe system combines exceptional imaging speed with high-resolution topographical and physicochemical mapping capabilities, allowing researchers to rapidly explore large sample areas while maintaining nanoscale and sub-nanometer sensitivity. The FastScan technology enables scan rates significantly higher than conventional AFM systems, with optimized feedback control for stable imaging of complex and dynamic surfaces.\n\nEquipped with advanced AFM modes, including PeakForce Tapping®, nanomechanical mapping, force spectroscopy, electrical characterization, and surface property analysis, the instrument provides simultaneous access to topographical, mechanical, electrical, and adhesion information at the nanoscale. It is therefore highly relevant for the investigation of catalysts, electrode materials, polymers, thin films, and functional interfaces.\n\nThe microscope includes a controlled acoustic enclosure (acoustic hood) to minimize external noise disturbances and improve measurement stability, enabling high-quality AFM imaging under demanding experimental conditions. The system is also integrated with a glove box environment, allowing the characterization of air-sensitive, moisture-sensitive, or chemically reactive samples under controlled atmosphere conditions.\n\nThanks to its combination of high-speed imaging, advanced nanoscale characterization modes, environmental control, and low-noise operation, the Bruker Dimension FastScan AFM represents a unique tool for studying solid–liquid interfaces, electrochemical materials, catalytic surfaces, and next-generation energy materials.",
+    "usage": "full training required",
+    "link": "https://www.bruker.com/en/products-and-solutions/microscopes/materials-afm/dimension-fastscan.html",
+    "linkText": "Brucker website",
+    "specs": [
+      [
+        "High-speed Atomic Force Microscopy (AFM) platform for nanoscale surface characterization",
+        ""
+      ],
+      [
+        "High-resolution imaging with fast scanning capabilities for dynamic and complex samples",
+        ""
+      ],
+      [
+        "Advanced AFM modes including PeakForce Tapping®, force spectroscopy, and nanomechanical mapping",
+        ""
+      ],
+      [
+        "Nanoscale characterization of surface morphology, mechanical properties, adhesion, and material heterogeneity",
+        ""
+      ],
+      [
+        "Operation in air and liquid environments for advanced interface and materials studies",
+        ""
+      ],
+      [
+        "Low-noise measurements enabled by an acoustic isolation hood",
+        ""
+      ],
+      [
+        "Controlled-atmosphere characterization through integration with a glove box environment",
+        ""
+      ],
+      [
+        "Suitable for sensitive materials, electrochemical interfaces, catalysts, polymers, thin films, and energy-related materials",
+        ""
+      ],
+      [
+        "High-precision positioning and optimized feedback control for stable nanoscale imaging",
+        ""
+      ],
+      [
+        "Compatible with advanced studies of solid–liquid interfaces and electrochemical materials",
+        ""
+      ]
+    ],
+    "id": "afm"
+  },
+  {
+    "name": "DEMS",
+    "desc": "LiquidLoop DEMS",
+    "label": "Differential Electrochemical Mass Spectrometer",
+    "category": "Mass spectrometry",
+    "size": "large",
+    "status": "maintenance",
+    "image": "assets/equipments/DEMS bench.png",
+    "gallery": [],
+    "tooltip": "Differential Electrochemical Mass Spectrometer for real-time detection of gaseous products during electrochemical reactions.",
+    "overview": "The LIQUIDLOOP DEMS (Differential Electrochemical Mass Spectrometry) system is an advanced analytical platform designed for real-time investigation of electrochemical reaction mechanisms.\nIt combines electrochemical control with high-sensitivity mass spectrometric detection, enabling the direct monitoring of gaseous and volatile reaction intermediates during electrochemical processes.\nThe system is based on a modular architecture integrating a FlowSys 2.0 gas–electrolyte flow management unit, a PoGASi DEMS interface with an integrated vacuum stage, an electrochemical capillary cell, and a mass spectrometer for rapid product identification.\nThis configuration allows researchers to correlate electrochemical signals, such as current variations and potential changes, with the formation of specific reaction products in real time.\nThe LIQUIDLOOP DEMS platform is particularly suited for studying complex electrocatalytic reactions, including CO₂ reduction, nitrogen reduction, oxygen evolution, and organic electrosynthesis pathways.\nBy minimizing transport limitations between the electrochemical interface and the mass spectrometer, the system provides high temporal resolution and improved sensitivity compared with conventional offline analytical techniques.\nIts flexible design supports different electrode materials, electrolyte conditions, and experimental configurations, making it suitable for fundamental research as well as catalyst development.\nThe integration of controlled liquid flow, vacuum coupling, and precise mass analysis enables detailed mechanistic studies of reaction intermediates and catalytic selectivity.\nThe DEMS approach provided by LIQUIDLOOP helps researchers optimize next-generation energy conversion technologies by linking material properties with real operating conditions.",
+    "usage": "full training required",
+    "link": "https://www.liquidloop.eu/",
+    "linkText": "Differential Electrochemical Mass Spectrometer from LiquidLoop",
+    "specs": [
+      [
+        "Microfluidic electrochemical platform enabling real-time analysis of electrochemical reactions through DEMS (Differential Electrochemical Mass Spectrometry)",
+        ""
+      ],
+      [
+        "FlowSys module providing precise control of electrolyte flow, pressure, and gas saturation at the electrode surface",
+        ""
+      ],
+      [
+        "Stable microfluidic flow control (1–60 µL/s) for enhanced mass transport and reproducible electrochemical measurements",
+        ""
+      ],
+      [
+        "Electrochemical capillary cell compatible with various electrode configurations",
+        ""
+      ],
+      [
+        "Real-time detection and quantification of gaseous and volatile reaction products via PoGASi-MS technology",
+        ""
+      ],
+      [
+        "Suitable for advanced operando studies of electrocatalysts, including CO₂ reduction, HER, OER, and organic electrochemistry",
+        ""
+      ]
+    ],
+    "id": "dems"
+  },
+  {
+    "name": "3D printer",
+    "desc": "Formlabs",
+    "label": "3D printer",
+    "category": "Cell and sample preparation",
+    "size": "small",
+    "status": "available",
+    "image": "assets/equipments/3D printer.png",
+    "gallery": [],
+    "tooltip": "3d printer using SLA technology for high precision redox flow cell design",
+    "overview": "",
+    "usage": "",
+    "link": "",
+    "linkText": "",
+    "specs": [],
+    "id": "3d-printer"
   }
 ]

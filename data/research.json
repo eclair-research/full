@@ -1,10 +1,9 @@
 [
   {
-    "id": "domain-1",
     "num": "01",
-    "title": "Water Electrolysis for <em>Hydrogen Production</em>",
     "shortTitle": "Water Electrolysis for Hydrogen Production",
-    "image": "assets/artwork_hydrogen_bubble.png",
+    "title": "Water Electrolysis for <em>Hydrogen Production</em>",
+    "image": "assets/artwork/research domains/artwork_hydrogen_bubble.png",
     "tileDesc": "Hydrolysis bench, redox cells, benchmarking of catalysts and operating conditions for clean hydrogen generation.",
     "overview": "Driven by the ecological transition, alternatives to fossil fuels are being intensively explored. Among them, hydrogen has emerged as one of the most promising energy carriers for a sustainable future. Water electrolysis represents a central pathway for clean and controlled hydrogen generation.",
     "objectives": "Hydrogen production is highly energy-intensive, and several key parameters must be carefully controlled. Ionic mass transport to the electrodes, temperature, flow control within the cells, and catalyst performance are all critical. At eclair, our work focuses on establishing a robust benchmarking framework that enables reliable and reproducible comparisons across different operating conditions.",
@@ -36,13 +35,14 @@
         "Testing cells from Baltic Fuel Cells"
       ]
     ],
-    "results": "We developed a testing bench allowing reproducible experiments to be conducted, encompassing Biologic potentiostats, electric generators, testing cells from Baltic Fuel Cells, and various controllers for flow speed, temperature and pressure."
+    "results": "We developed a testing bench allowing reproducible experiments to be conducted, encompassing Biologic potentiostats, electric generators, testing cells from Baltic Fuel Cells, and various controllers for flow speed, temperature and pressure.",
+    "id": "domain-1"
   },
   {
     "num": "02",
     "shortTitle": "Electrocatalysis",
     "title": "<em>Electrocatalysis</em>",
-    "image": "assets/artwork_electrocatalyse.png",
+    "image": "assets/artwork/research domains/artwork_electrocatalyse.png",
     "tileDesc": "CO₂ reduction, nitrogen fixation, rotating disk electrode studies and catalyst characterisation. for the big boss jL",
     "overview": "Catalysts play a central role across many scientific and industrial processes. Electrocatalysis has emerged as a crucial field for applications such as fertilizer synthesis and carbon dioxide reduction, both essential for a sustainable future.",
     "objectives": "At the eclair platform, research in catalyst science focuses on standardizing characterization methods to enable reliable and meaningful comparisons. We explorzdaufdafdkavdjj\tbdouyagzie a wide range of chemistries and synthesis strategies, before evaluating catalyst performance under various multiscale conditions.",
@@ -83,11 +83,10 @@
     "id": "domain-2"
   },
   {
-    "id": "domain-3",
     "num": "03",
-    "title": "Water Desalination <em>&amp; Osmosis</em>",
-    "shortTitle": "Water Desalination & Osmosis",
-    "image": "assets/artwork_osmosis.png",
+    "shortTitle": "Water Desalination & Osmotic energy",
+    "title": "Water Desalination <em>&amp; Osmotic energy</em>",
+    "image": "assets/artwork/research domains/artwork_osmosis.png",
     "tileDesc": "Transport through membranes, blue energy harvesting and osmotic pressure studies.",
     "overview": "Membrane-based separation processes are central to water treatment, desalination, and energy harvesting. Understanding ion and molecule transport through nanoporous and polymeric membranes is key to improving efficiency and selectivity.",
     "objectives": "Content in progress — this section will describe the scientific objectives of this domain.",
@@ -109,14 +108,14 @@
       ]
     ],
     "figures": [],
-    "results": "Content in progress — results and publications will be added as the work develops."
+    "results": "Content in progress — results and publications will be added as the work develops.",
+    "id": "domain-3"
   },
   {
-    "id": "domain-4",
     "num": "04",
-    "title": "Batteries for <em>Energy Storage</em>",
     "shortTitle": "Batteries for Energy Storage",
-    "image": "assets/artwork_battery.png",
+    "title": "Batteries for <em>Energy Storage</em>",
+    "image": "assets/artwork/research domains/artwork_battery.png",
     "tileDesc": "Cycling protocols, button cells, redox flow cells and electrochemical characterisation of storage systems.",
     "overview": "Electrochemical energy storage is a cornerstone of the energy transition. Understanding the fundamental processes governing charge and discharge cycles is essential for designing next-generation batteries with improved capacity, lifetime, and safety.",
     "objectives": "Content in progress — this section will describe the scientific objectives of this domain.",
@@ -139,6 +138,44 @@
       ]
     ],
     "figures": [],
-    "results": "Content in progress — results and publications will be added as the work develops."
+    "results": "Content in progress — results and publications will be added as the work develops.",
+    "id": "domain-4"
+  },
+  {
+    "num": "05",
+    "shortTitle": "Iontronics",
+    "title": "<em>Iontronics</em>",
+    "image": "assets/artwork/research domains/artwork_iontronic.png",
+    "tileDesc": "Ionic transport, bio-inspired information processing and neuromorphic computing.",
+    "overview": "Iontronics aims at using ionic rather than electronic signals to store, transmit and process information. Inspired by some functions of biological neurons, iontronic devices exploit the intrinsically slow dynamics of ionic transport to combine memory and computation. Ion-exchange membranes provide a simple platform to explore these functions through controlled coupling between ion transport, concentration and electrical potential.",
+    "objectives": "Developing a new generation of devices capable of using ion transport and ionic dynamics as a platform for information storage, transmission, and processing, inspired by the functioning of biological systems such as neurons.",
+    "techniques": [
+      "Chronoamperometry",
+      "Flow control",
+      "Potentiometry",
+      "Microfabrication",
+      "Finite-element simulations"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 1",
+        ""
+      ],
+      [
+        "Potentiostat 2",
+        ""
+      ],
+      [
+        "Peristaltic pumps",
+        ""
+      ],
+      [
+        "Syringe pumps",
+        ""
+      ]
+    ],
+    "figures": [],
+    "results": "We developed memristive devices based on commercial Nafion membranes and controlled geometries, in which concentration polarization provides a memory of previous electrical stimulation. Experiments and transport modelling allow us to relate the memory dynamics to ion accumulation, diffusion and the geometry surrounding the membrane. In parallel, experiments with segmented membrane devices show that a local concentration perturbation can generate electrical responses several centimetres away on timescales far shorter than ionic diffusion. These results provide a first step toward fully ionic networks combining memory and signal propagation.",
+    "id": "iontronics"
   }
 ]

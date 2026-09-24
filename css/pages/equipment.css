@@ -1,6 +1,6 @@
 /* ============================================================
    pages/equipment.css — Styles spécifiques à equipment.html
-   (grille de cartes instruments + calendrier de réservation)
+   (grille de cartes instruments)
    ============================================================ */
 
 /* ── GRILLE DE CARTES INSTRUMENTS ── */
@@ -129,135 +129,6 @@ a.equip-card--disabled:hover {
   justify-content: space-between;
   gap: 12px;
   margin-top: auto;
-}
-
-/* ── CALENDRIER ── */
-.calendar-wrap {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.calendar-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 28px;
-  border-bottom: 1px solid var(--border);
-}
-
-.calendar-nav-title {
-  font-size: 1.4rem;
-  font-weight: 300;
-  color: var(--ink);
-}
-
-.calendar-nav button {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  color: var(--ink);
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.calendar-nav button:hover {
-  border-color: var(--teal);
-  color: var(--teal);
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
-
-.calendar-day-header {
-  text-align: center;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--fog);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.calendar-day {
-  min-height: 90px;
-  padding: 6px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow: visible;
-}
-
-.calendar-day:nth-child(7n) { border-right: none; }
-.calendar-day.empty { background: rgba(0,0,0,0.01); }
-
-.calendar-day.today .day-num {
-  background: var(--teal);
-  color: white;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.day-num {
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--fog);
-  margin-bottom: 4px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.booking-chip {
-  font-size: 0.65rem;
-  font-weight: 500;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-bottom: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: default;
-}
-
-/* ── LÉGENDE ── */
-.calendar-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px 28px;
-  border-top: 1px solid var(--border);
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  color: var(--ink);
-}
-
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  flex-shrink: 0;
 }
 
 /* ── TOOLTIP STATUT (cartes) ── */
@@ -394,61 +265,6 @@ a.equip-card--has-image .equip-card-tooltip {
   }
 }
 
-/* ── BARRES MULTI-JOURS (segments connectés) ── */
-.booking-bar {
-  font-size: 0.65rem;
-  font-weight: 500;
-  line-height: 1.4;
-  padding: 2px 6px;
-  margin-bottom: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: default;
-  position: relative;
-  box-sizing: border-box;
-  /* occupe TOUTE la largeur de la case, et déborde sur le padding (6px)
-     de chaque côté pour rejoindre les cases voisines */
-  align-self: stretch;          /* annule le align-items:flex-start du parent */
-  width: calc(100% + 12px);     /* largeur de la case + les 2 paddings (6+6) */
-  margin-left: -6px;
-  margin-right: -6px;
-}
-
-/* Début de la plage : arrondi à gauche, ne déborde pas à gauche */
-.booking-bar.bar-start {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  margin-left: 0;
-  width: calc(100% + 6px);      /* déborde seulement à droite */
-}
-
-/* Fin de la plage : arrondi à droite, ne déborde pas à droite */
-.booking-bar.bar-end {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  margin-right: 0;
-  width: calc(100% + 6px);      /* déborde seulement à gauche */
-}
-
-/* Milieu : aucun arrondi, déborde des deux côtés (continuité) */
-.booking-bar.bar-mid {
-  border-radius: 0;
-}
-
-/* Début ET fin le même jour (cas limite) : tout arrondi, pas de débordement */
-.booking-bar.bar-start.bar-end {
-  border-radius: 4px;
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-}
-
-/* Pending : liseré pointillé */
-.booking-bar.bar-pending {
-  outline: 1px dashed rgba(255,255,255,0.8);
-  outline-offset: -2px;
-}
 /* ── GALERIE DE LA FICHE (plusieurs images) ── */
 .figures-grid {
   display: grid;

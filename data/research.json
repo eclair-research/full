@@ -148,7 +148,7 @@
     "image": "assets/artwork/research domains/artwork_iontronic.png",
     "tileDesc": "Ionic transport, bio-inspired information processing and neuromorphic computing.",
     "overview": "Iontronics aims at using ionic rather than electronic signals to store, transmit and process information. Inspired by some functions of biological neurons, iontronic devices exploit the intrinsically slow dynamics of ionic transport to combine memory and computation. Ion-exchange membranes provide a simple platform to explore these functions through controlled coupling between ion transport, concentration and electrical potential.",
-    "objectives": "Developing a new generation of devices capable of using ion transport and ionic dynamics as a platform for information storage, transmission, and processing, inspired by the functioning of biological systems such as neurons.",
+    "objectives": "At ECLAIR, our work focuses on identifying the minimal physical mechanisms required to build ionic memory and signal-processing devices. We investigate how membrane selectivity, concentration polarization and device geometry can generate history-dependent electrical responses, and how ionic currents can couple distant regions of a membrane network. Our approach combines controlled milli- and microfluidic experiments with physical modelling to develop simple and scalable building blocks for ionic memory, signal propagation and, ultimately, spatio-temporal integration.",
     "techniques": [
       "Chronoamperometry",
       "Flow control",

@@ -96,8 +96,8 @@ function renderEquipmentCards(container, items) {
       btn.onclick = (e) => e.preventDefault();
     } else {
       btn.className = 'btn-primary';
-      btn.textContent = 'See calendar →';
-      btn.onclick = (e) => { e.preventDefault(); scrollToCalendar(); };
+      btn.textContent = 'Book on HighFiveLab →';
+      btn.onclick = (e) => { e.preventDefault(); window.open('https://highfivelabs.org/', '_blank', 'noopener'); };
     }
 
     right.append(statusEl, btn);
@@ -161,7 +161,7 @@ function renderInstrumentDetail(container, item) {
 
         <div style="display:flex; gap:16px; align-items:center; margin-bottom:40px; flex-wrap:wrap;">
           <span class="equip-row-status ${status.cls}">${status.text}</span>
-          <a href="../equipment.html#calendar-section" class="btn-primary">See booking calendar →</a>
+          <a href="https://highfivelabs.org/" class="btn-primary" target="_blank" rel="noopener">Book on HighFiveLab →</a>
           <a href="../equipment.html" class="btn-ghost">← Back to Equipment</a>
         </div>
 

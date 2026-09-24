@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Available equipment at the eclair platform — potentiostats, RDE, AFM, DEMS and booking calendar.">
+  <meta name="description" content="Available equipment at the eclair platform — potentiostats, RDE, AFM, DEMS. Booking on HighFiveLab.">
   <title>eclair — Equipment</title>
   <link rel="icon" href="assets/ECLAIR V4.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
   <div class="page-header">
     <p class="section-label">Shared infrastructure</p>
     <h1>Available <em>Equipment</em></h1>
-    <p>Browse our instruments and check the booking calendar.</p>
+    <p>Browse our instruments and book your session on HighFiveLab.</p>
   </div>
 
   <!-- LISTE INSTRUMENTS (générée depuis data/equipment.json) -->
@@ -40,43 +40,22 @@
     </div>
   </section>
 
-  <!-- CALENDRIER -->
-  <section class="page-section bg-cream" id="calendar-section">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">Booking calendar</p>
-        <h2 class="section-title">Calendar <em>booking</em></h2>
-      </div>
-      <div class="calendar-wrap" id="calendar-wrap">
-        <div class="calendar-nav">
-          <button onclick="changeMonth(-1)">← Prev</button>
-          <span class="calendar-nav-title" id="calendar-title"></span>
-          <button onclick="changeMonth(1)">Next →</button>
-        </div>
-        <div class="calendar-grid" id="calendar-grid"></div>
-        <div class="calendar-legend" id="calendar-legend"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW TO BOOK -->
-  <section class="page-section bg-white">
+  <!-- BOOKING -->
+  <section class="page-section bg-cream">
     <div class="container">
       <div class="section-header">
         <p class="section-label">Need an instrument?</p>
-        <h2 class="section-title">How to <em>book</em></h2>
+        <h2 class="section-title">Book your <em>session</em></h2>
       </div>
       <p class="section-text">
-        You will need to log in to your ESPCI intranet to book any equipment on the platform.
-        If you do not have access to the ESPCI intranet, please
-        <a href="about.html" class="text-link">contact us</a>.
+        Equipment booking is now handled on HighFiveLab.
       </p>
-      <a href="book-equipment.html" class="btn-primary">Book Now →</a>
+      <a href="https://highfivelabs.org/" class="btn-primary" target="_blank" rel="noopener">Go to HighFiveLab for booking →</a>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="page-section bg-cream">
+  <section class="page-section bg-white">
     <div class="container">
       <div class="section-header">
         <p class="section-label">Need help?</p>
@@ -91,7 +70,5 @@
 
   <script src="js/components.js"></script>
   <script src="js/equipment.js"></script>
-  <script src="js/bookings-store.js"></script>
-  <script src="js/calendar.js"></script>
 </body>
 </html>

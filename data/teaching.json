@@ -2,15 +2,16 @@
   {
     "num": "01",
     "shortTitle": "Formation Electrolyseur - novice",
-    "title": "<em>Water electrolyse</em> - beginners",
+    "title": "<em>Water electrolysis</em> — Beginners",
     "image": "assets/formation electrolyse- debutant.png",
-    "tileDesc": "Hydrogen production through electrochemical water splitting",
-    "overview": "Water electrolysis for hydrogen  production is widely used in ecological transition. It represents a potential clean vector to progressively replace fossile fuels.\nIn this beginner-oriented training course, you will learn the electrochemical fundamentals required to understand hydrogen production. You will then have the opportunity to observe a simplified hydrogen production system in operation, allowing you to identify the constraints associated with this production method, potential areas for improvement, and its current limitations. You will leave with a training booklet summarizing the key concepts covered during the course, along with a few exercises to reinforce your understanding.",
-    "objectives": "- electrochemistry basics required for water hydrolysis understanding\n- identifying constraints, improvement axis and limits intrinsic to this method",
+    "tileDesc": "Hydrogen production through electrochemical water splitting — the fundamentals, hands-on.",
+    "overview": "Water electrolysis is one of the most promising routes for clean hydrogen production and a cornerstone of the energy transition, offering a path to progressively replace fossil fuels. This beginner-oriented course introduces the electrochemical fundamentals behind hydrogen production — oxidoreduction reactions, electrochemical potentials and the thermodynamics of water splitting — before moving to the bench, where you will observe a simplified water electrolysis cell in operation. You will leave with a training booklet summarising the key concepts covered, along with a hands-on understanding of how an electrolyser works, the constraints it faces, and the areas where current technology can still improve.",
+    "objectives": "- Acquire the electrochemistry fundamentals needed to understand water electrolysis (redox reactions, electrochemical potentials, Nernst equation)\n- Observe a simplified hydrogen production system in operation\n- Identify the constraints, possible improvements and current limitations of water electrolysis",
     "techniques": [
-      "cell assembly",
-      "chrono-amperometry",
-      "efficiency measurements"
+      "Cell assembly",
+      "Chronoamperometry",
+      "Potentiostat handling",
+      "Efficiency measurements"
     ],
     "equipment": [
       [
@@ -19,94 +20,157 @@
       ],
       [
         "RDE 1",
-        "instruments/rde-1.html"
-      ],
-      [
-        "Electrolysers",
-        "instruments/polishing.html"
+        "instruments/rde-2.html"
       ]
     ],
-    "figures": [
-      [
-        "assets/oussama.png",
-        ""
-      ]
-    ],
-    "results": "none for the moment",
+    "figures": [],
+    "results": "Part of eclair's teaching programme, informed by ESPCI Paris – PSL's continuing education course \"Électrochimie : des concepts aux applications\". This introductory level requires no prerequisite — basic notions of chemistry and physics are enough. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "tout-savoir-sur-les-batteries-novice"
   },
   {
     "num": "02",
     "shortTitle": "Formation Electrolyseur - intermédiaire",
-    "title": "<em>Water electrolyse</em> - intermediate",
+    "title": "<em>Water electrolysis</em> — Intermediate",
     "image": "assets/formation electrolyse- intermediaire.png",
-    "tileDesc": "blabla",
-    "overview": "blabla",
-    "objectives": "bla",
+    "tileDesc": "A deeper dive into electrolysers, electrocatalysis and fuel cell technologies.",
+    "overview": "This intermediate course covers the full hydrogen value chain, from water electrolysis to fuel cells. Building on the fundamentals of electrochemistry, you will study the HER and OER reactions and their catalysts, compare alkaline, PEM and high-temperature electrolyser technologies, and examine the electrode materials and ion-exchange membranes that govern their performance. The course also introduces PEMFC, SOFC and AFC fuel cells, their coupling to renewable energy sources, and the basics of hydrogen storage, transport and safety.",
+    "objectives": "- Understand the electrochemical mechanisms governing hydrogen production and conversion\n- Compare alkaline, PEM and high-temperature electrolyser technologies\n- Study electrode materials and ion-exchange membranes\n- Get an overview of PEMFC, SOFC and AFC fuel cell technologies\n- Run hands-on experiments on an electrolyser",
     "techniques": [
-      "bla"
+      "HER/OER electrocatalysis",
+      "Electrolyser operation (alkaline & PEM)",
+      "Voltammetry",
+      "Electrochemical impedance spectroscopy (EIS)"
     ],
-    "equipment": [],
+    "equipment": [
+      [
+        "Potentiostat 2",
+        "instruments/potentiostat-2.html"
+      ],
+      [
+        "RDE 1",
+        "instruments/rde-2.html"
+      ],
+      [
+        "DEMS",
+        "instruments/dems.html"
+      ]
+    ],
     "figures": [],
-    "results": "",
+    "results": "Corresponds to Module 2 – \"Hydrogen: electrolysis, fuel cells and industrial sector\" of ESPCI Paris – PSL's continuing education programme \"Électrochimie : des concepts aux applications\". Duration: 2 days. Module 1 (fundamentals) is recommended beforehand. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "formation-electrolyseur-intermediaire"
   },
   {
     "num": "03",
     "shortTitle": "Formation Electrolyseur - expert",
-    "title": "<em>Water electrolyse</em> - expert",
+    "title": "<em>Water electrolysis</em> — Expert",
     "image": "assets/formation electrolyse- expert.png",
-    "tileDesc": "blablabla",
-    "overview": "damned",
-    "objectives": "blablabla",
+    "tileDesc": "Advanced electrolyser and fuel cell diagnostics, degradation mechanisms and industrial scale-up.",
+    "overview": "This expert-level course takes an industrial and research-oriented look at the hydrogen value chain. You will analyse degradation and durability mechanisms in electrolysers and fuel cells, interpret advanced diagnostic data, and discuss the technological bottlenecks that still limit large-scale deployment — from catalyst stability to system integration with renewable energy sources. Hands-on sessions on electrolysers and fuel cells let you practise critical, research-grade data analysis.",
+    "objectives": "- Analyse degradation, durability and diagnostic data for electrolysers and fuel cells\n- Critically compare electrolysis and fuel cell technologies on efficiency and lifetime\n- Identify the technological and industrial bottlenecks of the hydrogen sector\n- Evaluate coupling strategies with renewable energy sources\n- Discuss hydrogen storage, transport and safety at scale",
     "techniques": [
-      "blablabla"
+      "Degradation & durability diagnostics",
+      "Advanced EIS analysis",
+      "Performance benchmarking",
+      "Renewable energy coupling"
     ],
-    "equipment": [],
+    "equipment": [
+      [
+        "Potentiostat 2",
+        "instruments/potentiostat-2.html"
+      ],
+      [
+        "Potentiostat 3",
+        "instruments/potentiostat-3.html"
+      ],
+      [
+        "DEMS",
+        "instruments/dems.html"
+      ]
+    ],
     "figures": [],
-    "results": "",
+    "results": "Advanced track of Module 2 – \"Hydrogen: electrolysis, fuel cells and industrial sector\" (ESPCI Paris – PSL continuing education, \"Électrochimie : des concepts aux applications\"). Duration: 2 days. Module 1 (fundamentals) is strongly recommended beforehand. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "formation-electrolyseur-expert"
   },
   {
     "num": "04",
     "shortTitle": "Formation Battery - novice",
-    "title": "<em>Batteries</em> - beginners",
+    "title": "<em>Batteries</em> — Beginners",
     "image": "assets/formation batteries- debutant.png",
-    "tileDesc": "<em>Batteries</em> - beginners",
-    "overview": "",
-    "objectives": "",
-    "techniques": [],
-    "equipment": [],
+    "tileDesc": "The fundamentals of rechargeable batteries, from chemistry to cell assembly.",
+    "overview": "Electrochemical energy storage is a cornerstone of the energy transition. This beginner-oriented course introduces how rechargeable batteries work: the thermodynamics and kinetics of charge/discharge cycles, and the basics of lithium-ion chemistry. You will assemble and cycle a simple battery cell, building an intuitive understanding of what happens inside a battery before moving on to more advanced characterisation techniques.",
+    "objectives": "- Understand the operating principles of rechargeable batteries\n- Learn the thermodynamics and kinetics of charge/discharge cycles\n- Assemble and cycle a simple battery cell\n- Get familiar with basic electrochemical characterisation of batteries",
+    "techniques": [
+      "Cell assembly",
+      "Galvanostatic cycling",
+      "Basic electrochemical characterisation"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 1",
+        "instruments/potentiostat-1.html"
+      ],
+      [
+        "3D printer",
+        "instruments/3d-printer.html"
+      ]
+    ],
     "figures": [],
-    "results": "",
+    "results": "Part of eclair's teaching programme, informed by ESPCI Paris – PSL's continuing education course \"Électrochimie : des concepts aux applications\". This introductory level requires no prerequisite — basic notions of chemistry and physics are enough. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "formation-battery-novice"
   },
   {
     "num": "05",
     "shortTitle": "Formation Battery - intermediate",
-    "title": "<em>Batteries</em> - intermediate",
+    "title": "<em>Batteries</em> — Intermediate",
     "image": "assets/formation batteries- intermediate.png",
-    "tileDesc": "Everything you need to know about basics for battery assembly and cyclng",
-    "overview": "",
-    "objectives": "",
-    "techniques": [],
-    "equipment": [],
+    "tileDesc": "Li-ion materials, the SEI, and next-generation battery chemistries.",
+    "overview": "This intermediate course goes deeper into the materials and interfaces that govern battery performance. You will study lithium-ion electrode materials and electrolytes, the formation and role of the Solid Electrolyte Interphase (SEI), and get an overview of emerging technologies — sodium-ion, lithium-metal and solid-state batteries — as well as supercapacitors and hybrid systems. Hands-on sessions cover standard electrochemical characterisation methods used to evaluate battery performance.",
+    "objectives": "- Study lithium-ion electrode materials and electrolytes\n- Understand the formation and role of the SEI\n- Get an overview of sodium-ion, lithium-metal and solid-state battery technologies\n- Learn standard methods for electrochemical characterisation of batteries",
+    "techniques": [
+      "Galvanostatic cycling",
+      "Electrochemical impedance spectroscopy (EIS)",
+      "Electrode/electrolyte characterisation"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 2",
+        "instruments/potentiostat-2.html"
+      ],
+      [
+        "Potentiostat 3",
+        "instruments/potentiostat-3.html"
+      ]
+    ],
     "figures": [],
-    "results": "",
+    "results": "Corresponds to Module 4 – \"Batteries and electrochemical energy storage\" of ESPCI Paris – PSL's continuing education programme \"Électrochimie : des concepts aux applications\". Duration: 2 days. Module 1 (fundamentals) is recommended beforehand. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "formation-battery-intermediate"
   },
   {
     "num": "06",
     "shortTitle": "Formation Battery - expert",
-    "title": "<em>Batteries</em> - expert",
+    "title": "<em>Batteries</em> — Expert",
     "image": "assets/formation batteries- expert.png",
-    "tileDesc": "Everything you need to know about basics for battery assembly and cyclng",
-    "overview": "",
-    "objectives": "",
-    "techniques": [],
-    "equipment": [],
+    "tileDesc": "Battery diagnostics, ageing, thermal runaway and recycling.",
+    "overview": "This expert-level course focuses on battery diagnostics and end-of-life questions. You will use electrochemical impedance spectroscopy and cycling data to assess state of health, study ageing mechanisms, safety and thermal runaway, and discuss recycling and life-cycle analysis of battery systems. The course closes with a critical look at the industrial, economic and environmental challenges of large-scale energy storage.",
+    "objectives": "- Diagnose battery state of health using cycling and impedance data\n- Understand ageing, safety and thermal runaway mechanisms\n- Evaluate next-generation battery technologies\n- Discuss recycling and life-cycle analysis of battery systems\n- Understand the industrial, economic and environmental challenges of energy storage",
+    "techniques": [
+      "State-of-health diagnostics",
+      "Advanced EIS analysis",
+      "Thermal safety assessment",
+      "Life-cycle analysis"
+    ],
+    "equipment": [
+      [
+        "Potentiostat 3",
+        "instruments/potentiostat-3.html"
+      ],
+      [
+        "Potentiostat 4",
+        "instruments/potentiostat-4.html"
+      ]
+    ],
     "figures": [],
-    "results": "",
+    "results": "Advanced track of Module 4 – \"Batteries and electrochemical energy storage\" (ESPCI Paris – PSL continuing education, \"Électrochimie : des concepts aux applications\"). Duration: 2 days. Module 1 (fundamentals) is strongly recommended beforehand. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "formation-battery-expert"
   }
 ]

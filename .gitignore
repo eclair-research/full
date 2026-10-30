@@ -8,3 +8,6 @@ __pycache__/
 
 # Archives / exports transitoires (pas du contenu source)
 full.zip
+
+# Documents sources internes (pas pour le dépôt public)
+plaquette/

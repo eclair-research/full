@@ -187,7 +187,42 @@ function renderInstrumentDetail(container, item) {
   `;
 }
 
+/* ── MATÉRIEL DISPONIBLE SANS RÉSERVATION (equipment.html) ── */
+function renderMaterialGrid(container, items) {
+  container.innerHTML = '';
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'material-card' + (item.image ? ' material-card--has-image' : '');
+
+    if (item.image) {
+      const bg = document.createElement('div');
+      bg.className = 'material-card-bg';
+      bg.style.backgroundImage = `url('${item.image}')`;
+      const overlay = document.createElement('div');
+      overlay.className = 'material-card-overlay';
+      card.append(bg, overlay);
+    }
+
+    const info = document.createElement('div');
+    info.className = 'material-card-info';
+    info.innerHTML = `
+      <div class="material-card-name">${item.name}</div>
+      <div class="material-card-desc">${item.desc || ''}</div>
+    `;
+    card.appendChild(info);
+    container.appendChild(card);
+  });
+}
+
 /* ── CHARGEMENT ── */
+fetch(EQ_BASE + 'data/available-equipment.json')
+  .then(r => (r.ok ? r.json() : []))
+  .then(items => {
+    const grid = document.getElementById('material-grid');
+    if (grid) renderMaterialGrid(grid, items);
+  })
+  .catch(() => {});
+
 fetch(EQ_BASE + 'data/equipment.json')
   .then(r => {
     if (!r.ok) throw new Error('not found');

@@ -392,6 +392,12 @@ TEAM_FIELDS = [
     ("photo", "Photo (optionnel)", "image"),
 ]
 
+AVAILABLE_MATERIAL_FIELDS = [
+    ("name", "Nom (ex: Verrerie, Balance de précision Sartorius Quintix Pro)", "text"),
+    ("desc", "Description courte", "multi"),
+    ("image", "Image (optionnel)", "image"),
+]
+
 STATUS_OPTIONS = ["available", "busy", "maintenance"]
 SIZE_OPTIONS = ["small", "large"]
 EVENT_TYPES = ["seminar", "publication", "news", "equipment"]
@@ -420,6 +426,14 @@ CONTENT_TYPES = {
         "kind": None,
         "stub": "instrument",
         "asset_dir": "equipments",
+    },
+    "Available Without Booking": {
+        "file": "available-equipment.json",
+        "fields": AVAILABLE_MATERIAL_FIELDS,
+        "display": lambda it: f"{it.get('name','')} — {it.get('desc','')}",
+        "kind": None,
+        "stub": None,
+        "asset_dir": "available-equipment",
     },
     "Events / News": {
         "file": "events.json",

@@ -14,11 +14,29 @@
     "id": "ev-website-launch"
   },
   {
-    "id": "ev-paper-co2",
-    "date": "2025-06-10",
-    "type": "publication",
-    "title": "New paper: CO2 electroreduction with molecular catalysts",
-    "meta": "ACS Catalysis",
-    "body": "Short commentary about the paper."
+    "date": "2026-11-02",
+    "type": "news",
+    "title": "AFM setup delivery!",
+    "meta": "The AFM setup has been delivered at ESPCI",
+    "body": "Our AFM setup arrived on the 2nd of November. Stressful day but hopefully, and especially thanks to Bovis workers, everything went well! Big thanks to everyone for this stressful but successful delivery",
+    "gallery": [
+      [
+        "assets/NEWS/AFM delivery 02_11_2026/5.jpeg",
+        "Heavy Truck for Heavy material delivery"
+      ],
+      [
+        "assets/NEWS/AFM delivery 02_11_2026/2.jpeg",
+        "Bovis's professional workers in charge of the delivery: Thanks to them, everything went well"
+      ],
+      [
+        "assets/NEWS/AFM delivery 02_11_2026/4.jpeg",
+        "Inspection time"
+      ],
+      [
+        "assets/NEWS/AFM delivery 02_11_2026/1.jpeg",
+        "Unboxing!"
+      ]
+    ],
+    "id": "afm-set-up-delivery"
   }
 ]

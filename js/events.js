@@ -108,19 +108,22 @@ function renderEventsFeed(container, events) {
     }
 
     if (ev.gallery && ev.gallery.length) {
+      const lightboxItems = ev.gallery.map(([src, cap]) => ({ src, caption: cap || '' }));
+
       const gal = document.createElement('div');
       gal.className = 'news-gallery';
-      ev.gallery.forEach(([src, cap]) => {
-        const a = document.createElement('a');
-        a.href = src;
-        a.target = '_blank';
+      ev.gallery.forEach(([src, cap], i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'news-gallery-item';
+        btn.addEventListener('click', () => window.Lightbox.open(lightboxItems, i));
         const img = document.createElement('img');
         img.src = src;
         img.alt = cap || ev.title;
         img.loading = 'lazy';
         if (cap) img.title = cap;
-        a.appendChild(img);
-        gal.appendChild(a);
+        btn.appendChild(img);
+        gal.appendChild(btn);
       });
       content.appendChild(gal);
     }

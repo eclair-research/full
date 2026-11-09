@@ -87,20 +87,23 @@ function renderEquipmentCards(container, items) {
     const statusEl = document.createElement('span');
     statusEl.className = 'equip-row-status ' + status.cls;
     statusEl.textContent = status.text;
+    right.append(statusEl);
 
-    const btn = document.createElement('button');
-    if (disabled) {
-      btn.className = 'btn-ghost';
-      btn.disabled = true;
-      btn.textContent = 'Unavailable';
-      btn.onclick = (e) => e.preventDefault();
-    } else {
-      btn.className = 'btn-primary';
-      btn.textContent = 'Book on HighFiveLab →';
-      btn.onclick = (e) => { e.preventDefault(); window.open('https://highfivelabs.org/', '_blank', 'noopener'); };
+    if (!item.noBooking) {
+      const btn = document.createElement('button');
+      if (disabled) {
+        btn.className = 'btn-ghost';
+        btn.disabled = true;
+        btn.textContent = 'Unavailable';
+        btn.onclick = (e) => e.preventDefault();
+      } else {
+        btn.className = 'btn-primary';
+        btn.textContent = 'Book on HighFiveLab →';
+        btn.onclick = (e) => { e.preventDefault(); window.open('https://highfivelabs.org/', '_blank', 'noopener'); };
+      }
+      right.append(btn);
     }
 
-    right.append(statusEl, btn);
     card.append(info, right);
     container.appendChild(card);
   });
@@ -161,7 +164,7 @@ function renderInstrumentDetail(container, item) {
 
         <div style="display:flex; gap:16px; align-items:center; margin-bottom:40px; flex-wrap:wrap;">
           <span class="equip-row-status ${status.cls}">${status.text}</span>
-          <a href="https://highfivelabs.org/" class="btn-primary" target="_blank" rel="noopener">Book on HighFiveLab →</a>
+          ${item.noBooking ? '' : '<a href="https://highfivelabs.org/" class="btn-primary" target="_blank" rel="noopener">Book on HighFiveLab →</a>'}
           <a href="../equipment.html" class="btn-ghost">← Back to Equipment</a>
         </div>
 
@@ -187,51 +190,21 @@ function renderInstrumentDetail(container, item) {
   `;
 }
 
-/* ── MATÉRIEL DISPONIBLE SANS RÉSERVATION (equipment.html) ── */
-function renderMaterialGrid(container, items) {
-  container.innerHTML = '';
-  items.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'material-card' + (item.image ? ' material-card--has-image' : '');
-
-    if (item.image) {
-      const bg = document.createElement('div');
-      bg.className = 'material-card-bg';
-      bg.style.backgroundImage = `url('${item.image}')`;
-      const overlay = document.createElement('div');
-      overlay.className = 'material-card-overlay';
-      card.append(bg, overlay);
-    }
-
-    const info = document.createElement('div');
-    info.className = 'material-card-info';
-    info.innerHTML = `
-      <div class="material-card-name">${item.name}</div>
-      <div class="material-card-desc">${item.desc || ''}</div>
-    `;
-    card.appendChild(info);
-    container.appendChild(card);
-  });
-}
-
 /* ── CHARGEMENT ── */
-fetch(EQ_BASE + 'data/available-equipment.json')
-  .then(r => (r.ok ? r.json() : []))
-  .then(items => {
-    const grid = document.getElementById('material-grid');
-    if (grid) renderMaterialGrid(grid, items);
-  })
-  .catch(() => {});
-
 fetch(EQ_BASE + 'data/equipment.json')
   .then(r => {
     if (!r.ok) throw new Error('not found');
     return r.json();
   })
   .then(items => {
-    // Page liste
+    // Page liste : équipements réservables groupés par catégorie,
+    // matériel sans réservation dans sa propre section (même tuile,
+    // juste sans bouton de réservation — géré par item.noBooking).
     const grid = document.getElementById('equipment-grid');
-    if (grid) renderEquipmentGrid(grid, items);
+    if (grid) renderEquipmentGrid(grid, items.filter(it => !it.noBooking));
+
+    const materialGrid = document.getElementById('material-grid');
+    if (materialGrid) renderEquipmentCards(materialGrid, items.filter(it => it.noBooking));
 
     // Page détail
     const detail = document.getElementById('instrument-detail');

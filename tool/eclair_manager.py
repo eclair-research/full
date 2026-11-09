@@ -342,7 +342,7 @@ class EquipmentLinksEditor(tk.Frame):
 # ════════════════════════════════════════════════════════
 #  DÉFINITION DES CHAMPS PAR TYPE DE CONTENU
 #  Chaque champ : (clé, libellé, type)
-#  type ∈ {text, multi, status, list_lines, pairs_lines, equipment_links}
+#  type ∈ {text, multi, status, list_lines, pairs_lines, equipment_links, bool}
 # ════════════════════════════════════════════════════════
 EQUIPMENT_FIELDS = [
     ("name", "Nom (ex: Potentiostat 4)", "text"),
@@ -352,6 +352,7 @@ EQUIPMENT_FIELDS = [
     ("size", "Taille de la tuile", "size"),
     ("status", "Statut", "status"),
     ("channels", "Nombre de voies pour la réservation (0 = sans objet, 1 = single channel, 2+ = multi channel)", "int"),
+    ("noBooking", "Disponible sans réservation (masque le bouton de réservation)", "bool"),
     ("image", "Image de la tuile (optionnel)", "image"),
     ("gallery", "Galerie d'images de la fiche (cliquer sur + pour en ajouter)", "images"),
     ("tooltip", "Description courte (tuile)", "multi"),
@@ -392,12 +393,6 @@ TEAM_FIELDS = [
     ("photo", "Photo (optionnel)", "image"),
 ]
 
-AVAILABLE_MATERIAL_FIELDS = [
-    ("name", "Nom (ex: Verrerie, Balance de précision Sartorius Quintix Pro)", "text"),
-    ("desc", "Description courte", "multi"),
-    ("image", "Image (optionnel)", "image"),
-]
-
 STATUS_OPTIONS = ["available", "busy", "maintenance"]
 SIZE_OPTIONS = ["small", "large"]
 EVENT_TYPES = ["seminar", "publication", "news", "equipment"]
@@ -426,14 +421,6 @@ CONTENT_TYPES = {
         "kind": None,
         "stub": "instrument",
         "asset_dir": "equipments",
-    },
-    "Available Without Booking": {
-        "file": "available-equipment.json",
-        "fields": AVAILABLE_MATERIAL_FIELDS,
-        "display": lambda it: f"{it.get('name','')} — {it.get('desc','')}",
-        "kind": None,
-        "stub": None,
-        "asset_dir": "available-equipment",
     },
     "Events / News": {
         "file": "events.json",
@@ -512,6 +499,10 @@ class ContentForm(tk.Toplevel):
                 w.insert(0, str(val) if val not in ("", None) else "0")
                 w.grid(row=row, column=0, sticky="w", pady=(0, 4))
 
+            elif ftype == "bool":
+                w = tk.BooleanVar(value=bool(val))
+                tk.Checkbutton(frame, variable=w, text="Oui").grid(row=row, column=0, sticky="w", pady=(0, 4))
+
             elif ftype == "image":
                 w = ImagePicker(frame, val if isinstance(val, str) else "", config.get("asset_dir", "images"))
                 w.grid(row=row, column=0, sticky="we", pady=(0, 4))
@@ -582,6 +573,8 @@ class ContentForm(tk.Toplevel):
                 out[key] = pairs
             elif ftype == "equipment_links":
                 out[key] = w.get()
+            elif ftype == "bool":
+                out[key] = bool(w.get())
         return out
 
     def save(self):

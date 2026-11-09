@@ -2,8 +2,8 @@
   {
     "num": "01",
     "shortTitle": "Module 1 — Fundamentals",
-    "title": "<em>Fundamentals</em> and techniques of electrochemistry",
-    "image": "",
+    "title": "<em>Fundamentals</em> and Techniques of Electro-Chemistry",
+    "image": "assets/Professional Training Fundamentals and techniques of electrochemistry.png",
     "tileDesc": "A complete introduction to electrochemistry: thermodynamics, kinetics and the core experimental techniques.",
     "overview": "This module provides a complete introduction to electrochemistry. You will acquire the theoretical foundations needed to understand the phenomena occurring at the electrode/electrolyte interface, together with the experimental methods required to study them. It forms the common foundation for the energy-oriented modules that follow (hydrogen, CO2 and batteries).",
     "objectives": "Day 1 — Fundamentals: redox reactions and electrochemical potentials • thermodynamics and the Nernst equation • electrochemical cells • the electrical double layer and interfaces • introduction to electrochemical kinetics.\nDay 2 — Kinetics & experimental techniques: Butler-Volmer and charge transfer • mass transport and diffusion • potentiometry, conductimetry and coulometry • getting started with the potentiostat • cyclic voltammetry • hands-on practice.\nDay 3 — Advanced characterisation: advanced voltammetric techniques • electrochemical impedance spectroscopy (EIS) • data interpretation and modelling • hands-on characterisation practice • critical analysis and optimisation of experiments.",
@@ -26,14 +26,14 @@
       ]
     ],
     "figures": [],
-    "results": "Module 1 of ESPCI Paris – PSL's continuing education programme \"Électrochimie : des concepts aux applications\". Duration: 3 days. Forms the recommended prerequisite for Modules 2, 3 and 4. Open to technicians, engineers, researchers and teachers with basic notions of chemistry and physics. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
+    "results": "Module 1 of ESPCI Paris – PSL's Professional Training programme \"Électrochimie : des concepts aux applications\". Duration: 3 days. Forms the recommended prerequisite for Modules 2, 3 and 4. Open to technicians, engineers, researchers and teachers with basic notions of chemistry and physics. Delivered in English or French. For dates and fees, contact contact-fc@espci.fr.",
     "id": "fundamentals"
   },
   {
     "num": "02",
     "shortTitle": "Module 2 — Hydrogen",
-    "title": "<em>Hydrogen</em>: electrolysis, fuel cells and industrial sector",
-    "image": "",
+    "title": "<em>Hydrogen</em>: Electrolysis, Fuel Cells and Industrial Sector",
+    "image": "assets/Professional Training Hydrogen electrolysis fuel cells and industrial sector.png",
     "tileDesc": "The full hydrogen value chain: water electrolysis, fuel cells and industrial deployment.",
     "overview": "This module covers the entire hydrogen value chain. It provides an understanding of the electrochemical principles governing the production, conversion and use of hydrogen, together with the technological and industrial challenges involved.",
     "objectives": "Day 1 — Hydrogen production: overview of the hydrogen sector and energy challenges • thermodynamics of water electrolysis • HER/OER reactions and electrocatalysis • alkaline, PEM and high-temperature electrolysers • materials, electrodes and membranes • hands-on practice on an electrolyser.\nDay 2 — Conversion & integration: principles and technologies of PEMFC, SOFC and AFC fuel cells • performance, efficiency and diagnostics • degradation and durability • coupling to renewable energy sources • storage, transport and safety • hands-on practice and performance analysis.",
@@ -67,7 +67,7 @@
     "num": "03",
     "shortTitle": "Module 3 — CO2",
     "title": "<em>CO2</em>: electroreduction and sustainable electrosynthesis",
-    "image": "",
+    "image": "assets/Professional Training CO2 Electro-Reduction and Sustainable Electro-Synthesis.png",
     "tileDesc": "Electrochemical CO2 valorisation: from catalyst design to industrial electrosynthesis.",
     "overview": "This module addresses the electrochemical valorisation of CO2. It covers the mechanisms, catalysts and reactor technologies used to convert CO2 into valuable products, as well as the path towards industrial-scale electrosynthesis.",
     "objectives": "Day 1 — CO2 electroreduction: the carbon cycle and climate challenges • thermodynamics of CO2 reduction • electrocatalysis and reaction mechanisms • selectivity and production of CO, formate, methanol and hydrocarbons • metallic, molecular and hybrid catalysts • product analysis and faradaic efficiency.\nDay 2 — Electrosynthesis & scale-up: electrochemical reactors and CO2 electrolysers • coupling to renewable energy sources • organic electrosynthesis and sustainable chemistry • hands-on practice and case studies • performance, stability and durability • scale-up and industrial perspectives.",
@@ -96,8 +96,8 @@
   {
     "num": "04",
     "shortTitle": "Module 4 — Batteries",
-    "title": "<em>Batteries</em> and electrochemical energy storage",
-    "image": "",
+    "title": "<em>Batteries</em> and Electro-Chemical Energy Storage",
+    "image": "assets/Professional Training Batteries and ElectroChemical Energy Storage.png",
     "tileDesc": "Battery materials, performance characterisation and next-generation storage technologies.",
     "overview": "This module is dedicated to electrochemical storage technologies. It covers the fundamental principles of batteries, their constituent materials, their performance and their prospects in mobility, stationary storage and electronics.",
     "objectives": "Day 1 — Battery principles & technologies: operating principles and thermodynamics • kinetics and ion transport • Li-ion batteries: electrode materials and electrolytes • formation and role of the SEI • sodium-ion, lithium-metal and solid-state technologies • supercapacitors and hybrid systems.\nDay 2 — Performance, ageing & diagnostics: electrochemical characterisation of batteries • cycling and performance analysis • electrochemical impedance spectroscopy (EIS) and state-of-health diagnostics • ageing, safety and thermal runaway • recycling and life-cycle analysis • hands-on practice and case studies.",

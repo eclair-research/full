@@ -26,6 +26,7 @@ import os
 import sys
 import re
 import shutil
+import urllib.parse
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 
@@ -47,6 +48,18 @@ DATA_DIR = os.path.join(SITE_ROOT, "data")
 INSTRUMENTS_DIR = os.path.join(SITE_ROOT, "instruments")
 DOMAINS_DIR = os.path.join(SITE_ROOT, "domains")
 ASSETS_DIR = os.path.join(SITE_ROOT, "assets")
+
+SITE_URL = "https://eclair.highfivelabs.org"
+DEFAULT_OG_IMAGE = f"{SITE_URL}/assets/ECLAIR%20V4.png"
+
+
+def og_image_url(image_path):
+    """Convertit un chemin d'image (relatif au site) en URL absolue, pour
+    les balises og:image / twitter:image. Retourne le logo par défaut
+    si aucune image n'est fournie."""
+    if not image_path:
+        return DEFAULT_OG_IMAGE
+    return f"{SITE_URL}/{urllib.parse.quote(image_path, safe='/')}"
 
 
 # ════════════════════════════════════════════════════════
@@ -84,6 +97,18 @@ INSTRUMENT_STUB = '''<!DOCTYPE html>
   <meta name="description" content="{desc}">
   <title>eclair — {name}</title>
   <link rel="icon" href="../assets/ECLAIR V4.png" type="image/png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eclair — ESPCI Paris">
+  <meta property="og:title" content="eclair — {name}">
+  <meta property="og:description" content="{desc}">
+  <meta property="og:image" content="{og_image}">
+  <meta property="og:url" content="{og_url}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="eclair — {name}">
+  <meta name="twitter:description" content="{desc}">
+  <meta name="twitter:image" content="{og_image}">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
@@ -111,6 +136,18 @@ DOMAIN_STUB = '''<!DOCTYPE html>
   <meta name="description" content="{desc}">
   <title>eclair — {label}</title>
   <link rel="icon" href="../assets/ECLAIR V4.png" type="image/png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eclair — ESPCI Paris">
+  <meta property="og:title" content="eclair — {label}">
+  <meta property="og:description" content="{desc}">
+  <meta property="og:image" content="{og_image}">
+  <meta property="og:url" content="{og_url}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="eclair — {label}">
+  <meta name="twitter:description" content="{desc}">
+  <meta name="twitter:image" content="{og_image}">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
@@ -131,10 +168,12 @@ DOMAIN_STUB = '''<!DOCTYPE html>
 '''
 
 
-def write_instrument_stub(item_id, name, desc):
+def write_instrument_stub(item_id, name, desc, image=""):
     os.makedirs(INSTRUMENTS_DIR, exist_ok=True)
+    og_url = f"{SITE_URL}/instruments/{item_id}.html"
     with open(os.path.join(INSTRUMENTS_DIR, f"{item_id}.html"), "w", encoding="utf-8") as f:
-        f.write(INSTRUMENT_STUB.format(id=item_id, name=name, desc=desc))
+        f.write(INSTRUMENT_STUB.format(id=item_id, name=name, desc=desc,
+                                        og_image=og_image_url(image), og_url=og_url))
 
 
 def delete_instrument_stub(item_id):
@@ -143,11 +182,13 @@ def delete_instrument_stub(item_id):
         os.remove(p)
 
 
-def write_domain_stub(kind, item_id, label, desc):
+def write_domain_stub(kind, item_id, label, desc, image=""):
     os.makedirs(DOMAINS_DIR, exist_ok=True)
     fname = f"{kind}-{item_id}.html"
+    og_url = f"{SITE_URL}/domains/{fname}"
     with open(os.path.join(DOMAINS_DIR, fname), "w", encoding="utf-8") as f:
-        f.write(DOMAIN_STUB.format(kind=kind, id=item_id, label=label, desc=desc))
+        f.write(DOMAIN_STUB.format(kind=kind, id=item_id, label=label, desc=desc,
+                                    og_image=og_image_url(image), og_url=og_url))
 
 
 def delete_domain_stub(kind, item_id):
@@ -728,11 +769,11 @@ class ManagerFrame(tk.Frame):
         stub = self.config_def["stub"]
         if stub == "instrument":
             desc = data.get("tooltip", "") or data.get("desc", "")
-            write_instrument_stub(data["id"], data.get("name", data["id"]), desc)
+            write_instrument_stub(data["id"], data.get("name", data["id"]), desc, data.get("image", ""))
         elif stub == "domain":
             label = data.get("shortTitle", data["id"])
             desc = data.get("tileDesc", "")
-            write_domain_stub(self.config_def["kind"], data["id"], label, desc)
+            write_domain_stub(self.config_def["kind"], data["id"], label, desc, data.get("image", ""))
 
         save_json(self.config_def["file"], self.items)
         self.refresh()

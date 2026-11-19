@@ -96,6 +96,32 @@
 .team-linkedin { display: block; font-size: 0.75rem; color: var(--fog); margin-top: 4px; }
 .team-linkedin:hover { color: var(--teal); }
 
+/* ── CHIFFRES CLÉS (about.html, section mission) ── */
+.mission-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.mission-stat-num {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.mission-stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-top: 6px;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

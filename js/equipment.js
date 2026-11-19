@@ -172,18 +172,24 @@ function renderInstrumentDetail(container, item) {
 
         ${galleryBlock}
 
+        ${specsRows ? `
         <h2 class="section-title">Specifications</h2>
         <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:40px; max-width:600px;">
           ${specsRows}
         </div>
+        ` : ''}
 
+        ${item.usage ? `
         <h2 class="section-title">Usage &amp; Access</h2>
-        <p class="section-text">${item.usage || ''}</p>
+        <p class="section-text">${item.usage}</p>
+        ` : ''}
 
+        ${item.link ? `
         <h2 class="section-title">Documentation</h2>
         <p class="section-text">
-          <a href="${item.link || '#'}" class="text-link" target="_blank">${item.linkText || 'Documentation'} ↗</a>
+          <a href="${item.link}" class="text-link" target="_blank" rel="noopener">${item.linkText || 'Documentation'} ↗</a>
         </p>
+        ` : ''}
 
       </div>
     </section>

@@ -373,8 +373,8 @@
     "tooltip": "3d printer using SLA technology for high precision redox flow cell design",
     "overview": "",
     "usage": "",
-    "link": "",
-    "linkText": "",
+    "link": "https://formlabs.com/",
+    "linkText": "Formlabs website",
     "specs": [],
     "id": "3d-printer"
   },

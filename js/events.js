@@ -140,6 +140,34 @@ function renderEventsFeed(container, events) {
   });
 }
 
+/* ── FILTRES PAR TYPE (events.html) ── */
+function renderEventFilters(container, events, feedEl) {
+  container.innerHTML = '';
+
+  // Types réellement présents dans les données, dans l'ordre d'EVENT_BADGES
+  const typesPresent = Object.keys(EVENT_BADGES).filter(t => events.some(ev => ev.type === t));
+
+  const makeFilterBtn = (type, label) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'event-filter-btn';
+    btn.textContent = label;
+    btn.dataset.type = type;
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.event-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filtered = type === 'all' ? events : events.filter(ev => ev.type === type);
+      renderEventsFeed(feedEl, filtered);
+    });
+    return btn;
+  };
+
+  const allBtn = makeFilterBtn('all', 'All');
+  allBtn.classList.add('active');
+  container.appendChild(allBtn);
+  typesPresent.forEach(t => container.appendChild(makeFilterBtn(t, EVENT_BADGES[t].label)));
+}
+
 /* ── CHARGEMENT ── */
 fetch('data/events.json')
   .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
@@ -152,6 +180,9 @@ fetch('data/events.json')
 
     const feed = document.getElementById('events-feed');
     if (feed) renderEventsFeed(feed, events);
+
+    const filters = document.getElementById('events-filters');
+    if (filters && feed) renderEventFilters(filters, events, feed);
   })
   .catch(() => {
     const target = document.getElementById('home-events')

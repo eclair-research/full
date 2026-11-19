@@ -68,6 +68,38 @@
 .badge-news        { background: rgba(100, 120, 200, 0.1); color: #3050a0; }
 .badge-equipment   { background: rgba(150, 80, 200, 0.1);  color: #6b28c8; }
 
+/* ── FILTRES PAR TYPE (events.html) ── */
+.event-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.event-filter-btn {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--fog);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.event-filter-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal-dim);
+}
+
+.event-filter-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
 /* ── STATUS ÉQUIPEMENTS ── */
 .equip-row-status {
   font-size: 0.72rem;

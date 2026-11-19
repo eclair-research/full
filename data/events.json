@@ -38,5 +38,27 @@
       ]
     ],
     "id": "afm-set-up-delivery"
+  },
+  {
+    "date": "2026-11-06",
+    "type": "equipment",
+    "title": "AFM installed and ready",
+    "meta": "The AFM-SECM has been set up in its new room at ESPCI",
+    "body": "Following its delivery on November 2nd, our new Atomic Force Microscope has now been fully installed, together with its glovebox and acoustic enclosure. The instrument room is set up and the system is being readied for calibration ahead of opening it up for use on the platform.",
+    "gallery": [
+      [
+        "assets/NEWS/AFM Installation  06_11_2026/2.jpeg",
+        "The AFM fully installed next to its glovebox"
+      ],
+      [
+        "assets/NEWS/AFM Installation  06_11_2026/1.jpeg",
+        "The new instrument room"
+      ],
+      [
+        "assets/NEWS/AFM Installation  06_11_2026/3.jpeg",
+        "Entrance to the eclair AFM room"
+      ]
+    ],
+    "id": "afm-installation"
   }
 ]

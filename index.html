@@ -33,6 +33,26 @@
 
   <!-- HERO -->
   <section class="hero">
+    <svg class="hero-spark" viewBox="0 0 420 520" aria-hidden="true">
+      <defs>
+        <linearGradient id="sparkGradient" x1="0%" y1="0%" x2="20%" y2="100%">
+          <stop offset="0%" stop-color="#00b4a0"/>
+          <stop offset="100%" stop-color="#c9a84c"/>
+        </linearGradient>
+        <filter id="sparkGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="9"/>
+        </filter>
+      </defs>
+      <path class="spark-glow"
+            d="M300 10 L215 160 L255 170 L150 330 L190 340 L95 500
+               M255 170 L330 260 L300 268 L350 360
+               M190 340 L120 400" />
+      <path class="spark-core"
+            d="M300 10 L215 160 L255 170 L150 330 L190 340 L95 500
+               M255 170 L330 260 L300 268 L350 360
+               M190 340 L120 400" />
+    </svg>
+
     <span class="hero-eyebrow"><span>eclair — <strong>E</strong>lectro <strong>C</strong>hemical p<strong>L</strong>atform for educ<strong>A</strong>tion, <strong>I</strong>nnovation and <strong>R</strong>esearch</span></span>
     <h1><em>Electrochemistry</em>, open to <span class="gold">everyone</span>.</h1>
     <p class="hero-sub">A shared research platform dedicated to electrochemical science.</p>
@@ -124,6 +144,7 @@
   <div id="footer-placeholder"></div>
 
   <script src="js/components.js"></script>
+  <script src="js/reveal.js"></script>
   <script src="js/events.js"></script>
 </body>
 </html>

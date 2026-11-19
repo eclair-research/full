@@ -26,6 +26,55 @@
   pointer-events: none;
 }
 
+/* ── ÉTINCELLE : flash + veilleuse ambiante dans le hero ──
+   Un arc électrique qui bifurque (pas un pictogramme "météo"),
+   flou et estompé — ambiance plutôt qu'icône. Apparition lente et
+   progressive, puis repos en lueur discrète. */
+.hero-spark {
+  position: absolute;
+  top: 0;
+  right: -40px;
+  width: 340px;
+  height: 420px;
+  pointer-events: none;
+  opacity: 0;
+  animation: eclair-flash 5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.spark-glow {
+  fill: none;
+  stroke: url(#sparkGradient);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: url(#sparkGlow);
+  opacity: 0.65;
+}
+
+.spark-core {
+  fill: none;
+  stroke: url(#sparkGradient);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+}
+
+@keyframes eclair-flash {
+  0%   { opacity: 0; }
+  40%  { opacity: 1; }
+  65%  { opacity: 0.4; }
+  100% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spark { animation: none; opacity: 0.3; }
+}
+
+@media (max-width: 1100px) {
+  .hero-spark { display: none; }
+}
+
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;

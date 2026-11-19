@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eclair.highfivelabs.org/sitemap.xml

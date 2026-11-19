@@ -251,7 +251,7 @@
   },
   {
     "name": "AFM-SECM",
-    "desc": "Icon FastScan with MB20G Glovebox System and an Acoustic Hood The AVH-1000",
+    "desc": "Bruker Dimension Icon XR with MB20G Glovebox System and an Acoustic Hood (AVH-1000)",
     "label": "Microscopy",
     "category": "Microscopy",
     "size": "large",
@@ -268,18 +268,18 @@
         "MB20G Glovebox"
       ]
     ],
-    "tooltip": "Atomic Force Microscope for surface topography at sub-nanometre resolution. Contact and tapping modes available. A three-gloves glove-box allows a controlled atmosphere. Accoustic Hood is also available to accurate measurements in ambiant atmosphere.",
-    "overview": "The Bruker Dimension FastScan® Atomic Force Microscope (AFM) is a high-performance nanoscale characterization platform designed to achieve high-speed imaging without compromising resolution, force control, or measurement accuracy. It enables real-time visualization of dynamic nanoscale phenomena in both air and liquid environments, making it particularly suitable for advanced materials characterization, surface science, electrochemistry, and interface studies.\n\nThe system combines exceptional imaging speed with high-resolution topographical and physicochemical mapping capabilities, allowing researchers to rapidly explore large sample areas while maintaining nanoscale and sub-nanometer sensitivity. The FastScan technology enables scan rates significantly higher than conventional AFM systems, with optimized feedback control for stable imaging of complex and dynamic surfaces.\n\nEquipped with advanced AFM modes, including PeakForce Tapping®, nanomechanical mapping, force spectroscopy, electrical characterization, and surface property analysis, the instrument provides simultaneous access to topographical, mechanical, electrical, and adhesion information at the nanoscale. It is therefore highly relevant for the investigation of catalysts, electrode materials, polymers, thin films, and functional interfaces.\n\nThe microscope includes a controlled acoustic enclosure (acoustic hood) to minimize external noise disturbances and improve measurement stability, enabling high-quality AFM imaging under demanding experimental conditions. The system is also integrated with a glove box environment, allowing the characterization of air-sensitive, moisture-sensitive, or chemically reactive samples under controlled atmosphere conditions.\n\nThanks to its combination of high-speed imaging, advanced nanoscale characterization modes, environmental control, and low-noise operation, the Bruker Dimension FastScan AFM represents a unique tool for studying solid–liquid interfaces, electrochemical materials, catalytic surfaces, and next-generation energy materials.",
+    "tooltip": "Atomic Force Microscope with electrochemical (SECM) capability, for surface topography at sub-nanometre resolution. Contact and tapping modes available. A three-glove glovebox allows a controlled atmosphere. An acoustic hood is also available for accurate measurements in ambient atmosphere.",
+    "overview": "The Bruker Dimension Icon XR is a high-performance Atomic Force Microscope (AFM) platform combined with Scanning Electrochemical Microscopy (SECM) capability, designed for high-resolution nanoscale characterization without compromising force control or measurement accuracy. It enables real-time visualization of nanoscale phenomena in both air and liquid environments, making it particularly suitable for advanced materials characterization, surface science, electrochemistry, and interface studies.\n\nThe system combines high-resolution topographical and physicochemical mapping capabilities with its extended scan range, allowing researchers to explore large sample areas while maintaining nanoscale and sub-nanometer sensitivity.\n\nEquipped with advanced AFM modes, including PeakForce Tapping®, nanomechanical mapping, force spectroscopy, electrical characterization, SECM and surface property analysis, the instrument provides simultaneous access to topographical, mechanical, electrical, electrochemical, and adhesion information at the nanoscale. It is therefore highly relevant for the investigation of catalysts, electrode materials, polymers, thin films, and functional interfaces.\n\nThe microscope includes a controlled acoustic enclosure (acoustic hood) to minimize external noise disturbances and improve measurement stability, enabling high-quality AFM imaging under demanding experimental conditions. The system is also integrated with a glove box environment, allowing the characterization of air-sensitive, moisture-sensitive, or chemically reactive samples under controlled atmosphere conditions.\n\nThanks to its combination of high-resolution imaging, advanced nanoscale characterization modes, electrochemical (SECM) capability, environmental control, and low-noise operation, the Bruker Dimension Icon XR AFM-SECM represents a unique tool for studying solid–liquid interfaces, electrochemical materials, catalytic surfaces, and next-generation energy materials.",
     "usage": "full training required",
-    "link": "https://www.bruker.com/en/products-and-solutions/microscopes/materials-afm/dimension-fastscan.html",
-    "linkText": "Brucker website",
+    "link": "https://www.bruker.com/en/products-and-solutions/microscopes/materials-afm.html",
+    "linkText": "Bruker materials AFM product range",
     "specs": [
       [
-        "High-speed Atomic Force Microscopy (AFM) platform for nanoscale surface characterization",
+        "Bruker Dimension Icon XR Atomic Force Microscopy (AFM) platform for nanoscale surface characterization",
         ""
       ],
       [
-        "High-resolution imaging with fast scanning capabilities for dynamic and complex samples",
+        "Scanning Electrochemical Microscopy (SECM) capability for coupled topographical and electrochemical mapping",
         ""
       ],
       [

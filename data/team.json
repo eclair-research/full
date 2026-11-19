@@ -3,6 +3,7 @@
     "name": "Loïc Assaud",
     "role": "Professor",
     "email": "loic.assaud@espci.fr",
+    "linkedin": "https://www.linkedin.com/in/lo%C3%AFc-assaud-974a9549/",
     "photo": "assets/loic.png",
     "id": "loic-assaud"
   },
@@ -11,6 +12,7 @@
     "name": "Alexandr Oshchepkov",
     "role": "Junior Professor",
     "email": "alexandr.oshchepkov@espci.fr",
+    "linkedin": "https://www.linkedin.com/in/alexandr-oshchepkov/",
     "photo": "assets/alexandr.png"
   },
   {
@@ -18,6 +20,7 @@
     "name": "Corentin Trégouët",
     "role": "Associate Professor",
     "email": "corentin.tregouet@espci.fr",
+    "linkedin": "https://www.linkedin.com/in/corentin-tregouet-51470b151/",
     "photo": "assets/corentin.png"
   },
   {
@@ -25,6 +28,7 @@
     "name": "Mathieu Ben-Aouda Freville",
     "role": "Platform Engineer",
     "email": "mathieu.freville@espci.fr",
+    "linkedin": "https://www.linkedin.com/in/mathieu-ben-aouda-freville-97b004172/",
     "photo": "assets/mathieu.png"
   }
 ]

@@ -23,6 +23,7 @@ function renderTeam(container, members) {
       <div class="team-name">${m.name}</div>
       <div class="team-role">${m.role || ''}</div>
       ${m.email ? `<a href="mailto:${m.email}" class="team-email">${m.email.replace("@", "@<wbr>")}</a>` : ''}
+      ${m.linkedin ? `<a href="${m.linkedin}" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>` : ''}
     `;
     container.appendChild(card);
   });

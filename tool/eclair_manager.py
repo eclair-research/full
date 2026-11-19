@@ -431,6 +431,7 @@ TEAM_FIELDS = [
     ("name", "Nom complet", "text"),
     ("role", "Fonction", "text"),
     ("email", "Email", "text"),
+    ("linkedin", "Lien LinkedIn (optionnel)", "text"),
     ("photo", "Photo (optionnel)", "image"),
 ]
 

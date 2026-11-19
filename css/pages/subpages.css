@@ -93,6 +93,8 @@
 .team-name  { font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
 .team-role  { font-size: 0.78rem; font-weight: 300; color: var(--fog); margin-bottom: 8px; }
 .team-email { display: block; font-size: 0.75rem; color: var(--teal); overflow-wrap: anywhere; }
+.team-linkedin { display: block; font-size: 0.75rem; color: var(--fog); margin-top: 4px; }
+.team-linkedin:hover { color: var(--teal); }
 
 .contact-grid {
   display: grid;

@@ -15,6 +15,13 @@ const EVENT_BADGES = {
 const EVENT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun',
                       'Jul','Aug','Sep','Oct','Nov','Dec'];
 
+/* Transforme les URL en liens cliquables dans un texte brut (échappé). */
+function linkify(text) {
+  const escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return escaped.replace(/(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" class="text-link" target="_blank" rel="noopener">$1</a>');
+}
+
 function eventDateParts(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
   if (isNaN(d)) return { day: '?', month: dateStr };
@@ -103,7 +110,7 @@ function renderEventsFeed(container, events) {
     if (ev.body) {
       const bodyEl = document.createElement('p');
       bodyEl.className = 'news-body';
-      bodyEl.textContent = ev.body;
+      bodyEl.innerHTML = linkify(ev.body);
       content.appendChild(bodyEl);
     }
 

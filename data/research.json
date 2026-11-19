@@ -27,11 +27,7 @@
     ],
     "figures": [
       [
-        "assets/domaine 1/testing bench.png",
-        "The testing bench"
-      ],
-      [
-        "assets/domaine 1/baltic fuel cells.jpg",
+        "assets/equipments/electrolyse bench.jpeg",
         "Testing cells from Baltic Fuel Cells"
       ]
     ],
@@ -75,7 +71,7 @@
     ],
     "figures": [
       [
-        "assets/domaine 2/rde metrohm.png",
+        "assets/equipments/rde.png",
         "Rotating Disk Electrode (RDE) setup from Metrohm"
       ]
     ],

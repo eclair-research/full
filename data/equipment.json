@@ -319,26 +319,26 @@
   },
   {
     "name": "DEMS",
-    "desc": "LiquidLoop DEMS",
+    "desc": "Microfluidic DEMS system",
     "label": "Differential Electrochemical Mass Spectrometer",
     "category": "Mass spectrometry",
     "size": "large",
     "status": "maintenance",
     "channels": 0,
-    "image": "assets/equipments/DEMS bench.png",
+    "image": "",
     "gallery": [],
     "tooltip": "Differential Electrochemical Mass Spectrometer for real-time detection of gaseous products during electrochemical reactions.",
-    "overview": "The LIQUIDLOOP DEMS (Differential Electrochemical Mass Spectrometry) system is an advanced analytical platform designed for real-time investigation of electrochemical reaction mechanisms.\nIt combines electrochemical control with high-sensitivity mass spectrometric detection, enabling the direct monitoring of gaseous and volatile reaction intermediates during electrochemical processes.\nThe system is based on a modular architecture integrating a FlowSys 2.0 gas–electrolyte flow management unit, a PoGASi DEMS interface with an integrated vacuum stage, an electrochemical capillary cell, and a mass spectrometer for rapid product identification.\nThis configuration allows researchers to correlate electrochemical signals, such as current variations and potential changes, with the formation of specific reaction products in real time.\nThe LIQUIDLOOP DEMS platform is particularly suited for studying complex electrocatalytic reactions, including CO₂ reduction, nitrogen reduction, oxygen evolution, and organic electrosynthesis pathways.\nBy minimizing transport limitations between the electrochemical interface and the mass spectrometer, the system provides high temporal resolution and improved sensitivity compared with conventional offline analytical techniques.\nIts flexible design supports different electrode materials, electrolyte conditions, and experimental configurations, making it suitable for fundamental research as well as catalyst development.\nThe integration of controlled liquid flow, vacuum coupling, and precise mass analysis enables detailed mechanistic studies of reaction intermediates and catalytic selectivity.\nThe DEMS approach provided by LIQUIDLOOP helps researchers optimize next-generation energy conversion technologies by linking material properties with real operating conditions.",
+    "overview": "Differential Electrochemical Mass Spectrometry (DEMS) is an advanced analytical technique designed for real-time investigation of electrochemical reaction mechanisms.\nIt combines electrochemical control with high-sensitivity mass spectrometric detection, enabling the direct monitoring of gaseous and volatile reaction intermediates during electrochemical processes.\nThe platform on the eclair facility is based on a modular architecture integrating a gas–electrolyte flow management unit, a vacuum-coupled interface, an electrochemical capillary cell, and a mass spectrometer for rapid product identification.\nThis configuration allows researchers to correlate electrochemical signals, such as current variations and potential changes, with the formation of specific reaction products in real time.\nDEMS is particularly suited for studying complex electrocatalytic reactions, including CO₂ reduction, nitrogen reduction, oxygen evolution, and organic electrosynthesis pathways.\nBy minimizing transport limitations between the electrochemical interface and the mass spectrometer, the technique provides high temporal resolution and improved sensitivity compared with conventional offline analytical methods.\nIts flexible design supports different electrode materials, electrolyte conditions, and experimental configurations, making it suitable for fundamental research as well as catalyst development.",
     "usage": "full training required",
-    "link": "https://www.liquidloop.eu/",
-    "linkText": "Differential Electrochemical Mass Spectrometer from LiquidLoop",
+    "link": "",
+    "linkText": "",
     "specs": [
       [
         "Microfluidic electrochemical platform enabling real-time analysis of electrochemical reactions through DEMS (Differential Electrochemical Mass Spectrometry)",
         ""
       ],
       [
-        "FlowSys module providing precise control of electrolyte flow, pressure, and gas saturation at the electrode surface",
+        "Integrated flow-control module for precise control of electrolyte flow, pressure, and gas saturation at the electrode surface",
         ""
       ],
       [
@@ -350,7 +350,7 @@
         ""
       ],
       [
-        "Real-time detection and quantification of gaseous and volatile reaction products via PoGASi-MS technology",
+        "Real-time detection and quantification of gaseous and volatile reaction products via online mass spectrometry",
         ""
       ],
       [
